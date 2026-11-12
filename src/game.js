@@ -728,8 +728,9 @@ function showCredits() {
 /* ---------------- Boot ---------------- */
 async function boot() {
   try {
-    G = await (await fetch('data/game.json')).json();
-    G.chapters = await Promise.all(G.chapters.map(async f => (await fetch('data/' + f)).json()));
+    // no-cache = always check the server for newer data (cheap if unchanged), so web updates never load old chapters.
+    G = await (await fetch('data/game.json', { cache: 'no-cache' })).json();
+    G.chapters = await Promise.all(G.chapters.map(async f => (await fetch('data/' + f, { cache: 'no-cache' })).json()));
   } catch (e) {
     app().innerHTML = `<div class="screen"><h2>Could not load game data</h2><p>${esc(e.message)}</p></div>`;
     return;
