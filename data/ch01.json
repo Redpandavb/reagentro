@@ -3,6 +3,13 @@
   "number": 1,
   "title": "Structure & Bonding",
   "floorName": "Floor 1: The Dotted Study",
+  "music": { "name": "Grandpa's Music Box", "note": "A sleepy lo-fi waltz (3/4) for Professor Dott: oom-pah-pah chords, brushed snare, and a music-box tune.",
+    "bpm": 72, "steps": 12, "swing": 0, "keys": { "style": "stabs", "type": "triangle", "hits": [4, 8], "gain": 0.03 },
+    "bass": { "style": "root", "hits": [0] }, "kick": [0], "kickGain": 0.25, "snare": [4, 8], "brush": true, "hat": null,
+    "lead": { "type": "bell", "gain": 0.05 },
+    "melody": "4..3..2..... 3..2..1..... 2..1..0..1.. 1...........",
+    "chords": [[43, 55, 59, 62, 66], [40, 52, 55, 59, 62, 66], [36, 48, 52, 55, 59, 62], [38, 50, 54, 57, 59, 64]],
+    "scale": [79, 81, 83, 86, 88, 91] },
   "paths": {
     "A": "Atoms & Orbitals",
     "B": "Hybridization & Geometry",
@@ -23,6 +30,7 @@
     "1.12": "Drawing Chemical Structures"
   },
   "npc": {
+    "voice": { "pitch": 0.8, "wave": "triangle" },
     "name": "Professor Lewis Dott",
     "title": "Keeper of the First Floor",
     "color": "#7fd6ff",
@@ -2800,7 +2808,7 @@
       },
       {
         "speaker": "narrator",
-        "text": "A spiral staircase unfolds above you. From somewhere upstairs, a voice bellows: 'DROP AND GIVE ME A PROTON!' Floor 2 awaits... once its doors are built."
+        "text": "A spiral staircase unfolds above you. From somewhere upstairs, a voice bellows: 'DROP AND GIVE ME A PROTON!' Floor 2 awaits."
       }
     ],
     "legendary": {

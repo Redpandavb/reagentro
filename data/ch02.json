@@ -1,0 +1,1304 @@
+{
+  "id": "ch02",
+  "number": 2,
+  "title": "Polar Bonds; Acids & Bases",
+  "floorName": "Floor 2: The Proton Barracks",
+  "music": { "name": "Proton Parade", "note": "A lazy lo-fi march in D minor for Sergeant pKa: straight (unswung) beat, four-on-the-floor kick, snare rolls, a bugle call.",
+    "bpm": 90, "swing": 0, "keys": { "style": "stabs", "type": "sine", "hits": [0, 8], "gain": 0.045 },
+    "bass": { "style": "root", "hits": [0, 8] }, "kick": [0, 4, 8, 12], "snare": [4, 12, 14, 15], "hat": { "every": 4, "gain": 0.035 },
+    "lead": { "type": "square", "gain": 0.03 },
+    "melody": "0...0.0.3....... 2...2.2.1...0... 1...2...3...4... 3...........3.3.",
+    "chords": [[38, 50, 53, 57, 60], [46, 50, 53, 57, 58], [43, 50, 53, 55, 58], [45, 50, 52, 55, 57]],
+    "scale": [74, 77, 79, 81, 84, 86] },
+  "paths": { "A": "Polarity & Formal Charge", "B": "Resonance", "C": "Acids & Bases" },
+  "sections": {
+    "2.1": "Polar Covalent Bonds and Electronegativity",
+    "2.2": "Polar Covalent Bonds and Dipole Moments",
+    "2.3": "Formal Charges",
+    "2.4": "Resonance",
+    "2.5": "Rules for Resonance Forms",
+    "2.6": "Drawing Resonance Forms",
+    "2.7": "Acids and Bases: The Brønsted–Lowry Definition",
+    "2.8": "Acid and Base Strength",
+    "2.9": "Predicting Acid–Base Reactions from pKa Values",
+    "2.10": "Organic Acids and Organic Bases",
+    "2.11": "Acids and Bases: The Lewis Definition",
+    "2.12": "Noncovalent Interactions between Molecules"
+  },
+  "npc": {
+    "voice": { "pitch": 1.1, "wave": "square" },
+    "name": "Sergeant pKa",
+    "title": "Drill Instructor of the Second Floor",
+    "color": "#9acd32",
+    "palette": { "h": "#4b5d23", "H": "#6b8e23", "r": "#e8553a", "s": "#e0ac69", "k": "#1b1b2f", "n": "#c68642", "m": "#5a3a1a", "w": "#f2f2f2", "u": "#556b2f" },
+    "portrait": [
+      "................",
+      ".....hhhhhh.....",
+      "...hhhhhhhhhh...",
+      "..hhhhhrrhhhhh..",
+      "..HHHHHHHHHHHH..",
+      "...ssssssssss...",
+      "...skkssssskks..",
+      "...ssssnnsssss..",
+      "...smmmmmmmmms..",
+      "...sswwwwwwsss..",
+      "....ssskkksss...",
+      ".....ssssss.....",
+      "...uuuuuuuuuu...",
+      "..uuuruuuuruuu..",
+      ".uuuuuuuuuuuuuu.",
+      ".uuuuuuuuuuuuuu."
+    ]
+  },
+  "cards": {
+    "en-h": { "type": "concept", "name": "Hydrogen", "art": "H", "desc": "Hydrogen: group 1A, first row." },
+    "en-li": { "type": "concept", "name": "Lithium", "art": "Li", "desc": "Lithium: group 1A, second row. A metal." },
+    "en-b": { "type": "concept", "name": "Boron", "art": "B", "desc": "Boron: group 3A, second row." },
+    "en-br": { "type": "concept", "name": "Bromine", "art": "Br", "desc": "Bromine: group 7A (a halogen), fourth row." },
+    "en-c": { "type": "concept", "name": "Carbon", "art": "C", "desc": "Carbon: group 4A, second row." },
+    "en-o": { "type": "concept", "name": "Oxygen", "art": "O", "desc": "Oxygen: group 6A, second row." },
+    "en-f": { "type": "concept", "name": "Fluorine", "art": "F", "desc": "Fluorine: group 7A (a halogen), second row." },
+    "en-cl": { "type": "concept", "name": "Chlorine", "art": "Cl", "desc": "Chlorine: group 7A (a halogen), third row." },
+    "en-cs": { "type": "concept", "name": "Cesium", "art": "Cs", "desc": "Cesium: group 1A, sixth row. A metal." },
+    "en-same": { "type": "concept", "name": "Equal", "art": "=", "desc": "Claim: the two atoms attract bonding electrons equally." },
+    "pol-nonpolar": { "type": "concept", "name": "Nonpolar Covalent", "art": "A–A", "desc": "Electrons shared about equally. Rough guide: EN difference under 0.5." },
+    "pol-polar": { "type": "concept", "name": "Polar Covalent", "art": "δ+ δ−", "desc": "Electrons shared unequally. Rough guide: EN difference of 0.5 to 2." },
+    "pol-ionic": { "type": "concept", "name": "Ionic", "art": "+ −", "desc": "Electrons essentially transferred. Rough guide: EN difference over 2." },
+    "d-none": { "type": "concept", "name": "Neither", "art": "–", "desc": "Claim: the bond has no partial charges." },
+    "b-coh": { "type": "structure", "name": "H₃C–OH", "art": "C–O", "desc": "A carbon–oxygen bond." },
+    "b-cmg": { "type": "structure", "name": "H₃C–MgBr", "art": "C–Mg", "desc": "A carbon–magnesium bond." },
+    "b-ck": { "type": "structure", "name": "H₃C–K", "art": "C–K", "desc": "A carbon–potassium bond." },
+
+    "m-co2": { "type": "structure", "name": "CO₂", "art": "O=C=O", "desc": "Carbon dioxide: a linear molecule." },
+    "m-h2o": { "type": "structure", "name": "H₂O", "art": "H₂O", "desc": "Water: a bent molecule with two lone pairs on O." },
+    "m-nh3": { "type": "structure", "name": "NH₃", "art": "NH₃", "desc": "Ammonia: three N–H bonds and one lone pair." },
+    "m-ch3cl": { "type": "structure", "name": "CH₃Cl", "art": "CH₃Cl", "desc": "Chloromethane: one C–Cl bond." },
+    "m-nacl": { "type": "structure", "name": "NaCl", "art": "NaCl", "desc": "Sodium chloride." },
+    "m-ch4": { "type": "structure", "name": "CH₄", "art": "CH₄", "desc": "Methane: a tetrahedral molecule." },
+    "dip-en-lp": { "type": "concept", "name": "Electroneg. O + Lone Pairs", "art": "O:", "desc": "Claim: an electronegative atom plus lone pairs sticking out create the dipole." },
+    "dip-ionic": { "type": "concept", "name": "Water Is Ionic", "art": "H⁺ OH⁻", "desc": "Claim: water is made of ions." },
+    "dip-mass": { "type": "concept", "name": "Oxygen Is Heavy", "art": "16 u", "desc": "Claim: oxygen's mass creates the dipole." },
+    "dip-hb": { "type": "concept", "name": "H-Bonds Between Molecules", "art": "O–H···O", "desc": "Claim: hydrogen bonds between neighboring molecules create each molecule's dipole." },
+    "dir-to-n": { "type": "concept", "name": "Toward N & Its Lone Pair", "art": "→N:", "desc": "A dipole pointing from the CH₃ end toward the nitrogen and its lone pair." },
+    "dir-to-c": { "type": "concept", "name": "Toward the CH₃", "art": "→CH₃", "desc": "A dipole pointing from the nitrogen toward the CH₃ group." },
+    "dir-none": { "type": "concept", "name": "No Dipole", "art": "0 D", "desc": "Claim: the molecule has zero dipole moment." },
+    "dir-to-h": { "type": "concept", "name": "Toward the N–H's", "art": "→H", "desc": "A dipole pointing toward the hydrogens on nitrogen." },
+    "sym-cancel": { "type": "concept", "name": "Bond Dipoles Cancel", "art": "←→", "desc": "Claim: the polar bonds point in opposite directions and cancel by symmetry." },
+    "sym-nonpolar": { "type": "concept", "name": "C=O Is Nonpolar", "art": "C=O", "desc": "Claim: carbon and oxygen share electrons equally." },
+    "sym-lp": { "type": "concept", "name": "Carbon's Lone Pairs", "art": "C:", "desc": "Claim: lone pairs on carbon cancel the bond dipoles." },
+    "sym-ionic": { "type": "concept", "name": "CO₂ Is Ionic", "art": "C⁴⁺", "desc": "Claim: CO₂ is held together by ionic bonds." },
+    "hb-def": { "type": "concept", "name": "O/N–H ··· Lone Pair", "art": "O–H···N", "desc": "Claim: an H on O or N attracted to a lone pair on another O or N." },
+    "hb-anyh": { "type": "concept", "name": "Any H, Any Atom", "art": "H···X", "desc": "Claim: any hydrogen attracted to any neighboring atom." },
+    "hb-covalent": { "type": "concept", "name": "A Covalent Bond to H", "art": "X–H", "desc": "Claim: an ordinary covalent bond to hydrogen." },
+    "hb-ch": { "type": "concept", "name": "C–H ··· O", "art": "C–H···O", "desc": "Claim: a C–H hydrogen attracted to an oxygen." },
+    "f-disp": { "type": "concept", "name": "Dispersion Forces", "art": "δ~δ", "desc": "Tiny attractions from temporary, shifting dipoles. Present between ALL molecules." },
+    "f-hbond": { "type": "concept", "name": "Hydrogen Bonding", "art": "O–H···O", "desc": "A strong dipole–dipole attraction between an O–H or N–H hydrogen and a lone pair on O or N." },
+    "f-dipole": { "type": "concept", "name": "Dipole–Dipole", "art": "+−···+−", "desc": "Attraction between the permanent dipoles of polar molecules." },
+    "f-ionic": { "type": "concept", "name": "Ionic Attraction", "art": "+···−", "desc": "Attraction between full positive and negative charges." },
+    "hy-philic": { "type": "concept", "name": "Hydrophilic", "art": "♥H₂O", "desc": "'Water-loving': attracted to water and dissolves in it." },
+    "hy-phobic": { "type": "concept", "name": "Hydrophobic", "art": "✕H₂O", "desc": "'Water-fearing': not strongly attracted to water. Dissolves in fats and oils." },
+
+    "fc-p1": { "type": "concept", "name": "+1", "art": "+1", "desc": "A formal charge of +1." },
+    "fc-m1": { "type": "concept", "name": "−1", "art": "−1", "desc": "A formal charge of −1." },
+    "fc-0": { "type": "concept", "name": "0", "art": "0", "desc": "No formal charge." },
+    "fc-p2": { "type": "concept", "name": "+2", "art": "+2", "desc": "A formal charge of +2." },
+    "fc-m2": { "type": "concept", "name": "−2", "art": "−2", "desc": "A formal charge of −2." },
+
+    "res-127": { "type": "concept", "name": "Both 127 pm", "art": "127|127", "desc": "Claim: both C–O bonds are 127 pm long." },
+    "res-split": { "type": "concept", "name": "One 120, One 135 pm", "art": "120|135", "desc": "Claim: one C–O bond is 120 pm and the other is 135 pm." },
+    "res-135": { "type": "concept", "name": "Both 135 pm", "art": "135|135", "desc": "Claim: both C–O bonds are 135 pm long." },
+    "res-120": { "type": "concept", "name": "Both 120 pm", "art": "120|120", "desc": "Claim: both C–O bonds are 120 pm long." },
+    "rd-e": { "type": "concept", "name": "π & Lone-Pair Electrons", "art": "e⁻ ↷", "desc": "Claim: only π electrons and nonbonding electrons change places." },
+    "rd-atoms": { "type": "concept", "name": "Atom Positions", "art": "⇄ atom", "desc": "Claim: atoms move to new positions." },
+    "rd-hyb": { "type": "concept", "name": "Hybridization", "art": "sp²→sp³", "desc": "Claim: the atoms change hybridization." },
+    "rd-conn": { "type": "concept", "name": "Which Atoms Connect", "art": "A–B→A–C", "desc": "Claim: the connections between atoms change." },
+    "rh-hybrid": { "type": "concept", "name": "One Hybrid Structure", "art": "½+½", "desc": "Claim: a single, unchanging structure that blends the forms." },
+    "rh-flip": { "type": "concept", "name": "Flips Back and Forth", "art": "⇆", "desc": "Claim: the ion switches rapidly between the two forms." },
+    "rh-form1": { "type": "concept", "name": "Mostly the First Form", "art": "90%", "desc": "Claim: one drawing is the real one; the other is a minor version." },
+    "rh-carbon": { "type": "concept", "name": "Charge on Carbon", "art": "C⁻", "desc": "Claim: the negative charge really sits on the carbon." },
+    "st-more": { "type": "concept", "name": "More Stable", "art": "▼E", "desc": "Lower in energy." },
+    "st-less": { "type": "concept", "name": "Less Stable", "art": "▲E", "desc": "Higher in energy." },
+    "st-same": { "type": "concept", "name": "Equally Stable", "art": "=E", "desc": "The same energy." },
+    "ar-pair": { "type": "concept", "name": "Electron Pair Moves", "art": "↷", "desc": "Claim: an electron pair moves from the arrow's tail to its head." },
+    "ar-atom": { "type": "concept", "name": "An Atom Moves", "art": "↷ H", "desc": "Claim: an atom moves from the tail to the head." },
+    "ar-charge": { "type": "concept", "name": "A Proton Jumps", "art": "↷ +", "desc": "Claim: a positive charge (a proton) hops along the arrow." },
+    "ar-rotate": { "type": "concept", "name": "A Bond Rotates", "art": "⟳", "desc": "Claim: a bond spins around its axis." },
+    "iv-octet": { "type": "concept", "name": "Invalid: Breaks the Octet", "art": "C⁵", "desc": "Claim: it's invalid because carbon would have five bonds." },
+    "iv-ok": { "type": "concept", "name": "Valid: Only Electrons Moved", "art": "✓", "desc": "Claim: it's valid since no atoms moved." },
+    "iv-charge": { "type": "concept", "name": "Invalid: Has Charges", "art": "±✕", "desc": "Claim: resonance forms can't carry formal charges." },
+    "iv-any": { "type": "concept", "name": "Valid: Anything Goes", "art": "∞", "desc": "Claim: any drawing with the same atoms counts." },
+    "ac-o": { "type": "concept", "name": "Charge-on-O Form", "art": "O⁻", "desc": "The form with C=C and the negative charge on oxygen." },
+    "ac-c": { "type": "concept", "name": "Charge-on-C Form", "art": "C⁻", "desc": "The form with C=O and the negative charge on carbon." },
+    "ac-equal": { "type": "concept", "name": "Exactly Equal", "art": "50:50", "desc": "Claim: both forms contribute exactly equally." },
+    "bz-equiv": { "type": "concept", "name": "All Six Equal", "art": "⬡ =", "desc": "Claim: all six C–C bonds are identical." },
+    "bz-alt": { "type": "concept", "name": "Short-Long-Short...", "art": "⬡ ≠", "desc": "Claim: the bonds alternate between short double and long single bonds." },
+    "bz-flip": { "type": "concept", "name": "Switching Rapidly", "art": "⬡ ⇆", "desc": "Claim: the double bonds keep jumping around the ring." },
+    "n1": { "type": "concept", "name": "1 Form", "art": "1", "desc": "One resonance form." },
+    "n2": { "type": "concept", "name": "2 Forms", "art": "2", "desc": "Two resonance forms." },
+    "n3": { "type": "concept", "name": "3 Forms", "art": "3", "desc": "Three resonance forms." },
+    "n4": { "type": "concept", "name": "4 Forms", "art": "4", "desc": "Four resonance forms." },
+    "grp-xyz": { "type": "concept", "name": "X=Y–Z*", "art": "X=Y–Z*", "desc": "A multiple bond next to an atom with a p orbital (empty, one electron, or a lone pair)." },
+    "grp-sp3": { "type": "concept", "name": "X–Y–Z (All sp³)", "art": "X–Y–Z", "desc": "Three sp³ atoms joined by single bonds." },
+    "grp-far": { "type": "concept", "name": "Lonely Double Bond", "art": "X=Y", "desc": "A double bond with no p orbital next to it." },
+    "tt-no": { "type": "concept", "name": "No: An H Atom Moved", "art": "H↷✕", "desc": "Claim: they're not resonance forms because an atom changed position." },
+    "tt-formula": { "type": "concept", "name": "Yes: Same Formula", "art": "C₃H₆O", "desc": "Claim: same formula, so they're resonance forms." },
+    "tt-e": { "type": "concept", "name": "Yes: Only Electrons Moved", "art": "e⁻↷", "desc": "Claim: only electrons moved between them." },
+    "step-find": { "type": "concept", "name": "Find X=Y–Z*", "art": "1?", "desc": "Spot a multiple bond next to an atom with a p orbital." },
+    "step-pi": { "type": "concept", "name": "Swing the π Bond Over", "art": "↷", "desc": "Use a curved arrow to move the π electrons into the Y–Z position." },
+    "step-star": { "type": "concept", "name": "Move the * to X", "art": "*→X", "desc": "The charge, radical, or lone pair now sits on the other end atom." },
+    "step-atom": { "type": "concept", "name": "Move an Atom", "art": "H→", "desc": "Shift a hydrogen or another atom to a new spot." },
+
+    "sp-hcl": { "type": "reagent", "name": "HCl", "art": "HCl", "desc": "Hydrogen chloride (hydrochloric acid in water)." },
+    "sp-h2o": { "type": "reagent", "name": "H₂O", "art": "H₂O", "desc": "Water." },
+    "sp-h3o": { "type": "reagent", "name": "H₃O⁺", "art": "H₃O⁺", "desc": "Hydronium ion." },
+    "sp-cl": { "type": "reagent", "name": "Cl⁻", "art": "Cl⁻", "desc": "Chloride ion." },
+    "sp-oh": { "type": "reagent", "name": "HO⁻", "art": "HO⁻", "desc": "Hydroxide ion." },
+    "sp-hno3": { "type": "reagent", "name": "HNO₃", "art": "HNO₃", "desc": "Nitric acid." },
+    "sp-nh3": { "type": "reagent", "name": "NH₃", "art": "NH₃", "desc": "Ammonia." },
+    "sp-nh4": { "type": "reagent", "name": "NH₄⁺", "art": "NH₄⁺", "desc": "Ammonium ion." },
+    "sp-no3": { "type": "reagent", "name": "NO₃⁻", "art": "NO₃⁻", "desc": "Nitrate ion." },
+    "sp-acoh": { "type": "reagent", "name": "CH₃CO₂H", "art": "AcOH", "desc": "Acetic acid, the acid in vinegar." },
+    "sp-aco": { "type": "reagent", "name": "CH₃CO₂⁻", "art": "AcO⁻", "desc": "Acetate ion." },
+    "sp-hcn": { "type": "reagent", "name": "HCN", "art": "HCN", "desc": "Hydrocyanic acid." },
+    "sp-etoh": { "type": "reagent", "name": "CH₃CH₂OH", "art": "EtOH", "desc": "Ethanol." },
+    "sp-bf3": { "type": "reagent", "name": "BF₃", "art": "BF₃", "desc": "Boron trifluoride: boron has only six valence electrons and an empty p orbital." },
+    "sp-me2o": { "type": "reagent", "name": "(CH₃)₂O", "art": "Me₂O", "desc": "Dimethyl ether: an oxygen with two lone pairs." },
+    "sp-mg": { "type": "reagent", "name": "Mg²⁺", "art": "Mg²⁺", "desc": "Magnesium ion." },
+    "sp-alcl3": { "type": "reagent", "name": "AlCl₃", "art": "AlCl₃", "desc": "Aluminum chloride: aluminum has only six valence electrons." },
+    "sp-me3n": { "type": "reagent", "name": "(CH₃)₃N", "art": "Me₃N", "desc": "Trimethylamine: a nitrogen with one lone pair." },
+    "role-acid": { "type": "concept", "name": "Acts as an Acid", "art": "−H⁺", "desc": "Donates a proton (H⁺)." },
+    "role-base": { "type": "concept", "name": "Acts as a Base", "art": "+H⁺", "desc": "Accepts a proton (H⁺)." },
+    "role-none": { "type": "concept", "name": "Just a Spectator", "art": "👁", "desc": "Claim: it doesn't take part in the proton transfer." },
+    "lw-acid": { "type": "concept", "name": "Lewis Acid", "art": "□ ←:", "desc": "Accepts an electron pair." },
+    "lw-base": { "type": "concept", "name": "Lewis Base", "art": ": →", "desc": "Donates an electron pair." },
+    "aa-phe": { "type": "concept", "name": "Phenylalanine (pKa 1.83)", "art": "1.83", "desc": "An amino acid with pKa = 1.83." },
+    "aa-trp": { "type": "concept", "name": "Tryptophan (pKa 2.83)", "art": "2.83", "desc": "An amino acid with pKa = 2.83." },
+    "aa-same": { "type": "concept", "name": "About the Same", "art": "≈", "desc": "Claim: a 1-unit pKa difference doesn't matter." },
+    "pk-small": { "type": "concept", "name": "Smaller pKa", "art": "pKa↓", "desc": "A lower pKa value." },
+    "pk-large": { "type": "concept", "name": "Larger pKa", "art": "pKa↑", "desc": "A higher pKa value." },
+    "pk-7": { "type": "concept", "name": "pKa Closer to 7", "art": "≈7", "desc": "A pKa near neutral pH." },
+    "ka-174": { "type": "concept", "name": "1.74 × 10⁻⁵", "art": "10⁻⁵", "desc": "A Ka of 1.74 × 10⁻⁵." },
+    "ka-58e4": { "type": "concept", "name": "5.8 × 10⁴", "art": "10⁴", "desc": "A Ka of 5.8 × 10⁴." },
+    "ka-174e5": { "type": "concept", "name": "1.74 × 10⁵", "art": "10⁵", "desc": "A Ka of 1.74 × 10⁵." },
+    "ka-476": { "type": "concept", "name": "4.76 × 10⁻⁵", "art": "4.76", "desc": "A Ka of 4.76 × 10⁻⁵." },
+    "ka-49": { "type": "concept", "name": "4.9 × 10⁻¹⁰", "art": "10⁻¹⁰", "desc": "A Ka of 4.9 × 10⁻¹⁰." },
+    "ka-931": { "type": "concept", "name": "9.31 × 10⁻¹⁰", "art": "9.31", "desc": "A Ka of 9.31 × 10⁻¹⁰." },
+    "ka-2e9": { "type": "concept", "name": "2.0 × 10⁹", "art": "10⁹", "desc": "A Ka of 2.0 × 10⁹." },
+    "rx-yes": { "type": "concept", "name": "Yes, It Goes", "art": "⟶", "desc": "Claim: the equilibrium lies on the product side." },
+    "rx-no": { "type": "concept", "name": "No, It Doesn't", "art": "⟵", "desc": "Claim: the equilibrium stays on the starting-material side." },
+    "rx-even": { "type": "concept", "name": "Exactly 50/50", "art": "⇌", "desc": "Claim: equal amounts of starting materials and products." },
+    "tb-no": { "type": "concept", "name": "No: It Grabs H⁺ From Water", "art": "t-BuO⁻", "desc": "Claim: tert-butoxide would pull protons off water." },
+    "tb-yes": { "type": "concept", "name": "Yes: Stable in Water", "art": "✓", "desc": "Claim: tert-butoxide sits happily in water." },
+    "tb-weaker": { "type": "concept", "name": "Yes: Weaker Than HO⁻", "art": "<HO⁻", "desc": "Claim: tert-butoxide is a weaker base than hydroxide." },
+    "la-b2a": { "type": "concept", "name": "Base's Lone Pair → Acid", "art": ":↷□", "desc": "Claim: the arrow starts at the base's lone pair and points at the acid." },
+    "la-a2b": { "type": "concept", "name": "Acid → Base", "art": "□↷:", "desc": "Claim: the arrow starts at the acid and points at the base." },
+    "la-atom": { "type": "concept", "name": "Follow the Atom", "art": "B↷O", "desc": "Claim: the arrow shows which atom moves." },
+    "ah-oh": { "type": "concept", "name": "The O–H Hydrogen", "art": "O–H", "desc": "The hydrogen on the oxygen." },
+    "ah-ch3": { "type": "concept", "name": "A CH₃ Hydrogen", "art": "C–H", "desc": "One of the hydrogens on the methyl carbon." },
+    "ah-equal": { "type": "concept", "name": "All Equally Acidic", "art": "=", "desc": "Claim: all four hydrogens are equally acidic." },
+    "ab-mea": { "type": "concept", "name": "Methylamine", "art": "CH₃NH₂", "desc": "CH₃NH₂. Its conjugate acid, CH₃NH₃⁺, has pKa 10.66." },
+    "ab-nh3": { "type": "concept", "name": "Ammonia", "art": "NH₃", "desc": "NH₃. Its conjugate acid, NH₄⁺, has pKa 9.25." },
+    "ab-same": { "type": "concept", "name": "Equally Strong", "art": "=", "desc": "Claim: they're the same base strength." },
+    "aw-res": { "type": "concept", "name": "Resonance-Stabilized Anion", "art": "O⁻↔O⁻", "desc": "Claim: the conjugate base spreads its charge over two oxygens." },
+    "aw-moreh": { "type": "concept", "name": "More H's to Give", "art": "H×4", "desc": "Claim: acetic acid has more hydrogens, so it's more acidic." },
+    "aw-bigger": { "type": "concept", "name": "Bigger Molecule", "art": "60 u", "desc": "Claim: heavier molecules are stronger acids." },
+    "aw-oncarbon": { "type": "concept", "name": "Methoxide's Charge Is on C", "art": "C⁻", "desc": "Claim: methoxide puts its negative charge on carbon." },
+    "bc-acetic": { "type": "reagent", "name": "Acetic Acid (4.76)", "art": "4.76", "desc": "Acetic acid, pKa 4.76." },
+    "bc-phenol": { "type": "reagent", "name": "Phenol (9.9)", "art": "9.9", "desc": "Phenol, pKa 9.9." },
+    "bc-ethanol": { "type": "reagent", "name": "Ethanol (16.00)", "art": "16.0", "desc": "Ethanol, pKa 16.00." },
+    "bc-water": { "type": "reagent", "name": "Water (15.74)", "art": "15.7", "desc": "Water, pKa 15.74." },
+
+    "ph-oppose": { "type": "concept", "name": "C–Cl Dipoles Oppose C=O", "art": "Cl←C→O", "desc": "Claim: the C–Cl bond dipoles point partly against the C=O dipole." },
+    "ph-hmore": { "type": "concept", "name": "H Is More Electronegative", "art": "H>Cl", "desc": "Claim: hydrogen is more electronegative than chlorine." },
+    "ph-ionic": { "type": "concept", "name": "Phosgene Is Ionic", "art": "C²⁺", "desc": "Claim: phosgene's bonds are ionic." },
+    "ph-nolp": { "type": "concept", "name": "Phosgene's O Has No Lone Pairs", "art": "O", "desc": "Claim: the oxygen in phosgene has no lone pairs." },
+    "cf-length": { "type": "concept", "name": "C–Cl Is Longer", "art": "μ=Q×r", "desc": "Claim: the C–Cl bond is longer, which increases μ = Q × r." },
+    "cf-en": { "type": "concept", "name": "Cl Is More Electronegative", "art": "Cl>F", "desc": "Claim: chlorine is more electronegative than fluorine." },
+    "cf-lp": { "type": "concept", "name": "F Has Fewer Lone Pairs", "art": "F:", "desc": "Claim: fluorine has fewer lone pairs than chlorine." },
+    "cf-heavy": { "type": "concept", "name": "Cl Is Heavier", "art": "35 u", "desc": "Claim: heavier atoms make bigger dipoles." },
+    "sh-lp": { "type": "concept", "name": "S–H Bond + S Lone Pairs", "art": "S:", "desc": "Claim: the polar S–H bond and sulfur's lone pairs create the dipole." },
+    "sh-cs": { "type": "concept", "name": "C–S Is Very Polar", "art": "C–S", "desc": "Claim: the C–S bond is strongly polar." },
+    "sh-none": { "type": "concept", "name": "Really Zero", "art": "0 D", "desc": "Claim: CH₃SH has no dipole moment." },
+    "sh-ionic": { "type": "concept", "name": "CH₃S⁻ H⁺ Ions", "art": "±", "desc": "Claim: methanethiol is ionic." },
+    "pn-res": { "type": "concept", "name": "Ring Spreads the Charge", "art": "O⁻↔⬡⁻", "desc": "Claim: the phenoxide anion's charge spreads into the ring by resonance." },
+    "pn-en": { "type": "concept", "name": "Ring Is Electronegative", "art": "⬡δ−", "desc": "Claim: the benzene ring is more electronegative than oxygen." },
+    "pn-moreh": { "type": "concept", "name": "Phenol Has More H's", "art": "H×6", "desc": "Claim: more hydrogens make a stronger acid." },
+    "pn-weakoh": { "type": "concept", "name": "Phenol's O–H Is Missing", "art": "O?", "desc": "Claim: phenol's acidic H is on a ring carbon." },
+    "pr-co": { "type": "concept", "name": "The C=O Oxygen", "art": "C=O", "desc": "The doubly bonded (carbonyl) oxygen." },
+    "pr-oh": { "type": "concept", "name": "The –OH Oxygen", "art": "O–H", "desc": "The singly bonded (hydroxyl) oxygen." },
+    "pr-c": { "type": "concept", "name": "The Carbonyl Carbon", "art": "C", "desc": "The carbon of the C=O group." },
+    "cd-zero": { "type": "concept", "name": "No Dipole", "art": "0 D", "desc": "Claim: the ion has zero dipole moment." },
+    "cd-charge": { "type": "concept", "name": "Yes: It Has a Charge", "art": "2−", "desc": "Claim: any charged species has a dipole." },
+    "cd-oneco": { "type": "concept", "name": "Yes: One C=O Is Different", "art": "C=O", "desc": "Claim: the double-bonded oxygen makes it lopsided." },
+
+    "s-acetone": { "type": "product", "name": "Acetone", "smiles": "CC(=O)C", "desc": "CH₃COCH₃. Its C–H hydrogens next to C=O are weakly acidic (pKa 19.3)." },
+    "s-enol": { "type": "product", "name": "Propen-2-ol", "smiles": "CC(O)=C", "desc": "CH₂=C(OH)CH₃, the enol form of acetone. Same formula, different atom positions." }
+  },
+  "levels": [
+    {
+      "id": "intro", "path": "intro", "title": "Boot Camp: Electronegativity", "pick": 3,
+      "lesson": [
+        { "text": "ATTENTION, RECRUIT! I'm Sergeant pKa, and on MY floor we push protons! But first you'll learn WHY electrons go where they go. Drop and give me a proton! ...Fine. Just listen." },
+        { "text": "Electronegativity, EN, is how hard an atom pulls on the electrons in a bond. Fluorine pulls hardest (4.0). Cesium pulls weakest (0.7). The rule: EN goes UP as you move right across the table and DOWN as you move down a column.", "art": "F 4.0 › O 3.5 › N 3.0 = Cl 3.0" },
+        { "text": "Memorize these few, recruit, but KNOW the trend: C is 2.5 and H is 2.1. Metals like Li (1.0), Mg (1.2), and K (0.8) barely pull at all.", "art": "C 2.5  H 2.1  Li 1.0  K 0.8" },
+        { "text": "EN difference tells you the bond type. Under 0.5: nonpolar covalent (like C–H, a difference of 0.4). From 0.5 to 2: polar covalent. Over 2: basically ionic, like Na⁺Cl⁻." },
+        { "text": "In a polar bond, the stronger puller gets δ− and the weaker one gets δ+. In methanol's C–O bond, O is δ− and C is δ+. But in methyllithium, CH₃Li, carbon is the stronger puller, so CARBON is δ−!", "smiles": "CO" },
+        { "text": "Worked example: rank H₃C–OH, H₃C–MgBr, and H₃C–K by polarity. Just subtract from carbon's 2.5: O differs by 1.0, Mg by 1.3, K by 1.7. Bigger difference, more polar. Now MOVE, recruit!", "art": "1.0 ‹ 1.3 ‹ 1.7" }
+      ],
+      "problems": [
+        {
+          "id": "i-li-h", "kind": "single", "section": "2.1",
+          "prompt": "Which is more electronegative: lithium or hydrogen? (Problem 2-1a)",
+          "slots": [{ "label": "More electronegative:", "answer": "en-h" }],
+          "hand": ["en-h", "en-li", "en-same"],
+          "hint": "Lithium is a metal. Metals hold electrons loosely.",
+          "explain": {
+            "en-h": "Right! H is 2.1 and Li is 1.0. Lithium is a metal on the far left, and metals attract electrons weakly.",
+            "en-li": "Lithium is a metal on the far left of the table, so it pulls weakly (EN 1.0). Hydrogen is 2.1, so H is more electronegative.",
+            "en-same": "They're in the same column, but EN differs a lot: H is 2.1 and Li is 1.0. Hydrogen wins."
+          }
+        },
+        {
+          "id": "i-b-br", "kind": "single", "section": "2.1",
+          "prompt": "Which is more electronegative: boron or bromine? (Problem 2-1b)",
+          "slots": [{ "label": "More electronegative:", "answer": "en-br" }],
+          "hand": ["en-br", "en-b", "en-same"],
+          "hint": "EN rises from left to right across the table.",
+          "explain": {
+            "en-br": "Right! Bromine is a halogen on the far right (EN 2.8). Boron is in group 3A (EN 2.0). Moving right beats moving down here.",
+            "en-b": "Boron is in group 3A, well to the left, with EN 2.0. Bromine is a halogen at 2.8, so Br is more electronegative.",
+            "en-same": "They're far apart in the table: B is 2.0 and Br is 2.8."
+          }
+        },
+        {
+          "id": "i-c-h", "kind": "single", "section": "2.1",
+          "prompt": "Which is more electronegative: carbon or hydrogen? (Problem 2-1d)",
+          "slots": [{ "label": "More electronegative:", "answer": "en-c" }],
+          "hand": ["en-c", "en-h", "en-same"],
+          "hint": "These two are close, but not equal.",
+          "explain": {
+            "en-c": "Right! C is 2.5 and H is 2.1. They're close (a 0.4 difference), which is why C–H bonds are nearly nonpolar.",
+            "en-h": "Close, but carbon pulls a bit harder: C is 2.5 and H is 2.1.",
+            "en-same": "Close but not equal: C is 2.5 and H is 2.1. The 0.4 difference makes C–H bonds 'relatively nonpolar', not perfectly nonpolar."
+          }
+        },
+        {
+          "id": "i-most-en", "kind": "single", "section": "2.1",
+          "prompt": "Which element is the MOST electronegative of all?",
+          "slots": [{ "label": "Top puller:", "answer": "en-f" }],
+          "hand": ["en-f", "en-o", "en-cl", "en-cs"],
+          "hint": "Go as far right and as far up as you can (skipping the noble gases).",
+          "explain": {
+            "en-f": "Right! Fluorine sits top-right: EN 4.0, the highest on the scale.",
+            "en-o": "Oxygen is a strong puller (3.5), but fluorine, one step to the right, is 4.0.",
+            "en-cl": "Chlorine (3.0) is one row below fluorine, and EN drops going down. Fluorine is 4.0.",
+            "en-cs": "Cesium is the LEAST electronegative element (0.7), at the bottom left. Fluorine is the most."
+          }
+        },
+        {
+          "id": "i-ch-type", "kind": "single", "section": "2.1",
+          "prompt": "What kind of bond is a C–H bond (EN 2.5 vs 2.1)?",
+          "slots": [{ "label": "C–H is...", "answer": "pol-nonpolar" }],
+          "hand": ["pol-nonpolar", "pol-polar", "pol-ionic"],
+          "hint": "Calculate the difference and use the 0.5 / 2 cutoffs.",
+          "explain": {
+            "pol-nonpolar": "Right! 2.5 − 2.1 = 0.4, which is under 0.5, so C–H is relatively nonpolar.",
+            "pol-polar": "Polar covalent needs a difference of 0.5 to 2. C–H is only 0.4, so it's relatively nonpolar.",
+            "pol-ionic": "Ionic needs a difference over 2 (like Na–Cl). C–H is only 0.4: nonpolar covalent."
+          }
+        },
+        {
+          "id": "i-cli", "kind": "single", "section": "2.1",
+          "prompt": "In methyllithium, CH₃Li, which atom of the C–Li bond carries the partial NEGATIVE charge (δ−)?",
+          "slots": [{ "label": "δ− atom:", "answer": "en-c" }],
+          "hand": ["en-c", "en-li", "d-none"],
+          "hint": "Which atom is the stronger puller here?",
+          "explain": {
+            "en-c": "Right! Carbon (2.5) out-pulls lithium (1.0), so electrons shift toward carbon. Carbon is δ− and Li is δ+. Metals inductively DONATE electrons.",
+            "en-li": "Lithium is a metal with EN 1.0. It gives electron density away. Carbon (2.5) pulls harder, so carbon is δ−.",
+            "d-none": "The EN difference is 1.5, so this bond is definitely polar. Carbon is δ− and Li is δ+."
+          }
+        },
+        {
+          "id": "i-rank-pol", "kind": "rank", "section": "2.1",
+          "prompt": "Rank these bonds from LEAST polar to MOST polar. (From Problem 2-3)",
+          "slots": [
+            { "label": "Least polar", "answer": "b-coh" },
+            { "label": "Middle", "answer": "b-cmg" },
+            { "label": "Most polar", "answer": "b-ck" }
+          ],
+          "hand": ["b-ck", "b-coh", "b-cmg"],
+          "hint": "Compare each partner's EN with carbon's 2.5: O 3.5, Mg 1.2, K 0.8.",
+          "why": "EN differences from carbon (2.5): O 3.5 → 1.0, Mg 1.2 → 1.3, K 0.8 → 1.7. Bigger difference, more polar.",
+          "explain": {
+            "b-coh": "C–O: |3.5 − 2.5| = 1.0. The LEAST polar of these three, even though O is very electronegative.",
+            "b-cmg": "C–Mg: |2.5 − 1.2| = 1.3. In the MIDDLE.",
+            "b-ck": "C–K: |2.5 − 0.8| = 1.7. The MOST polar. Here carbon is the δ− end!"
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1", "path": "A", "title": "Dipole Drills", "requires": ["intro"], "pick": 3,
+      "lesson": [
+        { "text": "Polar bonds are one thing. Whole MOLECULES can be polar too! Add up every bond polarity and every lone pair like arrows. That total is the dipole moment, μ, measured in debyes (D)." },
+        { "text": "Look at Table 2.1, recruit. NaCl: 9.00 D (it's ionic!). CH₃Cl: 1.87. Water: 1.85. Methanol: 1.70. NH₃: 1.47. And CO₂, CH₄, and ethane: ZERO.", "art": "NaCl 9.00 › CH₃Cl 1.87 › NH₃ 1.47 › CH₄ 0" },
+        { "text": "Why is water so polar? Electronegative oxygen, AND two lone pairs sticking out into space. Lone pairs pile up negative charge on one side. Same story for ammonia's lone pair." },
+        { "text": "Why is CO₂ zero when C=O bonds are polar? It's linear! The two bond dipoles point in opposite directions and cancel. Symmetry kills dipoles: methane and benzene are zero too.", "art": "O ← C → O" },
+        { "text": "Between molecules, there are noncovalent forces. Dispersion forces come from temporary dipoles, and EVERY molecule has them. Dipole–dipole forces act between polar molecules. HYDROGEN BONDS: an H on O or N attracted to a lone pair on another O or N." },
+        { "text": "Molecules with lots of –OH groups make H-bonds with water. They're HYDROPHILIC (water-loving). Long greasy hydrocarbon chains are HYDROPHOBIC. Dismissed!" }
+      ],
+      "problems": [
+        {
+          "id": "a1-zero", "kind": "single", "section": "2.2",
+          "prompt": "Which molecule has a dipole moment of ZERO?",
+          "slots": [{ "label": "μ = 0:", "answer": "m-co2" }],
+          "hand": ["m-co2", "m-h2o", "m-nh3", "m-ch3cl"],
+          "hint": "Look for perfect symmetry.",
+          "explain": {
+            "m-co2": "Right! CO₂ is linear. Its two polar C=O bonds point in opposite directions and cancel exactly: μ = 0.",
+            "m-h2o": "Water is BENT, so its bond dipoles don't cancel, and its lone pairs add more: μ = 1.85 D.",
+            "m-nh3": "Ammonia's N–H bonds and lone pair all add up on one side: μ = 1.47 D.",
+            "m-ch3cl": "One polar C–Cl bond with nothing to cancel it: μ = 1.87 D."
+          }
+        },
+        {
+          "id": "a1-rank", "kind": "rank", "section": "2.2",
+          "prompt": "Rank by dipole moment, LARGEST to SMALLEST. (Table 2.1)",
+          "slots": [
+            { "label": "Largest", "answer": "m-nacl" },
+            { "label": "2nd", "answer": "m-ch3cl" },
+            { "label": "3rd", "answer": "m-nh3" },
+            { "label": "Smallest", "answer": "m-ch4" }
+          ],
+          "hand": ["m-nh3", "m-ch4", "m-nacl", "m-ch3cl"],
+          "hint": "The ionic one is way out in front. The symmetric one is zero.",
+          "why": "Table 2.1: NaCl 9.00 D > CH₃Cl 1.87 D > NH₃ 1.47 D > CH₄ 0 D.",
+          "explain": {
+            "m-nacl": "NaCl: 9.00 D, the LARGEST, because it's ionic. Full charges, not partial ones.",
+            "m-ch3cl": "CH₃Cl: 1.87 D. SECOND. One strongly polar C–Cl bond.",
+            "m-nh3": "NH₃: 1.47 D. THIRD. Polar N–H bonds plus a lone pair.",
+            "m-ch4": "CH₄: 0 D. SMALLEST. Its tetrahedral symmetry cancels everything."
+          }
+        },
+        {
+          "id": "a1-water-why", "kind": "single", "section": "2.2",
+          "prompt": "Why does a small molecule like water have such a large dipole moment (1.85 D)?",
+          "slots": [{ "label": "Because...", "answer": "dip-en-lp" }],
+          "hand": ["dip-en-lp", "dip-ionic", "dip-mass", "dip-hb"],
+          "hint": "Two things about oxygen: how hard it pulls, and what's sticking off it.",
+          "explain": {
+            "dip-en-lp": "Right! Oxygen is strongly electronegative, AND its two lone pairs stick out into space away from the nuclei. Together they create a big charge separation.",
+            "dip-ionic": "Water is covalent, with polar O–H bonds. Its dipole comes from oxygen's electronegativity plus its lone pairs.",
+            "dip-mass": "Mass has nothing to do with dipole moment. It's about charge separation: electronegative O plus lone pairs.",
+            "dip-hb": "Hydrogen bonds are attractions BETWEEN molecules. A single water molecule's dipole comes from O's electronegativity and lone pairs."
+          }
+        },
+        {
+          "id": "a1-methylamine", "kind": "single", "section": "2.2",
+          "prompt": "Which way does the dipole moment of methylamine, CH₃NH₂, point? (Worked Example 2.1)",
+          "smiles": "CN",
+          "slots": [{ "label": "Dipole points...", "answer": "dir-to-n" }],
+          "hand": ["dir-to-n", "dir-to-c", "dir-none", "dir-to-h"],
+          "hint": "Electron density shifts toward electronegative atoms and lone pairs.",
+          "explain": {
+            "dir-to-n": "Right! Nitrogen is electronegative and has a lone pair, so the dipole points from the –CH₃ end toward N and its lone pair (μ = 1.31 D).",
+            "dir-to-c": "Backwards. Electron density shifts TOWARD the electronegative nitrogen and its lone pair, not toward carbon.",
+            "dir-none": "Methylamine isn't symmetric, so nothing cancels. Its dipole is 1.31 D, pointing toward N.",
+            "dir-to-h": "The H's on nitrogen are δ+, so electron density moves away from them. The dipole points toward N's lone pair."
+          }
+        },
+        {
+          "id": "a1-co2-why", "kind": "single", "section": "2.2",
+          "prompt": "CO₂ has two polar C=O bonds, yet μ = 0. Why?",
+          "smiles": "O=C=O",
+          "slots": [{ "label": "Because...", "answer": "sym-cancel" }],
+          "hand": ["sym-cancel", "sym-nonpolar", "sym-lp", "sym-ionic"],
+          "hint": "What shape is CO₂?",
+          "explain": {
+            "sym-cancel": "Right! CO₂ is linear, so its two bond dipoles point exactly opposite and cancel.",
+            "sym-nonpolar": "C=O bonds ARE polar (O is 3.5, C is 2.5). They cancel because they point in opposite directions.",
+            "sym-lp": "Carbon in CO₂ has no lone pairs: it uses all 4 electrons in two double bonds. The bond dipoles cancel by symmetry.",
+            "sym-ionic": "CO₂ is covalent. Its polar bonds cancel because the molecule is linear."
+          }
+        },
+        {
+          "id": "a1-hbond", "kind": "single", "section": "2.12",
+          "prompt": "What exactly is a hydrogen bond?",
+          "slots": [{ "label": "A hydrogen bond is...", "answer": "hb-def" }],
+          "hand": ["hb-def", "hb-anyh", "hb-covalent", "hb-ch"],
+          "hint": "Both the H's partner and the lone pair have to be on very electronegative atoms.",
+          "explain": {
+            "hb-def": "Right! A hydrogen bond is an attraction between an H bonded to O or N and a lone pair on another O or N. It's a very strong dipole–dipole interaction.",
+            "hb-anyh": "Not just any H! The H must be on O or N (strongly δ+), and it's attracted to a lone pair on O or N.",
+            "hb-covalent": "A hydrogen bond is NOT a covalent bond. It's a noncovalent attraction between molecules (or parts of one).",
+            "hb-ch": "C–H bonds are barely polar (EN 2.5 vs 2.1), so C–H hydrogens don't H-bond. It takes an O–H or N–H."
+          }
+        },
+        {
+          "id": "a1-wax", "kind": "single", "section": "2.12",
+          "prompt": "CH₃(CH₂)₂₉CH₃ (paraffin wax) is a solid, but CH₃(CH₂)₆CH₃ is a liquid. Which force is mainly responsible? (Problem 2-65a)",
+          "slots": [{ "label": "Main force:", "answer": "f-disp" }],
+          "hand": ["f-disp", "f-hbond", "f-dipole", "f-ionic"],
+          "hint": "These are pure hydrocarbons. No O–H, no real polarity.",
+          "explain": {
+            "f-disp": "Right! Nonpolar hydrocarbons only have dispersion forces, and longer chains have more surface for temporary dipoles. 31 carbons stick together much more than 8.",
+            "f-hbond": "There's no O–H or N–H here, so no hydrogen bonds. Longer chains just have more dispersion forces.",
+            "f-dipole": "C–H and C–C bonds are nearly nonpolar, so there are no real permanent dipoles. It's dispersion forces.",
+            "f-ionic": "No ions here at all. These are nonpolar hydrocarbons held together by dispersion forces."
+          }
+        },
+        {
+          "id": "a1-propanol", "kind": "single", "section": "2.12",
+          "prompt": "CH₃CH₂CH₂OH boils much higher than CH₄. Which force is mainly responsible? (Problem 2-65b)",
+          "slots": [{ "label": "Main force:", "answer": "f-hbond" }],
+          "hand": ["f-hbond", "f-disp", "f-ionic", "f-dipole"],
+          "hint": "What does propanol have that methane doesn't?",
+          "explain": {
+            "f-hbond": "Right! Propanol's O–H group forms hydrogen bonds between molecules. Methane can't. Breaking all those H-bonds takes a lot of heat.",
+            "f-disp": "Both have dispersion forces. The big difference is propanol's O–H, which forms hydrogen bonds.",
+            "f-ionic": "Neither compound is ionic. Propanol's O–H group forms hydrogen bonds.",
+            "f-dipole": "Propanol is polar, but its standout force is hydrogen bonding through the O–H, the strongest dipole–dipole type."
+          }
+        },
+        {
+          "id": "a1-vitc", "kind": "single", "section": "2.12",
+          "prompt": "Vitamin C has several –OH groups on a small frame. Is it hydrophilic or hydrophobic? (Problem 2-19)",
+          "slots": [{ "label": "Vitamin C is...", "answer": "hy-philic" }],
+          "hand": ["hy-philic", "hy-phobic"],
+          "hint": "–OH groups can hydrogen-bond with water.",
+          "explain": {
+            "hy-philic": "Right! Those –OH groups hydrogen-bond with water, so vitamin C is water-soluble. (Vitamin A, a long hydrocarbon, is fat-soluble.)",
+            "hy-phobic": "Hydrophobic molecules lack H-bonding groups. Vitamin C is covered in –OH groups, so it's hydrophilic and water-soluble."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2", "path": "A", "title": "Formal Charge Inspection", "requires": ["a1"], "pick": 4,
+      "lesson": [
+        { "text": "Atoms with weird bond counts get FORMAL CHARGES. It's electron bookkeeping, recruit, not a real ionic charge. But it tells you a LOT about reactivity." },
+        { "text": "The formula: formal charge = (valence electrons) − (bonds) − (nonbonding electrons). Each bond counts as ONE owned electron. Every lone-pair electron counts as owned.", "art": "FC = V − bonds − dots" },
+        { "text": "Example: N in ammonia, NH₃. 5 − 3 bonds − 2 dots = 0. Now ammonium, NH₄⁺: 5 − 4 − 0 = +1. Hydroxide, HO⁻: oxygen is 6 − 1 − 6 = −1.", "art": "NH₄⁺: 5−4−0 = +1" },
+        { "text": "Dimethyl sulfoxide (DMSO) is a classic. S has 3 bonds and 1 lone pair: 6 − 3 − 2 = +1. The O has 1 bond and 3 lone pairs: 6 − 1 − 6 = −1.", "smiles": "C[S+]([O-])C" },
+        { "text": "Carbon's three cases (Table 2.2), with 3 bonds each. 0 nonbonding electrons → +1 (carbocation). 1 electron → 0 (radical). 2 electrons → −1 (carbanion). Get those down COLD!", "art": "C⁺  C·  C⁻" }
+      ],
+      "problems": [
+        {
+          "id": "a2-nh4", "kind": "single", "section": "2.3",
+          "prompt": "What is the formal charge on nitrogen in the ammonium ion, NH₄⁺?",
+          "slots": [{ "label": "N formal charge:", "answer": "fc-p1" }],
+          "hand": ["fc-p1", "fc-0", "fc-m1", "fc-p2"],
+          "hint": "N has 5 valence electrons, 4 bonds, and no lone pairs.",
+          "explain": {
+            "fc-p1": "Right! 5 valence − 4 bonds − 0 nonbonding = +1. Nitrogen with four bonds is always +1.",
+            "fc-0": "That's ammonia (3 bonds + 1 lone pair). In NH₄⁺ the lone pair became a fourth bond: 5 − 4 − 0 = +1.",
+            "fc-m1": "Negative would mean N owns MORE than 5 electrons. Here it owns only 4 (one per bond): 5 − 4 = +1.",
+            "fc-p2": "Count again: 5 − 4 bonds − 0 = +1, not +2."
+          }
+        },
+        {
+          "id": "a2-h3o", "kind": "single", "section": "2.3",
+          "prompt": "What is the formal charge on oxygen in hydronium, H₃O⁺?",
+          "slots": [{ "label": "O formal charge:", "answer": "fc-p1" }],
+          "hand": ["fc-p1", "fc-0", "fc-m1", "fc-p2"],
+          "hint": "O: 3 bonds and one lone pair.",
+          "explain": {
+            "fc-p1": "Right! 6 − 3 bonds − 2 nonbonding = +1. Oxygen with three bonds is +1.",
+            "fc-0": "That would be water (2 bonds + 2 lone pairs). Hydronium has 3 bonds and 1 lone pair: 6 − 3 − 2 = +1.",
+            "fc-m1": "O here owns 3 + 2 = 5 electrons, one fewer than its 6 valence electrons, so it's +1.",
+            "fc-p2": "6 − 3 − 2 = +1. Don't forget to count the lone pair's 2 electrons."
+          }
+        },
+        {
+          "id": "a2-oh", "kind": "single", "section": "2.3",
+          "prompt": "What is the formal charge on oxygen in hydroxide, HO⁻?",
+          "slots": [{ "label": "O formal charge:", "answer": "fc-m1" }],
+          "hand": ["fc-m1", "fc-0", "fc-p1", "fc-m2"],
+          "hint": "O: 1 bond and three lone pairs.",
+          "explain": {
+            "fc-m1": "Right! 6 − 1 bond − 6 nonbonding = −1. Oxygen with one bond and three lone pairs is −1.",
+            "fc-0": "Neutral O has 2 bonds + 2 lone pairs. With 1 bond + 3 lone pairs, O owns 7 electrons: 6 − 7 = −1.",
+            "fc-p1": "Backwards. O owns 1 + 6 = 7 electrons, one MORE than its 6, so the charge is negative.",
+            "fc-m2": "6 − 1 − 6 = −1, not −2."
+          }
+        },
+        {
+          "id": "a2-dmso", "kind": "match", "section": "2.3",
+          "prompt": "Dimethyl sulfoxide, (CH₃)₂S–O. Assign each formal charge.",
+          "slots": [
+            { "label": "Sulfur (3 bonds, 1 lone pair)", "answer": "fc-p1" },
+            { "label": "Oxygen (1 bond, 3 lone pairs)", "answer": "fc-m1" }
+          ],
+          "hand": ["fc-p1", "fc-m1", "fc-0", "fc-p2"],
+          "hint": "Sulfur has 6 valence electrons, just like oxygen.",
+          "explain": {
+            "fc-p1": "+1 is sulfur: 6 − 3 bonds − 2 nonbonding = +1.",
+            "fc-m1": "−1 is oxygen: 6 − 1 bond − 6 nonbonding = −1.",
+            "fc-0": "Neither atom is neutral. S: 6 − 3 − 2 = +1. O: 6 − 1 − 6 = −1.",
+            "fc-p2": "No +2 here. S is 6 − 3 − 2 = +1."
+          }
+        },
+        {
+          "id": "a2-carbons", "kind": "match", "section": "2.3",
+          "prompt": "Each carbon has 3 bonds. Assign the formal charge for each case. (Table 2.2)",
+          "slots": [
+            { "label": "0 nonbonding electrons (carbocation)", "answer": "fc-p1" },
+            { "label": "1 nonbonding electron (radical)", "answer": "fc-0" },
+            { "label": "2 nonbonding electrons (carbanion)", "answer": "fc-m1" }
+          ],
+          "hand": ["fc-p1", "fc-0", "fc-m1", "fc-m2"],
+          "hint": "Carbon has 4 valence electrons. FC = 4 − 3 − (nonbonding).",
+          "explain": {
+            "fc-p1": "+1 goes with the carbocation: 4 − 3 − 0 = +1.",
+            "fc-0": "0 goes with the radical: 4 − 3 − 1 = 0. A radical is neutral!",
+            "fc-m1": "−1 goes with the carbanion: 4 − 3 − 2 = −1.",
+            "fc-m2": "None of these is −2. The most electrons here is 2, which gives 4 − 3 − 2 = −1."
+          }
+        },
+        {
+          "id": "a2-nitromethane", "kind": "match", "section": "2.3",
+          "prompt": "Nitromethane, CH₃NO₂: N has 4 bonds (one double bond to O). Assign each formal charge. (Problem 2-7b)",
+          "slots": [
+            { "label": "Nitrogen (4 bonds, no lone pairs)", "answer": "fc-p1" },
+            { "label": "Single-bonded O (3 lone pairs)", "answer": "fc-m1" },
+            { "label": "Double-bonded O (2 lone pairs)", "answer": "fc-0" }
+          ],
+          "hand": ["fc-p1", "fc-m1", "fc-0", "fc-p2"],
+          "hint": "A double bond counts as 2 bonds.",
+          "explain": {
+            "fc-p1": "+1 is nitrogen: 5 − 4 − 0 = +1.",
+            "fc-m1": "−1 is the single-bonded O: 6 − 1 − 6 = −1.",
+            "fc-0": "0 is the double-bonded O: 6 − 2 − 4 = 0.",
+            "fc-p2": "No atom here is +2. N is 5 − 4 − 0 = +1."
+          }
+        },
+        {
+          "id": "a2-isocyanide", "kind": "match", "section": "2.3",
+          "prompt": "Methyl isocyanide, CH₃–N≡C:. Assign each formal charge. (Problem 2-7c)",
+          "slots": [
+            { "label": "Nitrogen (4 bonds)", "answer": "fc-p1" },
+            { "label": "End carbon (3 bonds, 1 lone pair)", "answer": "fc-m1" }
+          ],
+          "hand": ["fc-p1", "fc-m1", "fc-0", "fc-m2"],
+          "hint": "A triple bond counts as 3 bonds.",
+          "explain": {
+            "fc-p1": "+1 is nitrogen: 1 bond to CH₃ + 3 to C = 4 bonds. 5 − 4 − 0 = +1.",
+            "fc-m1": "−1 is the end carbon: 4 − 3 − 2 = −1.",
+            "fc-0": "Neither is neutral. N: 5 − 4 − 0 = +1. C: 4 − 3 − 2 = −1.",
+            "fc-m2": "The end carbon is 4 − 3 − 2 = −1, not −2."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1", "path": "B", "title": "Resonance Recon", "requires": ["intro"], "pick": 3,
+      "lesson": [
+        { "text": "Recruit, look at the acetate ion. I can draw the C=O double bond to the top oxygen OR the bottom one. Which is right? NEITHER! Both C–O bonds measure 127 pm, halfway between C=O (120) and C–O (135).", "smiles": "CC(=O)[O-]" },
+        { "text": "Those two drawings are RESONANCE FORMS, linked by a double-headed arrow. The real ion is ONE unchanging resonance HYBRID. It does NOT flip back and forth. Our drawings just can't show it in one picture." },
+        { "text": "RULES! Resonance forms differ ONLY in where the π electrons and lone pairs are. Atoms don't move. Connections don't change. Hybridization doesn't change. Normal valence rules still apply, so no carbon with five bonds!" },
+        { "text": "Curved arrows show ELECTRON PAIRS moving, from tail to head. Never atoms! Forms don't have to be equal: if they differ, the hybrid looks more like the more stable one, like the one with the negative charge on oxygen." },
+        { "text": "And the hybrid is MORE stable than any single form. Spreading electrons out is stabilizing. That's why benzene's six C–C bonds are all identical and extra stable.", "smiles": "C1=CC=CC=C1" }
+      ],
+      "problems": [
+        {
+          "id": "b1-acetate-length", "kind": "single", "section": "2.4",
+          "prompt": "How long are the two C–O bonds in the acetate ion?",
+          "smiles": "CC(=O)[O-]",
+          "slots": [{ "label": "C–O bonds:", "answer": "res-127" }],
+          "hand": ["res-127", "res-split", "res-135", "res-120"],
+          "hint": "The real structure is a blend of the two drawings.",
+          "explain": {
+            "res-127": "Right! Both are 127 pm, midway between a C=O (120 pm) and a C–O (135 pm). The two oxygens are equivalent.",
+            "res-split": "That's what ONE resonance drawing suggests. Experiments show both bonds are equal, 127 pm, because the real ion is a hybrid.",
+            "res-135": "135 pm is a plain single bond. Each acetate C–O bond has partial double-bond character: 127 pm.",
+            "res-120": "120 pm is a full double bond. Acetate's C–O bonds are each about 'one and a half' bonds: 127 pm."
+          }
+        },
+        {
+          "id": "b1-differ", "kind": "single", "section": "2.5",
+          "prompt": "What is the ONLY thing that differs between two resonance forms?",
+          "slots": [{ "label": "Only this changes:", "answer": "rd-e" }],
+          "hand": ["rd-e", "rd-atoms", "rd-hyb", "rd-conn"],
+          "hint": "Rule 2.",
+          "explain": {
+            "rd-e": "Right! Rule 2: resonance forms differ only in where the π electrons and nonbonding electrons sit.",
+            "rd-atoms": "If an atom moves, it's a different compound, not a resonance form. Only π and lone-pair electrons move.",
+            "rd-hyb": "Rule 2 says hybridization never changes between resonance forms. In acetate, the carbon is sp² in both.",
+            "rd-conn": "The connections between atoms stay exactly the same. Only π and nonbonding electrons move."
+          }
+        },
+        {
+          "id": "b1-hybrid", "kind": "single", "section": "2.5",
+          "prompt": "What is the TRUE structure of the acetate ion?",
+          "slots": [{ "label": "Acetate really is...", "answer": "rh-hybrid" }],
+          "hand": ["rh-hybrid", "rh-flip", "rh-form1", "rh-carbon"],
+          "hint": "Rule 1: individual forms are imaginary.",
+          "explain": {
+            "rh-hybrid": "Right! Rule 1: acetate has one unchanging structure, a resonance hybrid with features of both forms. Both oxygens share the negative charge.",
+            "rh-flip": "Common misconception! Acetate does NOT jump back and forth. It's always the same single hybrid structure.",
+            "rh-form1": "The two acetate forms are equivalent, so neither is 'the real one'. The true structure is the hybrid.",
+            "rh-carbon": "The negative charge is shared by the two oxygens, the electronegative atoms. Electrostatic maps show both O's equally red."
+          }
+        },
+        {
+          "id": "b1-stability", "kind": "single", "section": "2.5",
+          "prompt": "Compared to any single resonance form, the resonance hybrid is...",
+          "slots": [{ "label": "The hybrid is...", "answer": "st-more" }],
+          "hand": ["st-more", "st-less", "st-same"],
+          "hint": "Rule 5.",
+          "explain": {
+            "st-more": "Right! Rule 5: resonance leads to stability. Electrons spread over more of the molecule are closer to more nuclei.",
+            "st-less": "Backwards. Rule 5: the hybrid is MORE stable than any individual form.",
+            "st-same": "Rule 5: the hybrid is MORE stable. Delocalizing electrons lowers the energy."
+          }
+        },
+        {
+          "id": "b1-arrow", "kind": "single", "section": "2.5",
+          "prompt": "What does a curved arrow show?",
+          "slots": [{ "label": "A curved arrow shows...", "answer": "ar-pair" }],
+          "hand": ["ar-pair", "ar-atom", "ar-charge", "ar-rotate"],
+          "hint": "Arrows track electrons, never atoms.",
+          "explain": {
+            "ar-pair": "Right! A curved arrow moves a pair of electrons from the atom or bond at its tail to the atom or bond at its head.",
+            "ar-atom": "The book is clear: a curved arrow always shows electrons moving, NOT atoms.",
+            "ar-charge": "Arrows follow electrons, not protons or charges. The charge changes as a RESULT of electrons moving.",
+            "ar-rotate": "Curved arrows aren't about bond rotation. They show an electron pair moving from tail to head."
+          }
+        },
+        {
+          "id": "b1-invalid", "kind": "single", "section": "2.5",
+          "prompt": "Someone draws an acetate 'resonance form' that gives the central carbon FIVE bonds. Is it valid?",
+          "slots": [{ "label": "Verdict:", "answer": "iv-octet" }],
+          "hand": ["iv-octet", "iv-ok", "iv-charge", "iv-any"],
+          "hint": "Rule 4.",
+          "explain": {
+            "iv-octet": "Right! Rule 4: resonance forms obey normal valence rules. A second-row carbon can't have five bonds (10 electrons).",
+            "iv-ok": "Moving only electrons is necessary but not enough. Rule 4: the result must still obey the octet rule. Five bonds to C breaks it.",
+            "iv-charge": "Resonance forms often carry formal charges (acetate does!). The problem is the five-bonded carbon.",
+            "iv-any": "No way, recruit. Rule 4: every resonance form must obey valence rules."
+          }
+        },
+        {
+          "id": "b1-acetone-anion", "kind": "single", "section": "2.5",
+          "prompt": "The acetone anion has two forms: one with the − charge on carbon (C=O kept), one with the − charge on oxygen (C=C). Which does the real hybrid resemble more?",
+          "slots": [{ "label": "Resembles more:", "answer": "ac-o" }],
+          "hand": ["ac-o", "ac-c", "ac-equal"],
+          "hint": "Rule 3: nonequivalent forms. Which atom handles a negative charge better?",
+          "explain": {
+            "ac-o": "Right! The hybrid looks more like the more stable form, the one with the negative charge on electronegative oxygen.",
+            "ac-c": "Carbon (EN 2.5) handles negative charge worse than oxygen (3.5). The hybrid looks more like the charge-on-O form.",
+            "ac-equal": "Rule 3: these forms aren't equivalent, so they don't contribute equally. The charge-on-oxygen form is more important."
+          }
+        },
+        {
+          "id": "b1-benzene", "kind": "single", "section": "2.4",
+          "prompt": "Benzene is drawn with alternating single and double bonds. What are its six C–C bonds really like?",
+          "smiles": "C1=CC=CC=C1",
+          "slots": [{ "label": "The bonds are...", "answer": "bz-equiv" }],
+          "hand": ["bz-equiv", "bz-alt", "bz-flip"],
+          "hint": "Benzene is a hybrid of two resonance forms.",
+          "explain": {
+            "bz-equiv": "Right! Benzene is a hybrid of two forms, so all six C–C bonds are equivalent. Neither drawing is correct by itself.",
+            "bz-alt": "That's what one drawing implies, but the real molecule is a hybrid: all six bonds are identical.",
+            "bz-flip": "Resonance isn't motion. Benzene doesn't switch; it's always the hybrid with six equal bonds."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2", "path": "B", "title": "Drawing Resonance Drills", "requires": ["b1"], "pick": 4,
+      "lesson": [
+        { "text": "Here's the field technique, recruit. Find a THREE-ATOM GROUPING: X=Y–Z*, a multiple bond next to an atom with a p orbital. The * can be an empty orbital (+), a single electron (radical), or a lone pair (−).", "art": "X=Y–Z*  ⟷  *X–Y=Z" },
+        { "text": "Swing the π bond over with a curved arrow, and the * ends up on X. That gives you a second resonance form. Every X=Y–Z* grouping gives you exactly two." },
+        { "text": "Allyl cation, CH₂=CH–CH₂⁺: one grouping → 2 forms. Carbonate, CO₃²⁻: each of the three O's can take the double bond → 3 forms. Nitrate, NO₃⁻: same deal, 3 forms.", "smiles": "C=C[CH2+]" },
+        { "text": "If the * sits between TWO double bonds, like the 2,4-pentanedione anion or the pentadienyl radical, you can push both ways. That's 3 forms!", "smiles": "C=C[CH]C=C" },
+        { "text": "Final warning: if an H ATOM moves, it is NOT resonance. Acetone and its enol form have the same formula but a different H position. They're different compounds. Resonance moves ELECTRONS only!" }
+      ],
+      "problems": [
+        {
+          "id": "b2-carbonate", "kind": "single", "section": "2.6",
+          "prompt": "How many resonance forms does the carbonate ion, CO₃²⁻, have? (Worked Example 2.2)",
+          "smiles": "[O-]C([O-])=O",
+          "slots": [{ "label": "Carbonate:", "answer": "n3" }],
+          "hand": ["n3", "n1", "n2", "n4"],
+          "hint": "How many oxygens could hold the C=O double bond?",
+          "explain": {
+            "n3": "Right! Each of the three oxygens can be the double-bonded one, so there are 3 equivalent forms.",
+            "n1": "One drawing can't show which O has the double bond. All three O's are equivalent: 3 forms.",
+            "n2": "There are three oxygens, and each can take the double bond: 3 forms.",
+            "n4": "There are only three oxygens to hold the double bond, so 3 forms."
+          }
+        },
+        {
+          "id": "b2-nitrate", "kind": "single", "section": "2.6",
+          "prompt": "How many resonance forms does the nitrate anion, NO₃⁻, have? (Problem 2-10b)",
+          "smiles": "[O-][N+](=O)[O-]",
+          "slots": [{ "label": "Nitrate:", "answer": "n3" }],
+          "hand": ["n3", "n2", "n1", "n4"],
+          "hint": "Same pattern as carbonate.",
+          "explain": {
+            "n3": "Right! Three equivalent oxygens can each take the N=O double bond: 3 forms.",
+            "n2": "There are THREE oxygens around nitrogen, so 3 forms.",
+            "n1": "The N=O double bond could sit on any of three oxygens, so 3 forms.",
+            "n4": "Only three oxygens, so 3 forms."
+          }
+        },
+        {
+          "id": "b2-allyl", "kind": "single", "section": "2.6",
+          "prompt": "How many resonance forms does the allyl cation, H₂C=CH–CH₂⁺, have? (Problem 2-10c)",
+          "smiles": "C=C[CH2+]",
+          "slots": [{ "label": "Allyl cation:", "answer": "n2" }],
+          "hand": ["n2", "n1", "n3", "n4"],
+          "hint": "How many X=Y–Z* groupings?",
+          "explain": {
+            "n2": "Right! One three-atom grouping (C=C–C⁺) gives 2 forms: the + charge can sit on either end carbon.",
+            "n1": "The π electrons can swing toward the empty p orbital, putting the + on the other end. That's 2 forms.",
+            "n3": "There's only one C=C–C⁺ grouping, so 2 forms. The middle carbon never gets the charge.",
+            "n4": "Only one grouping, so 2 forms."
+          }
+        },
+        {
+          "id": "b2-pentadienyl", "kind": "single", "section": "2.6",
+          "prompt": "How many resonance forms does the pentadienyl radical, H₂C=CH–CH·–CH=CH₂, have? (Worked Example 2.3)",
+          "smiles": "C=C[CH]C=C",
+          "slots": [{ "label": "Pentadienyl:", "answer": "n3" }],
+          "hand": ["n3", "n2", "n4", "n1"],
+          "hint": "After one swap, the radical lands next to the OTHER double bond.",
+          "explain": {
+            "n3": "Right! The radical can sit on carbon 1, 3, or 5. Each swap puts it next to another double bond, giving 3 forms.",
+            "n2": "Keep going! After the first swap, the radical is next to the second double bond, giving a third form.",
+            "n4": "The radical can only land on carbons 1, 3, and 5 (the even carbons never get it): 3 forms.",
+            "n1": "The unpaired electron is next to a C=C, so it's an X=Y–Z* grouping. There are 3 forms total."
+          }
+        },
+        {
+          "id": "b2-pentanedione", "kind": "single", "section": "2.6",
+          "prompt": "The 2,4-pentanedione anion has a − charge on the central carbon, between two C=O groups. How many resonance forms?",
+          "smiles": "CC(=O)[CH-]C(=O)C",
+          "slots": [{ "label": "Forms:", "answer": "n3" }],
+          "hand": ["n3", "n2", "n1", "n4"],
+          "hint": "There's a C=O on EACH side of the charged carbon.",
+          "explain": {
+            "n3": "Right! The original (charge on C), plus charge on the left O, plus charge on the right O: 3 forms.",
+            "n2": "There's a C=O on BOTH sides. The lone pair can push toward either one, so 3 forms total.",
+            "n1": "The lone pair on carbon is next to a C=O, a classic X=Y–Z* grouping. Two of them make 3 forms.",
+            "n4": "Original + left O + right O = 3."
+          }
+        },
+        {
+          "id": "b2-grouping", "kind": "single", "section": "2.6",
+          "prompt": "Which three-atom grouping ALWAYS gives two resonance forms?",
+          "slots": [{ "label": "The pattern:", "answer": "grp-xyz" }],
+          "hand": ["grp-xyz", "grp-sp3", "grp-far"],
+          "hint": "You need π electrons AND a p orbital right next to them.",
+          "explain": {
+            "grp-xyz": "Right! A multiple bond next to an atom with a p orbital (vacant, one electron, or a lone pair). Swap the multiple bond and the * to get the second form.",
+            "grp-sp3": "All-single-bond sp³ atoms have no π electrons to move, so no resonance.",
+            "grp-far": "A double bond needs a p orbital RIGHT next to it to delocalize into. Alone, it has just one form."
+          }
+        },
+        {
+          "id": "b2-tautomer", "kind": "single", "section": "2.5",
+          "prompt": "Acetone and propen-2-ol differ only in where one H atom sits. Are they resonance forms?",
+          "smiles": "CC(=O)C",
+          "slots": [{ "label": "Verdict:", "answer": "tt-no" }],
+          "hand": ["tt-no", "tt-formula", "tt-e"],
+          "hint": "Rule 2 is strict about what may move.",
+          "explain": {
+            "tt-no": "Right! An H ATOM moves, so they're two different compounds (tautomers, coming in Chapter 9), not resonance forms.",
+            "tt-formula": "Same formula isn't enough. That's the definition of isomers! Resonance forms must have every atom in the same place.",
+            "tt-e": "To get from acetone to propen-2-ol, a hydrogen atom moves from carbon to oxygen. Atoms moving = not resonance."
+          }
+        },
+        {
+          "id": "b2-steps", "kind": "order", "section": "2.6",
+          "prompt": "Put the steps for drawing a new resonance form in order.",
+          "slots": [
+            { "label": "Step 1", "answer": "step-find" },
+            { "label": "Step 2", "answer": "step-pi" },
+            { "label": "Step 3", "answer": "step-star" }
+          ],
+          "hand": ["step-star", "step-atom", "step-find", "step-pi"],
+          "hint": "Find it, push electrons, then see where the charge lands.",
+          "why": "Find an X=Y–Z* grouping, push the π electrons toward Z with a curved arrow, and the *, whether charge, radical, or lone pair, ends up on X. Atoms never move.",
+          "explain": {
+            "step-find": "Step 1: find the X=Y–Z* grouping, a multiple bond next to a p orbital.",
+            "step-pi": "Step 2: swing the π electrons over with a curved arrow.",
+            "step-star": "Step 3: the charge, radical, or lone pair now sits on X, the other end.",
+            "step-atom": "Never! Moving an atom gives a different compound, not a resonance form. This card doesn't belong."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c1", "path": "C", "title": "Proton Push-Ups", "requires": ["intro"], "pick": 3,
+      "lesson": [
+        { "text": "NOW we push protons! A Brønsted–Lowry ACID donates H⁺. A BASE accepts H⁺. When HCl meets water, HCl gives its proton to H₂O. That makes Cl⁻ (the CONJUGATE BASE of HCl) and H₃O⁺ (the CONJUGATE ACID of water).", "art": "HCl + H₂O ⇌ Cl⁻ + H₃O⁺" },
+        { "text": "Water swings both ways! With HCl it's a base. With ammonia it's an ACID: it gives H⁺ to NH₃ and becomes HO⁻." },
+        { "text": "Acid strength: Ka is the dissociation constant, and pKa = −log Ka. BIGGER Ka = SMALLER pKa = STRONGER acid. Say it with me, recruit!", "art": "pKa ↓ = stronger acid" },
+        { "text": "Table 2.3, top to bottom by strength: HCl −7.0, HNO₃ −1.3, H₃PO₄ 2.16, acetic acid 4.76, HCN 9.31, water 15.74, ethanol 16.00.", "art": "−7.0 · −1.3 · 4.76 · 9.31 · 15.74 · 16.00" },
+        { "text": "Strong acid = weak conjugate base, and weak acid = STRONG conjugate base. HCl lets go of H⁺ easily, so Cl⁻ is a weak base. Water holds its H⁺ tightly, so HO⁻ is a strong base." },
+        { "text": "Converting: Ka = 10^(−pKa). Acetic acid, pKa 4.76: Ka = 10⁻⁴·⁷⁶ = 1.74 × 10⁻⁵. Remember the minus sign!", "art": "Ka = 10^−pKa" }
+      ],
+      "problems": [
+        {
+          "id": "c1-hcl", "kind": "match", "section": "2.7",
+          "prompt": "HCl + H₂O ⇌ Cl⁻ + H₃O⁺. Label each role.",
+          "slots": [
+            { "label": "Acid", "answer": "sp-hcl" },
+            { "label": "Base", "answer": "sp-h2o" },
+            { "label": "Conjugate acid", "answer": "sp-h3o" },
+            { "label": "Conjugate base", "answer": "sp-cl" }
+          ],
+          "hand": ["sp-hcl", "sp-h2o", "sp-h3o", "sp-cl", "sp-oh"],
+          "hint": "The conjugate base is the acid minus H⁺.",
+          "explain": {
+            "sp-hcl": "HCl is the ACID: it donates its H⁺.",
+            "sp-h2o": "H₂O is the BASE here: it accepts the H⁺.",
+            "sp-h3o": "H₃O⁺ is the CONJUGATE ACID: water plus H⁺.",
+            "sp-cl": "Cl⁻ is the CONJUGATE BASE: HCl minus H⁺.",
+            "sp-oh": "Hydroxide isn't in this reaction. Water GAINS a proton here (→ H₃O⁺). It doesn't lose one."
+          }
+        },
+        {
+          "id": "c1-hno3", "kind": "match", "section": "2.7",
+          "prompt": "HNO₃ + NH₃ ⇌ NO₃⁻ + NH₄⁺. Label each role. (Problem 2-11)",
+          "slots": [
+            { "label": "Acid", "answer": "sp-hno3" },
+            { "label": "Base", "answer": "sp-nh3" },
+            { "label": "Conjugate acid", "answer": "sp-nh4" },
+            { "label": "Conjugate base", "answer": "sp-no3" }
+          ],
+          "hand": ["sp-hno3", "sp-nh3", "sp-nh4", "sp-no3", "sp-h3o"],
+          "hint": "Which one has an H⁺ to give, and which has a lone pair to take it?",
+          "explain": {
+            "sp-hno3": "HNO₃ is the ACID: it donates H⁺.",
+            "sp-nh3": "NH₃ is the BASE: its lone pair accepts H⁺.",
+            "sp-nh4": "NH₄⁺ is the CONJUGATE ACID: ammonia plus H⁺.",
+            "sp-no3": "NO₃⁻ is the CONJUGATE BASE: nitric acid minus H⁺.",
+            "sp-h3o": "No water in this reaction. The proton goes straight from HNO₃ to NH₃."
+          }
+        },
+        {
+          "id": "c1-water-nh3", "kind": "single", "section": "2.7",
+          "prompt": "In H₂O + NH₃ ⇌ HO⁻ + NH₄⁺, what role does water play?",
+          "slots": [{ "label": "Water...", "answer": "role-acid" }],
+          "hand": ["role-acid", "role-base", "role-none"],
+          "hint": "Water turns into HO⁻. Did it gain or lose H⁺?",
+          "explain": {
+            "role-acid": "Right! Water donates H⁺ to ammonia and becomes hydroxide. Here water is the ACID.",
+            "role-base": "Water is a base with HCl, but here it LOSES a proton (H₂O → HO⁻), so it's acting as an acid.",
+            "role-none": "Water's proton is the one being transferred! It's the acid."
+          }
+        },
+        {
+          "id": "c1-phe-trp", "kind": "single", "section": "2.8",
+          "prompt": "Which is the stronger acid? (Problem 2-12)",
+          "slots": [{ "label": "Stronger acid:", "answer": "aa-phe" }],
+          "hand": ["aa-phe", "aa-trp", "aa-same"],
+          "hint": "Lower pKa or higher pKa?",
+          "explain": {
+            "aa-phe": "Right! Lower pKa = stronger acid. 1.83 < 2.83, so phenylalanine wins. That's a 10× larger Ka!",
+            "aa-trp": "A HIGHER pKa means a WEAKER acid. Phenylalanine (1.83) is stronger.",
+            "aa-same": "pKa is a log scale. 1 unit = 10× in Ka. Phenylalanine is 10 times stronger."
+          }
+        },
+        {
+          "id": "c1-pka-rule", "kind": "single", "section": "2.8",
+          "prompt": "A stronger acid has a...",
+          "slots": [{ "label": "Stronger acid:", "answer": "pk-small" }],
+          "hand": ["pk-small", "pk-large", "pk-7"],
+          "hint": "pKa = −log Ka.",
+          "explain": {
+            "pk-small": "Right! Stronger acid → larger Ka → SMALLER pKa (because of the minus sign in −log).",
+            "pk-large": "Backwards! The minus sign in pKa = −log Ka flips it: a stronger acid has a SMALLER pKa.",
+            "pk-7": "pKa near 7 isn't special for strength. Lower pKa means stronger acid."
+          }
+        },
+        {
+          "id": "c1-rank-acids", "kind": "rank", "section": "2.8",
+          "prompt": "Rank these acids from STRONGEST to WEAKEST. (Table 2.3)",
+          "slots": [
+            { "label": "Strongest", "answer": "sp-hcl" },
+            { "label": "2nd", "answer": "sp-hno3" },
+            { "label": "3rd", "answer": "sp-acoh" },
+            { "label": "Weakest", "answer": "sp-h2o" }
+          ],
+          "hand": ["sp-acoh", "sp-h2o", "sp-hcl", "sp-hno3"],
+          "hint": "Order by pKa, lowest first.",
+          "why": "Table 2.3 pKa values: HCl −7.0 < HNO₃ −1.3 < CH₃CO₂H 4.76 < H₂O 15.74. Lowest pKa = strongest acid.",
+          "explain": {
+            "sp-hcl": "HCl: pKa −7.0. The STRONGEST.",
+            "sp-hno3": "HNO₃: pKa −1.3. SECOND.",
+            "sp-acoh": "Acetic acid: pKa 4.76. THIRD. A weak organic acid.",
+            "sp-h2o": "Water: pKa 15.74. The WEAKEST of these."
+          }
+        },
+        {
+          "id": "c1-strong-base", "kind": "single", "section": "2.8",
+          "prompt": "Which conjugate base is the STRONGEST base?",
+          "slots": [{ "label": "Strongest base:", "answer": "sp-oh" }],
+          "hand": ["sp-oh", "sp-cl", "sp-no3", "sp-aco"],
+          "hint": "Weakest acid ↔ strongest conjugate base.",
+          "explain": {
+            "sp-oh": "Right! HO⁻ comes from water (pKa 15.74), the weakest acid of the group. A weak acid has a strong conjugate base.",
+            "sp-cl": "Cl⁻ comes from HCl (pKa −7.0), a very strong acid, so Cl⁻ is a very WEAK base.",
+            "sp-no3": "NO₃⁻ comes from HNO₃ (pKa −1.3), a strong acid, so it's a weak base.",
+            "sp-aco": "Acetate comes from acetic acid (pKa 4.76). It's a stronger base than Cl⁻, but much weaker than HO⁻ (water's pKa is 15.74)."
+          }
+        },
+        {
+          "id": "c1-nh3-h2o", "kind": "single", "section": "2.8",
+          "prompt": "Amide ion (H₂N⁻) is a much stronger base than hydroxide (HO⁻). Which is the stronger acid, NH₃ or H₂O? (Problem 2-13)",
+          "slots": [{ "label": "Stronger acid:", "answer": "sp-h2o" }],
+          "hand": ["sp-h2o", "sp-nh3"],
+          "hint": "Strong conjugate base ↔ weak acid.",
+          "explain": {
+            "sp-h2o": "Right! H₂N⁻ is the stronger base, so its acid, NH₃, holds H⁺ more tightly and is the WEAKER acid. Water is stronger.",
+            "sp-nh3": "Flip it: a STRONG conjugate base comes from a WEAK acid. H₂N⁻ is the stronger base, so NH₃ is the weaker acid. Water wins."
+          }
+        },
+        {
+          "id": "c1-ka-acetic", "kind": "single", "section": "2.8",
+          "prompt": "Acetic acid has pKa = 4.76. What is its Ka? (Worked Example 2.5)",
+          "slots": [{ "label": "Ka =", "answer": "ka-174" }],
+          "hand": ["ka-174", "ka-58e4", "ka-174e5", "ka-476"],
+          "hint": "Ka = 10^(−pKa). Don't drop the minus sign.",
+          "explain": {
+            "ka-174": "Right! Ka = 10⁻⁴·⁷⁶ = 1.74 × 10⁻⁵.",
+            "ka-58e4": "That's 10^(+4.76). You dropped the minus sign: Ka = 10^(−4.76) = 1.74 × 10⁻⁵.",
+            "ka-174e5": "Right digits, wrong sign on the exponent: it's 1.74 × 10⁻⁵. A weak acid has a tiny Ka.",
+            "ka-476": "You can't just copy the pKa into the mantissa. Ka = 10^(−4.76) = 1.74 × 10⁻⁵."
+          }
+        },
+        {
+          "id": "c1-ka-hcn", "kind": "single", "section": "2.9",
+          "prompt": "HCN has pKa = 9.31. What is its Ka? (Problem 2-16)",
+          "slots": [{ "label": "Ka =", "answer": "ka-49" }],
+          "hand": ["ka-49", "ka-931", "ka-2e9"],
+          "hint": "Ka = 10^(−9.31).",
+          "explain": {
+            "ka-49": "Right! 10^(−9.31) = 4.9 × 10⁻¹⁰.",
+            "ka-931": "Copying the pKa digits doesn't work. 10^(−9.31) = 10^(0.69) × 10⁻¹⁰ = 4.9 × 10⁻¹⁰.",
+            "ka-2e9": "That's 10^(+9.31). Keep the minus sign: 4.9 × 10⁻¹⁰."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c2", "path": "C", "title": "Battle Predictions", "requires": ["c1"], "pick": 4,
+      "lesson": [
+        { "text": "Battle rule number one, recruit: H⁺ ALWAYS goes from the stronger acid to the stronger base. Equivalently, the reaction makes the WEAKER acid and the WEAKER base." },
+        { "text": "Example: HO⁻ + acetic acid (4.76) → H₂O (15.74) + acetate. The product acid, water, is weaker, so it GOES. Example: HO⁻ + acetylene (25) → H₂O + acetylide? The product acid, water at 15.74, is STRONGER than acetylene, so it does NOT go.", "art": "goes if pKa(product acid) › pKa(start acid)" },
+        { "text": "Organic acids: an H on oxygen (O–H, like methanol and acetic acid) or an H on carbon next to a C=O (like acetone). Acetic acid beats methanol because acetate is resonance-stabilized: its charge is spread over two oxygens." },
+        { "text": "Organic bases have a lone pair that can grab H⁺, usually on nitrogen (amines). To compare bases, compare their conjugate acids: the base whose conjugate acid has the HIGHER pKa is the STRONGER base." },
+        { "text": "Lewis definition: a Lewis ACID accepts an electron pair (it has an empty orbital: BF₃, AlCl₃, Mg²⁺, H⁺). A Lewis BASE donates an electron pair (lone pairs: NH₃, H₂O, ethers). The curved arrow goes FROM the base's lone pair TO the acid.", "art": "Base : ↷ □ Acid" }
+      ],
+      "problems": [
+        {
+          "id": "c2-acetic-oh", "kind": "single", "section": "2.9",
+          "prompt": "Will hydroxide (from water, pKa 15.74) react to a large extent with acetic acid (pKa 4.76)?",
+          "slots": [{ "label": "Verdict:", "answer": "rx-yes" }],
+          "hand": ["rx-yes", "rx-no", "rx-even"],
+          "hint": "Is the product acid (H₂O) weaker or stronger than the starting acid?",
+          "explain": {
+            "rx-yes": "Right! H⁺ goes from the stronger acid (acetic, 4.76) to the stronger base (HO⁻). The product acid, water (15.74), is weaker, so it goes.",
+            "rx-no": "The product acid, water (15.74), is WEAKER than acetic acid (4.76). Reactions run toward the weaker acid, so this one goes.",
+            "rx-even": "pKa's 11 units apart make the equilibrium extremely lopsided, toward acetate + water."
+          }
+        },
+        {
+          "id": "c2-acetylene", "kind": "single", "section": "2.9",
+          "prompt": "Will hydroxide (water pKa 15.74) remove a proton from acetylene (pKa 25) to a significant extent? (Worked Example 2.4)",
+          "smiles": "C#C",
+          "slots": [{ "label": "Verdict:", "answer": "rx-no" }],
+          "hand": ["rx-no", "rx-yes", "rx-even"],
+          "hint": "Water is the stronger acid here. Where does H⁺ want to end up?",
+          "explain": {
+            "rx-no": "Right! Water (15.74) is a stronger acid than acetylene (25), so the acetylide anion is a stronger base than HO⁻. The equilibrium stays on the left.",
+            "rx-yes": "The product would be water, a STRONGER acid than acetylene. Reactions don't run uphill toward a stronger acid.",
+            "rx-even": "With 9 pKa units between them, the equilibrium lies heavily to the left. Hydroxide can't deprotonate acetylene."
+          }
+        },
+        {
+          "id": "c2-amide-acetone", "kind": "single", "section": "2.9",
+          "prompt": "Will amide ion (H₂N⁻) deprotonate acetone (pKa ≈ 19) to a significant extent? NH₃ has pKa ≈ 36. (Problem 2-15)",
+          "smiles": "CC(=O)C",
+          "slots": [{ "label": "Verdict:", "answer": "rx-yes" }],
+          "hand": ["rx-yes", "rx-no", "rx-even"],
+          "hint": "Compare the starting acid (acetone) with the product acid (NH₃).",
+          "explain": {
+            "rx-yes": "Right! The product acid, NH₃ (36), is much weaker than acetone (19), so the reaction goes.",
+            "rx-no": "Check the pKa's: the product acid NH₃ (36) is WEAKER than acetone (19). Reactions favor the weaker acid, so this goes.",
+            "rx-even": "A 17-unit pKa gap means the equilibrium lies almost entirely on the product side."
+          }
+        },
+        {
+          "id": "c2-tbuo", "kind": "single", "section": "2.9",
+          "prompt": "tert-Butyl alcohol has pKa ≈ 18. Can you make a solution of potassium tert-butoxide in water? (Problem 2-47)",
+          "slots": [{ "label": "Verdict:", "answer": "tb-no" }],
+          "hand": ["tb-no", "tb-yes", "tb-weaker"],
+          "hint": "Is water (15.74) a stronger or weaker acid than tert-butyl alcohol (18)?",
+          "explain": {
+            "tb-no": "Right! Water (15.74) is a stronger acid than tert-butyl alcohol (18), so tert-butoxide yanks H⁺ off water, giving t-BuOH + HO⁻.",
+            "tb-yes": "Water is the stronger acid (15.74 vs 18), so tert-butoxide grabs its protons. You'd just end up with t-BuOH and hydroxide.",
+            "tb-weaker": "Flip it: t-BuOH is the WEAKER acid (18), so tert-butoxide is the STRONGER base than HO⁻. It reacts with water."
+          }
+        },
+        {
+          "id": "c2-lewis-match", "kind": "match", "section": "2.11",
+          "prompt": "Classify each as a Lewis acid or a Lewis base.",
+          "slots": [
+            { "label": "BF₃", "answer": "lw-acid" },
+            { "label": "(CH₃)₂O", "answer": "lw-base" },
+            { "label": "Mg²⁺", "answer": "lw-acid" },
+            { "label": "NH₃", "answer": "lw-base" }
+          ],
+          "hand": ["lw-acid", "lw-acid", "lw-base", "lw-base"],
+          "hint": "Empty orbital → accepts a pair. Lone pairs → donates a pair.",
+          "explain": {
+            "lw-acid": "Lewis ACIDS accept an electron pair: BF₃ (boron has an empty p orbital) and Mg²⁺ (a metal cation).",
+            "lw-base": "Lewis BASES donate an electron pair: the ether oxygen's lone pairs and ammonia's lone pair."
+          }
+        },
+        {
+          "id": "c2-lewis-acid", "kind": "single", "section": "2.11",
+          "prompt": "Which of these is a Lewis ACID?",
+          "slots": [{ "label": "Lewis acid:", "answer": "sp-alcl3" }],
+          "hand": ["sp-alcl3", "sp-me3n", "sp-h2o", "sp-me2o"],
+          "hint": "Look for a group 3A atom with only six valence electrons.",
+          "explain": {
+            "sp-alcl3": "Right! Aluminum (group 3A) has an empty valence orbital, so AlCl₃ accepts an electron pair.",
+            "sp-me3n": "Trimethylamine has a lone pair to GIVE, so it's a Lewis base.",
+            "sp-h2o": "Water usually acts as a Lewis base, donating one of its oxygen lone pairs (for example, to H⁺).",
+            "sp-me2o": "Dimethyl ether is the Lewis BASE in the book's BF₃ example. It donates a lone pair."
+          }
+        },
+        {
+          "id": "c2-arrow", "kind": "single", "section": "2.11",
+          "prompt": "In BF₃ + (CH₃)₂O, where does the curved arrow start and end?",
+          "slots": [{ "label": "The arrow goes...", "answer": "la-b2a" }],
+          "hand": ["la-b2a", "la-a2b", "la-atom"],
+          "hint": "Arrows start where the electrons are.",
+          "explain": {
+            "la-b2a": "Right! The arrow starts at a lone pair on the ether's oxygen (the base) and points to boron (the acid). Electrons flow from base to acid.",
+            "la-a2b": "Backwards. The electrons start on the BASE (oxygen's lone pair), so the arrow starts there and points at boron.",
+            "la-atom": "Curved arrows track electrons, not atoms. Start at oxygen's lone pair and end at boron."
+          }
+        },
+        {
+          "id": "c2-acidic-h", "kind": "single", "section": "2.10",
+          "prompt": "Which hydrogen in acetic acid, CH₃CO₂H, is the acidic one? (Problem 2-41)",
+          "smiles": "CC(=O)O",
+          "slots": [{ "label": "Acidic H:", "answer": "ah-oh" }],
+          "hand": ["ah-oh", "ah-ch3", "ah-equal"],
+          "hint": "Which conjugate base would put its charge on oxygen AND be resonance-stabilized?",
+          "explain": {
+            "ah-oh": "Right! Losing the O–H proton gives acetate, with its negative charge spread over two oxygens by resonance.",
+            "ah-ch3": "Losing a CH₃ proton would leave the charge mostly on carbon. The O–H gives acetate, which is far more stable.",
+            "ah-equal": "The O–H is far more acidic. Its conjugate base (acetate) spreads the charge over two electronegative oxygens."
+          }
+        },
+        {
+          "id": "c2-amine", "kind": "single", "section": "2.10",
+          "prompt": "NH₄⁺ has pKa 9.25 and CH₃NH₃⁺ has pKa 10.66. Which is the stronger base, NH₃ or CH₃NH₂? (Problem 2-46)",
+          "slots": [{ "label": "Stronger base:", "answer": "ab-mea" }],
+          "hand": ["ab-mea", "ab-nh3", "ab-same"],
+          "hint": "Weaker conjugate acid ↔ stronger base.",
+          "explain": {
+            "ab-mea": "Right! CH₃NH₃⁺ (10.66) is the WEAKER acid, so its partner, methylamine, holds H⁺ more tightly. It's the stronger base.",
+            "ab-nh3": "Ammonium is the STRONGER acid (lower pKa, 9.25), so ammonia is the WEAKER base. Methylamine wins.",
+            "ab-same": "The pKa's differ by about 1.4 units, roughly 25× in Ka. Methylamine is the stronger base."
+          }
+        },
+        {
+          "id": "c2-acetic-vs-meoh", "kind": "single", "section": "2.10",
+          "prompt": "Acetic acid and methanol both have an O–H, but acetic acid is the stronger acid. Why?",
+          "slots": [{ "label": "Because...", "answer": "aw-res" }],
+          "hand": ["aw-res", "aw-moreh", "aw-bigger", "aw-oncarbon"],
+          "hint": "Compare the conjugate bases.",
+          "explain": {
+            "aw-res": "Right! Acetate's negative charge is spread over two oxygens by resonance. Methoxide's charge is stuck on one O.",
+            "aw-moreh": "Counting H's doesn't matter. Only the O–H is acidic. Acetate is more stable thanks to resonance.",
+            "aw-bigger": "Size alone doesn't set acidity. The key is acetate's resonance stabilization.",
+            "aw-oncarbon": "Methoxide's charge IS on oxygen. Acetate just does better by sharing it over TWO oxygens."
+          }
+        },
+        {
+          "id": "c2-bicarb", "kind": "single", "section": "2.9",
+          "prompt": "Sodium bicarbonate's conjugate acid, H₂CO₃, has pKa 6.37. Which acid reacts significantly with NaHCO₃? (Problems 2-52, 2-54)",
+          "slots": [{ "label": "Reacts:", "answer": "bc-acetic" }],
+          "hand": ["bc-acetic", "bc-phenol", "bc-ethanol", "bc-water"],
+          "hint": "The acid must be STRONGER than H₂CO₃ (lower pKa than 6.37).",
+          "explain": {
+            "bc-acetic": "Right! Acetic acid (4.76) is stronger than H₂CO₃ (6.37), so it gives its proton to bicarbonate. That fizz is how you'd tell it apart from phenol!",
+            "bc-phenol": "Phenol (9.9) is WEAKER than H₂CO₃ (6.37), so bicarbonate can't take its proton.",
+            "bc-ethanol": "Ethanol (16.00) is far weaker than H₂CO₃ (6.37). No reaction.",
+            "bc-water": "Water (15.74) is much weaker than H₂CO₃. Bicarbonate is happy in water."
+          }
+        }
+      ]
+    }
+  ],
+  "boss": {
+    "id": "boss",
+    "name": "Magister Mordant",
+    "title": "The Fallen Alchemist",
+    "requires": ["a2", "b2", "c2"],
+    "pick": 8,
+    "drawFromLevels": true,
+    "damagePerCard": 10,
+    "coinReward": 120,
+    "palette": { "p": "#4b2a6b", "k": "#0d0614", "e": "#ff5a5a", "m": "#b34cff", "g": "#ff9e3c" },
+    "portrait": [
+      "......pppp......",
+      ".....pppppp.....",
+      "....pppppppp....",
+      "...pppkkkkppp...",
+      "...ppkkkkkkpp...",
+      "..ppkkekkekkpp..",
+      "..ppkkkkkkkkpp..",
+      "..ppkkkmmkkkpp..",
+      "..pppkkkkkkppp..",
+      ".ppppppkkpppppp.",
+      ".pppppppppppppp.",
+      "pppppppggppppppp",
+      "ppppppggggpppppp",
+      "pppppggggggppppp",
+      "ppppppggggpppppp",
+      "pppppppppppppppp"
+    ],
+    "intro": [
+      { "speaker": "boss", "text": "Back again? I've been busy, child. I spent all night writing flashcards. 'Low pKa, strong acid.' 'Resonance: draw more arrows.' Why understand when you can MEMORIZE?" },
+      { "speaker": "npc", "text": "Ten-HUT, Mordant! This recruit knows the difference between pushing electrons and pushing atoms. They know why acetate beats methanol!" },
+      { "speaker": "boss", "text": "Then let's see them handle my acid bath. Every question twisted. Every answer a trap!" }
+    ],
+    "taunts": {
+      "wrong": [
+        "Hah! A memorized rule would have been faster.",
+        "Protons flow downhill, child. So does your grade.",
+        "Did you forget the minus sign again?"
+      ],
+      "right": [
+        "Hmph. The sergeant drilled you well.",
+        "A lucky proton.",
+        "Fine. But I have stronger acids than that."
+      ]
+    },
+    "defeat": [
+      { "speaker": "boss", "text": "Gahh! You... you compared the conjugate bases. Nobody compares the conjugate bases!" },
+      { "speaker": "npc", "text": "That's how understanding works, Mordant. Pick the weaker acid and the weaker base, every time. AT EASE, recruit. Outstanding work." },
+      { "speaker": "boss", "text": "Enjoy it while it lasts. Upstairs, the molecules don't sit still. They TWIST..." }
+    ],
+    "story": [
+      { "speaker": "narrator", "text": "Mordant hurls his flask to the ground. It hisses and steams, but the floor doesn't even dissolve. Without the 'why', even his acid is weak." },
+      { "speaker": "npc", "text": "You earned this, recruit: my whistle. One blast, and every wrong card in your hand falls out of line. Each one tells you why it was wrong before it goes." },
+      { "speaker": "narrator", "text": "The stairs creak upward toward Floor 3. Somewhere above, a stone gargoyle grumbles about only being able to see molecules end-on." }
+    ],
+    "legendary": { "id": "pka-whistle", "name": "Sergeant's Whistle", "effect": "purge", "rarity": "legendary", "desc": "Removes EVERY wrong card from your hand, and each one explains why it's wrong first. Won from Floor 2's boss." },
+    "cosmetic": { "id": "back-camo", "kind": "back", "name": "Proton Camo" },
+    "problems": [
+      {
+        "id": "boss2-rank", "kind": "rank", "section": "2.8",
+        "prompt": "Rank from MOST acidic to LEAST acidic. (Table 2.3)",
+        "slots": [
+          { "label": "Most acidic", "answer": "sp-acoh" },
+          { "label": "2nd", "answer": "sp-hcn" },
+          { "label": "3rd", "answer": "sp-h2o" },
+          { "label": "Least acidic", "answer": "sp-etoh" }
+        ],
+        "hand": ["sp-etoh", "sp-h2o", "sp-acoh", "sp-hcn"],
+        "hint": "Water and ethanol are close, but water edges it.",
+        "why": "Table 2.3: CH₃CO₂H 4.76 < HCN 9.31 < H₂O 15.74 < CH₃CH₂OH 16.00.",
+        "explain": {
+          "sp-acoh": "Acetic acid: pKa 4.76. The MOST acidic of these.",
+          "sp-hcn": "HCN: pKa 9.31. SECOND.",
+          "sp-h2o": "Water: pKa 15.74. THIRD, just barely ahead of ethanol.",
+          "sp-etoh": "Ethanol: pKa 16.00. The LEAST acidic here."
+        }
+      },
+      {
+        "id": "boss2-phosgene", "kind": "single", "section": "2.2",
+        "prompt": "Phosgene, Cl₂C=O, has a SMALLER dipole moment than formaldehyde, H₂C=O, even though Cl is electronegative. Why? (Problem 2-32)",
+        "smiles": "ClC(Cl)=O",
+        "slots": [{ "label": "Because...", "answer": "ph-oppose" }],
+        "hand": ["ph-oppose", "ph-hmore", "ph-ionic", "ph-nolp"],
+        "hint": "Draw the bond-dipole arrows. Which way do the C–Cl arrows point compared to C=O?",
+        "explain": {
+          "ph-oppose": "Right! The C–Cl bond dipoles pull electron density toward the chlorines, on the opposite side of carbon from oxygen. They partly cancel the C=O dipole. In formaldehyde, the C–H bonds are nearly nonpolar, so nothing cancels.",
+          "ph-hmore": "Chlorine (3.0) is much more electronegative than hydrogen (2.1). That's exactly why its C–Cl dipoles are big enough to oppose the C=O dipole.",
+          "ph-ionic": "Phosgene is covalent. The smaller dipole comes from C–Cl bond dipoles partly canceling the C=O dipole.",
+          "ph-nolp": "Phosgene's oxygen has two lone pairs, just like formaldehyde's. The difference is the opposing C–Cl dipoles."
+        }
+      },
+      {
+        "id": "boss2-ch3f", "kind": "single", "section": "2.2",
+        "prompt": "CH₃F (μ = 1.81 D) has a slightly SMALLER dipole moment than CH₃Cl (μ = 1.87 D), even though F is more electronegative. Why? (Problem 2-33)",
+        "slots": [{ "label": "Because...", "answer": "cf-length" }],
+        "hand": ["cf-length", "cf-en", "cf-lp", "cf-heavy"],
+        "hint": "μ = Q × r. Which factor does chlorine win?",
+        "explain": {
+          "cf-length": "Right! μ = Q × r. Fluorine gives a bigger charge separation (Q), but the C–Cl bond is much LONGER (bigger r), which more than makes up for it.",
+          "cf-en": "Fluorine (4.0) IS more electronegative than chlorine (3.0). Chlorine wins on bond LENGTH: μ = Q × r.",
+          "cf-lp": "F and Cl both have three lone pairs in these molecules. The difference is bond length.",
+          "cf-heavy": "Mass doesn't enter μ = Q × r. The C–Cl bond is just longer."
+        }
+      },
+      {
+        "id": "boss2-ch3sh", "kind": "single", "section": "2.2",
+        "prompt": "Carbon and sulfur have the same electronegativity (2.5), yet methanethiol, CH₃SH, has μ = 1.52 D. Why? (Problem 2-34)",
+        "smiles": "CS",
+        "slots": [{ "label": "Because...", "answer": "sh-lp" }],
+        "hand": ["sh-lp", "sh-cs", "sh-none", "sh-ionic"],
+        "hint": "Look beyond the C–S bond.",
+        "explain": {
+          "sh-lp": "Right! The C–S bond is nonpolar, but the S–H bond is polar (2.5 vs 2.1), and sulfur's two lone pairs stick out to one side. Together they create the dipole.",
+          "sh-cs": "C and S both have EN 2.5, so the C–S bond is essentially NONpolar. The dipole comes from the S–H bond and sulfur's lone pairs.",
+          "sh-none": "It's 1.52 D, measured in Table 2.1. The lone pairs and the S–H bond make it polar.",
+          "sh-ionic": "Methanethiol is a covalent molecule. Its dipole comes from the S–H bond and sulfur's lone pairs."
+        }
+      },
+      {
+        "id": "boss2-phenol", "kind": "single", "section": "2.10",
+        "prompt": "Phenol, C₆H₅OH (pKa 9.9), is a much stronger acid than methanol, CH₃OH (pKa 15.5). Why? (Problem 2-61)",
+        "smiles": "OC1=CC=CC=C1",
+        "slots": [{ "label": "Because...", "answer": "pn-res" }],
+        "hand": ["pn-res", "pn-en", "pn-moreh", "pn-weakoh"],
+        "hint": "Draw the conjugate bases. Can the charge move?",
+        "explain": {
+          "pn-res": "Right! In phenoxide, the oxygen's negative charge is spread into the ring by resonance (onto three ring carbons). Methoxide's charge is stuck on one O. A more stable conjugate base means a stronger acid.",
+          "pn-en": "Ring carbons (EN 2.5) are less electronegative than oxygen. The ring helps by resonance, spreading the charge out.",
+          "pn-moreh": "Only the O–H proton is acidic in both. Phenol wins because its anion is resonance-stabilized.",
+          "pn-weakoh": "Phenol's acidic H is on the OXYGEN, just like methanol's. The difference is phenoxide's resonance."
+        }
+      },
+      {
+        "id": "boss2-protonate", "kind": "single", "section": "2.11",
+        "prompt": "Strong acid protonates acetic acid. Which oxygen gets the proton?",
+        "smiles": "CC(=O)O",
+        "slots": [{ "label": "Protonated at:", "answer": "pr-co" }],
+        "hand": ["pr-co", "pr-oh", "pr-c"],
+        "hint": "The book says the favored product is the one stabilized by two resonance forms.",
+        "explain": {
+          "pr-co": "Right! Protonating the C=O oxygen gives a cation whose + charge is shared between both oxygens by resonance (two forms). That's more stable.",
+          "pr-oh": "Protonating the –OH oxygen gives a cation with no resonance stabilization. The C=O oxygen gives a resonance-stabilized product.",
+          "pr-c": "Carbon has no lone pair to grab H⁺. Lewis bases donate lone pairs, and here the C=O oxygen does."
+        }
+      },
+      {
+        "id": "boss2-carbonate-dipole", "kind": "single", "section": "2.6",
+        "prompt": "Does the carbonate ion, CO₃²⁻, have a dipole moment? (Problem 2-63a)",
+        "smiles": "[O-]C([O-])=O",
+        "slots": [{ "label": "Verdict:", "answer": "cd-zero" }],
+        "hand": ["cd-zero", "cd-charge", "cd-oneco"],
+        "hint": "Think about the resonance hybrid, not a single drawing.",
+        "explain": {
+          "cd-zero": "Right! The real ion is a hybrid of 3 equivalent forms: three identical C–O bonds in a flat triangle. The bond dipoles cancel, so μ = 0.",
+          "cd-charge": "Overall charge isn't the same as a dipole. Carbonate's charge is spread symmetrically over three O's, so it has no dipole.",
+          "cd-oneco": "That's true of ONE drawing only. The real hybrid has three identical C–O bonds, which is perfectly symmetric."
+        }
+      }
+    ]
+  }
+}

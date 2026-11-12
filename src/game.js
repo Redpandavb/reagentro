@@ -16,15 +16,15 @@ const SAVE_KEY = 'reagentro-save-v1';
 const DEFAULT_SAVE = () => ({
   started: false, difficulty: 'normal', coins: 0,
   powers: ['hint', 'eliminate'], upgrades: { maxHeart: 0, powerSlot: 0 },
-  owned: ['back-classic', 'table-felt'], equipped: { back: 'back-classic', table: 'table-felt' },
+  owned: ['back-classic', 'table-felt', 'finish-plain'], equipped: { back: 'back-classic', table: 'table-felt', finish: 'finish-plain' },
   levels: {}, bosses: {}, seen: {}, missed: {}, sectionMisses: {}, prologueSeen: {},
-  settings: { music: 0.5, sfx: 0.7, mute: false, textSize: 1, reduceMotion: false, readAloud: false, fullscreen: true }
+  settings: { music: 0.5, sfx: 0.7, mute: false, textSize: 1, reduceMotion: false, readAloud: false, fullscreen: true, song: 'auto' }
 });
 function loadSave() {
   const d = DEFAULT_SAVE();
   try {
     const s = JSON.parse(localStorage.getItem(SAVE_KEY));
-    if (s) return { ...d, ...s, settings: { ...d.settings, ...s.settings }, upgrades: { ...d.upgrades, ...s.upgrades }, equipped: { ...d.equipped, ...s.equipped } };
+    if (s) return { ...d, ...s, settings: { ...d.settings, ...s.settings }, upgrades: { ...d.upgrades, ...s.upgrades }, equipped: { ...d.equipped, ...s.equipped }, owned: [...new Set([...d.owned, ...(s.owned || [])])] };
   } catch { /* corrupt or blocked storage: start fresh */ }
   return d;
 }
@@ -122,14 +122,30 @@ function applySettings() {
   Sound.setVolumes({ music: s.music, sfx: s.sfx, mute: s.mute });
   $('#table').style.background = G.cosmetics[S.equipped.table].css;
   document.documentElement.style.setProperty('--card-back', G.cosmetics[S.equipped.back].css);
+  document.body.dataset.finish = G.cosmetics[S.equipped.finish]?.fx || '';
   if (isDesktop) window.desktop.setFullscreen(s.fullscreen);
 }
+/* ---------------- Music ---------------- */
+// Song ids: 'auto' (chapter theme on its floor, lobby cycle elsewhere), 'lobby:<i>', or a chapter id.
+const unlockedSongs = () => [
+  ...Sound.LOBBY.map((sg, i) => ['lobby:' + i, `Lobby: ${sg.name}`, sg]),
+  ...G.chapters.filter((ch, i) => ch.music && chapterUnlocked(i)).map(ch => [ch.id, `Floor ${ch.number}: ${ch.music.name}`, ch.music]),
+  ...(G.bossMusic && (S.unlockAll || Object.keys(S.bosses).length) ? [['boss', `Boss: ${G.bossMusic.name}`, G.bossMusic]] : [])
+];
+let musicCh = null, musicBoss = false;
+function playMusic(ch, boss = false) {
+  musicCh = ch; musicBoss = boss;
+  const pick = unlockedSongs().find(([id]) => id === S.settings.song);
+  Sound.setSong(pick ? pick[2] : boss ? ch.boss.music || G.bossMusic : ch?.music || null);
+}
+
 function showSettings() {
   const s = S.settings;
   const ov = $('#overlay');
   ov.innerHTML = `<div class="panel settings"><h2>Settings</h2>
     <label>Difficulty <select id="st-diff">${['study', 'normal', 'exam'].map(d => `<option value="${d}" ${S.difficulty === d ? 'selected' : ''}>${d[0].toUpperCase() + d.slice(1)}</option>`).join('')}</select></label>
     <label>Music <input id="st-music" type="range" min="0" max="1" step="0.05" value="${s.music}"></label>
+    <label>Song <select id="st-song"><option value="auto">Auto: each floor's theme</option>${unlockedSongs().map(([id, n]) => `<option value="${id}" ${s.song === id ? 'selected' : ''}>${esc(n)}</option>`).join('')}</select></label>
     <label>Sound FX <input id="st-sfx" type="range" min="0" max="1" step="0.05" value="${s.sfx}"></label>
     <label><input id="st-mute" type="checkbox" ${s.mute ? 'checked' : ''}> Mute everything</label>
     <label>Text size <select id="st-ts">${[[0.85, 'Small'], [1, 'Medium'], [1.2, 'Large'], [1.4, 'Extra large']].map(([v, n]) => `<option value="${v}" ${s.textSize == v ? 'selected' : ''}>${n}</option>`).join('')}</select></label>
@@ -141,7 +157,8 @@ function showSettings() {
   ov.classList.add('show');
   const upd = () => {
     S.difficulty = $('#st-diff').value;
-    Object.assign(s, { music: +$('#st-music').value, sfx: +$('#st-sfx').value, mute: $('#st-mute').checked, textSize: +$('#st-ts').value, reduceMotion: $('#st-rm').checked, readAloud: $('#st-ra').checked });
+    Object.assign(s, { music: +$('#st-music').value, sfx: +$('#st-sfx').value, mute: $('#st-mute').checked, textSize: +$('#st-ts').value, reduceMotion: $('#st-rm').checked, readAloud: $('#st-ra').checked, song: $('#st-song').value });
+    playMusic(musicCh, musicBoss);
     if ($('#st-fs')) s.fullscreen = $('#st-fs').checked;
     applySettings(); save();
   };
@@ -166,9 +183,12 @@ const btn = (id, label, cls = '') => `<button class="btn ${cls}" id="${id}">${la
 const coinBadge = () => `<span class="coins">${icon('coin', 3)} ${S.coins}</span>`;
 
 function showTitle() {
+  playMusic(null);
   screen(`<div class="title-wrap"><h1 class="logo">REAGENTRO</h1><p class="tag">Climb the Alchemist's Tower. Learn the WHY.</p>
     <div class="menu">${S.started ? btn('t-cont', 'Continue') : ''}${btn('t-new', 'New Game')}${btn('t-codex', 'Card Codex', 'alt')}${btn('t-review', 'Review & Stats', 'alt')}${btn('t-set', 'Settings', 'alt')}${btn('t-cred', 'Credits', 'alt')}${isDesktop ? btn('t-quit', 'Quit', 'alt') : ''}</div>
+    <form class="code-box" id="t-code"><input id="t-code-in" placeholder="Code" maxlength="20" autocomplete="off" aria-label="Code"><button class="btn alt">Enter</button></form>
     <p class="foot">Chemistry content adapted from OpenStax <i>Organic Chemistry</i> · CC BY-NC-SA 4.0 · Free and non-commercial</p></div>`, 'title');
+  $('#t-code').onsubmit = e => { e.preventDefault(); enterCode($('#t-code-in').value); };
   if ($('#t-cont')) $('#t-cont').onclick = showTower;
   $('#t-new').onclick = () => { if (S.started && !confirm('Start over? This erases all progress.')) return; const st = S.settings; S = DEFAULT_SAVE(); S.settings = st; save(); showDifficulty(); };
   $('#t-codex').onclick = () => showCodex();
@@ -176,6 +196,19 @@ function showTitle() {
   $('#t-set').onclick = showSettings;
   $('#t-cred').onclick = showCredits;
   if ($('#t-quit')) $('#t-quit').onclick = () => window.desktop.quit();
+}
+
+// Tester cheat: unlocks every floor/level/song, all cosmetics, maxed upgrades, full powers, the whole codex, and lots of coins.
+// Levels are unlocked (S.unlockAll), not marked cleared, so stars and stats stay real. New Game removes it.
+function enterCode(code) {
+  if (code.trim() !== 'Olaf') { sfx('wrong'); return toast('Nothing happens…', 'bad'); }
+  S.unlockAll = true; S.started = true;
+  S.coins = 999999;
+  S.owned = Object.keys(G.cosmetics);
+  for (const id in G.upgrades) S.upgrades[id] = G.upgrades[id].max;
+  S.powers = [...G.chapters.map(c => c.boss.legendary.id), ...Object.keys(G.powers)].slice(0, maxPowerSlots());
+  G.chapters.forEach(ch => Object.keys(ch.cards).forEach(id => { S.seen[`${ch.id}/${id}`] = true; }));
+  save(); sfx('win'); toast('Code accepted: everything unlocked!', 'good'); showTitle();
 }
 
 function showDifficulty() {
@@ -188,15 +221,17 @@ function showDifficulty() {
   $$('.mode').forEach(b => b.onclick = () => { S.difficulty = b.dataset.m; S.started = true; save(); sfx('click'); showTower(); });
 }
 
-function chapterUnlocked(i) { return i === 0 || !!S.bosses[G.chapters[i - 1].id]; }
+function chapterUnlocked(i) { return i === 0 || !!S.unlockAll || !!S.bosses[G.chapters[i - 1].id]; }
 function showTower() {
+  playMusic(null);
   const floors = G.chapters.map((ch, i) => {
     const ok = chapterUnlocked(i), done = S.bosses[ch.id];
     return `<button class="floor ${ok ? '' : 'locked'} ${done ? 'done' : ''}" data-i="${i}" ${ok ? '' : 'disabled'}><b>Floor ${ch.number}</b><span>${esc(ch.title)}</span><em>${done ? 'Cleared ✓' : ok ? esc(ch.npc.name) : 'Locked'}</em></button>`;
   });
   const planned = G.plannedFloors.slice(G.chapters.length - 1).map((t, i) => `<div class="floor locked future"><b>Floor ${G.chapters.length + i + 1}</b><span>${esc(t)}</span><em>Under construction</em></div>`);
   screen(`<div class="top"><button class="btn alt" id="back">◀ Title</button><h2>The Alchemist's Tower</h2>${coinBadge()}</div>
-    <div class="tower">${[...floors, ...planned].reverse().join('')}</div>`, 'tower-screen');
+    <div class="tower">${[...floors, ...planned].reverse().join('')}<button class="floor shop-floor" id="tower-shop"><b>Shop</b><span>Powers, upgrades &amp; cosmetics</span><em>Open anytime</em></button></div>`, 'tower-screen');
+  $('#tower-shop').onclick = () => { sfx('click'); showShop(showTower); };
   app().scrollTop = app().scrollHeight; // floor 1 is at the bottom
   $('#back').onclick = showTitle;
   $$('.floor[data-i]').forEach(b => b.onclick = () => {
@@ -209,10 +244,11 @@ function showTower() {
 function nodeState(ch, node) {
   const key = levelKey(ch, node.id);
   const reqs = node.requires || [];
-  const unlocked = reqs.every(r => S.levels[levelKey(ch, r)]?.cleared);
+  const unlocked = !!S.unlockAll || reqs.every(r => S.levels[levelKey(ch, r)]?.cleared);
   return { unlocked, rec: node === ch.boss ? (S.bosses[ch.id] ? { cleared: true, stars: S.levels[key]?.stars || 0 } : null) : S.levels[key] };
 }
 function showMap(ch) {
+  playMusic(ch);
   const node = (lv, extra = '') => {
     const { unlocked, rec } = nodeState(ch, lv);
     return `<button class="node ${extra} ${unlocked ? '' : 'locked'} ${rec?.cleared ? 'cleared' : ''}" data-id="${lv.id}" ${unlocked ? '' : 'disabled'}>
@@ -245,13 +281,24 @@ function showDialogue(ch, pages, onDone, heading = '') {
     screen(`${heading ? `<h2 class="h">${esc(heading)}</h2>` : ''}<div class="dialogue ${who}">
       <div class="dlg-portrait">${portrait(who, ch, 9)}</div>
       <div class="dlg-box" style="--c:${color}">${name ? `<div class="dlg-name">${esc(name)}</div>` : ''}<p>${esc(p.text)}</p>${vis}
-      <div class="dlg-foot"><span>${i + 1} / ${pages.length}</span><span><button class="btn alt" id="dlg-skip">Skip</button> <button class="btn" id="dlg-next">${i === pages.length - 1 ? 'Let\'s go!' : 'Next ▶'}</button></span></div></div></div>`, 'dlg-screen');
+      <div class="dlg-foot"><span>${i + 1} / ${pages.length}</span><span><button class="btn alt" id="dlg-skip">Skip</button> <button class="btn alt" id="dlg-back" ${i ? '' : 'disabled'}>◀ Back</button> <button class="btn" id="dlg-next">${i === pages.length - 1 ? 'Let\'s go!' : 'Next ▶'}</button></span></div></div></div>`, 'dlg-screen');
     speak(p.text);
+    // Babble + bob the portrait while "talking" (skipped when read-aloud is speaking the real words).
+    if (who === 'npc' || who === 'boss') {
+      const v = who === 'boss' ? { pitch: 0.55, wave: 'sawtooth' } : ch.npc.voice || {};
+      const secs = S.settings.readAloud ? 0 : Sound.talk(Math.min(3, 0.5 + p.text.length * 0.03), v.pitch, v.wave);
+      const el = $('.dlg-portrait');
+      if (secs) { el.classList.add('talking'); setTimeout(() => el.classList.remove('talking'), secs * 1000); }
+    }
     $('#dlg-next').onclick = () => { sfx('click'); if (++i >= pages.length) done(); else render(); };
+    $('#dlg-back').onclick = () => { sfx('click'); i--; render(); };
     $('#dlg-skip').onclick = done;
   };
-  const key = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); $('#dlg-next')?.click(); } };
-  const done = () => { document.removeEventListener('keydown', key); speak(''); onDone(); };
+  const key = e => {
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight') { e.preventDefault(); $('#dlg-next')?.click(); }
+    if (e.key === 'ArrowLeft' && i > 0) { e.preventDefault(); $('#dlg-back')?.click(); }
+  };
+  const done = () => { document.removeEventListener('keydown', key); speak(''); Sound.hush(); onDone(); };
   document.addEventListener('keydown', key);
   render();
 }
@@ -270,6 +317,7 @@ function startBoss(ch) {
 function beginRun(cfg) {
   const study = S.difficulty === 'study';
   const maxHearts = study ? Infinity : G.baseHearts[S.difficulty] + S.upgrades.maxHeart;
+  playMusic(cfg.mode === 'review' ? null : cfg.ch, cfg.mode === 'boss');
   R = { ...cfg, index: 0, hearts: maxHearts, maxHearts, shield: false, mistakes: 0, hints: 0, streak: 0, earned: 0, log: [], start: performance.now() };
   if (cfg.mode === 'boss') {
     const total = cfg.items.reduce((n, it) => n + it.p.slots.length, 0) * cfg.node.damagePerCard;
@@ -480,6 +528,20 @@ async function usePower(i) {
       else await flipCard(ch, victim.id, text, prob.section, 'Eliminated! Here\'s why it\'s wrong:');
       return;
     }
+    case 'purge': {
+      const need = needed();
+      const spare = R.hand.filter(c => { if (need[c.id]) { need[c.id]--; return false; } return true; });
+      if (!spare.length) return toast('Every card left in your hand is needed somewhere!');
+      consume();
+      R.hand = R.hand.filter(c => !spare.includes(c));
+      renderPlay();
+      for (const v of spare) {
+        const text = explainText(prob, v.id);
+        if (S.difficulty === 'exam') R.log.push({ ch, id: v.id, text, section: prob.section, prompt: prob.prompt });
+        else await flipCard(ch, v.id, text, prob.section, `${p.name}: out of line!`);
+      }
+      return;
+    }
     case 'autofill': {
       const k = R.filled.findIndex(f => !f);
       const inst = R.hand.find(c => c.id === prob.slots[k].answer);
@@ -560,7 +622,8 @@ function showShop(next) {
     const own = S.owned.includes(id), on = S.equipped[c.kind] === id;
     const action = on ? '<button class="btn" disabled>Equipped</button>' : own ? `<button class="btn alt buy" data-kind="equip" data-id="${id}">Equip</button>`
       : c.price == null ? '<button class="btn" disabled>Boss reward</button>' : `<button class="btn buy" data-kind="cosmetic" data-id="${id}" ${S.coins < c.price ? 'disabled' : ''}>${icon('coin', 2)} ${c.price}</button>`;
-    return `<div class="shop-item"><div class="swatch ${c.kind}" style="background:${c.css}"></div><small>${esc(c.name)}<br><i>${c.kind === 'back' ? 'card back' : 'table'}</i></small>${action}</div>`;
+    const swatch = c.kind === 'finish' ? `<div class="swatch finish" data-fx="${c.fx}"></div>` : `<div class="swatch ${c.kind}" style="background:${esc(c.css)}"></div>`;
+    return `<div class="shop-item">${swatch}<small>${esc(c.name)}<br><i>${{ back: 'card back', table: 'table', finish: 'card finish' }[c.kind]}</i></small>${action}</div>`;
   }).join('');
   screen(`<div class="top"><h2>The Tower Shop</h2>${coinBadge()}</div>
     <p class="small center">Your powers: ${S.powers.map(id => esc(powerDef(id).name)).join(', ') || 'none'} (${S.powers.length}/${maxPowerSlots()} slots)</p>

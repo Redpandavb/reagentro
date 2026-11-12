@@ -2,7 +2,7 @@
 // All sound is synthesized with Web Audio: original, offline, no files needed.
 // Optional: .mp3/.ogg files in music/ listed in data/game.json "musicFiles" play instead of the synth.
 window.Sound = (() => {
-  let ctx, master, musicBus, sfxBus, noiseBuf, timer, started = false;
+  let ctx, master, musicBus, sfxBus, noiseBuf, timer, talkGain, started = false;
   let vol = { music: 0.5, sfx: 0.7, mute: false };
 
   function init() {
@@ -62,30 +62,97 @@ window.Sound = (() => {
   };
 
   // ---------- Lo-fi music generator ----------
-  // ii–V–I–vi in C with 7ths/9ths, ~72 BPM, swung hats, soft kick/snare, vinyl crackle.
-  const CHORDS = [
-    { root: 38, notes: [50, 53, 57, 60, 64] }, // Dm9
-    { root: 43, notes: [50, 53, 55, 59, 64] }, // G13-ish
-    { root: 36, notes: [48, 52, 55, 59, 62] }, // Cmaj9
-    { root: 45, notes: [48, 52, 55, 57, 60] }  // Am7
+  // A song: chords ([root, ...voicing], one per bar) plus a style. Every style field is optional:
+  //   steps  16 = 4/4, 12 = 3/4 waltz (sixteenth-note steps per bar)
+  //   keys   { style: pad | stabs | arp, type: triangle | sine | sawtooth | bell, hits, rate, oct, gain, under }
+  //   bass   { style: root | walk | pulse | sub, hits }
+  //   kick, snare: step lists; snareLen; brush: true (soft brushed snare); hat: { every, gain } or null
+  //   lead   { chance, type } random notes from scale, or melody: "0..2.1." (scale index per step, . = rest)
+  //   rain   gain of a rain bed with drips
+  // Lobby songs live here; chapter songs come from each chapter's JSON "music", the boss song from game.json.
+  const SONGS = [
+    { name: 'Tower Study', note: 'Classic boom-bap lo-fi: soft pad, swung hats.', bpm: 72, // ii–V–I–vi in C
+      chords: [[38, 50, 53, 57, 60, 64], [43, 50, 53, 55, 59, 64], [36, 48, 52, 55, 59, 62], [45, 48, 52, 55, 57, 60]],
+      scale: [69, 72, 74, 76, 79, 81] },
+    { name: 'Rainy Window', note: 'Ambient: rain, slow bell arpeggio, deep sub, barely any drums.', bpm: 64, swing: 0,
+      keys: { style: 'arp', type: 'bell', rate: 2, oct: 12, gain: 0.028, under: 0.02 }, bass: { style: 'sub' },
+      kick: [0], snare: [], hat: null, lead: { chance: 0.1 }, rain: 0.05, // Fmaj9–Em7–Dm9–Cmaj7
+      chords: [[41, 53, 57, 60, 64, 67], [40, 52, 55, 59, 62], [38, 50, 53, 57, 60, 64], [36, 48, 52, 55, 59]],
+      scale: [72, 74, 76, 79, 81, 84] },
+    { name: 'Lantern Walk', note: 'Jazz-hop: walking bass, offbeat chord stabs, heavy shuffle.', bpm: 88, swing: 0.3,
+      keys: { style: 'stabs', type: 'triangle', hits: [2, 7, 10, 14], gain: 0.04 }, bass: { style: 'walk' },
+      kick: [0, 8], snare: [4, 12], hat: { every: 2, gain: 0.05 }, lead: { chance: 0.35, type: 'triangle' }, // Ebmaj9–Cm9–Abmaj7–Bb9sus
+      chords: [[39, 51, 55, 58, 62, 65], [36, 48, 51, 55, 58, 62], [44, 56, 60, 63, 67], [46, 56, 60, 63, 65]],
+      scale: [75, 77, 79, 82, 84, 87] },
+    { name: 'Midnight Lab', note: 'Trip-hop: half-time beat, long snare tails, fast glassy bell arpeggio.', bpm: 60, swing: 0.1,
+      keys: { style: 'arp', type: 'bell', rate: 1, oct: 12, gain: 0.018, under: 0.03 }, bass: { style: 'sub', hits: [0, 3, 10] },
+      kick: [0, 3, 10], snare: [12], snareLen: 0.45, hat: { every: 4, gain: 0.03 }, lead: { chance: 0.15 }, // Am9–Fmaj7–Dm9–E7sus
+      chords: [[45, 55, 60, 64, 67, 71], [41, 52, 57, 60, 64], [38, 50, 53, 57, 60, 64], [40, 52, 57, 59, 62]],
+      scale: [69, 72, 74, 76, 79, 81] }
   ];
-  const PENTA = [69, 72, 74, 76, 79, 81];
   const mtof = m => 440 * Math.pow(2, (m - 69) / 12);
-  const BPM = 72, STEP = 60 / BPM / 4; // sixteenth notes
-  let step = 0, nextTime = 0, crackle;
+  let song = SONGS[0], cycle = true, step = 0, nextTime = 0, crackle, rainGain;
+  const STEP = () => 60 / song.bpm / 4; // sixteenth notes
+  const BARS_PER_LOBBY_SONG = 16;
+
+  function voice(type, midi, t, dur, gain, filter = 2500) {
+    const f = mtof(midi);
+    if (type === 'bell') { // music-box/glass: pure tone plus a quiet, fast-fading overtone
+      tone(f, t, dur, { type: 'sine', gain, bus: musicBus, attack: 0.003 });
+      tone(f * 3, t, dur * 0.3, { type: 'sine', gain: gain * 0.3, bus: musicBus, attack: 0.003 });
+    } else tone(f, t, dur, { type: type || 'triangle', gain, bus: musicBus, attack: 0.01, filter });
+  }
 
   function scheduleStep(t) {
-    const bar = Math.floor(step / 16) % CHORDS.length, s = step % 16, ch = CHORDS[bar];
-    const swing = (s % 2) ? STEP * 0.18 : 0;
-    t += swing;
-    if (s === 0) ch.notes.forEach(n => tone(mtof(n), t, STEP * 16, { type: 'triangle', gain: 0.035, bus: musicBus, attack: 0.4, filter: 1400 }));
-    if (s === 0 || s === 10) tone(mtof(ch.root), t, STEP * 6, { type: 'sine', gain: 0.22, bus: musicBus, attack: 0.02 });
-    if (s === 0 || s === 7 || s === 10) { tone(120, t, 0.25, { type: 'sine', slide: -75, gain: 0.35, bus: musicBus }); }
-    if (s === 4 || s === 12) noise(t, 0.18, { gain: 0.12, freq: 1800, q: 0.8, bus: musicBus });
-    if (s % 2 === 0) noise(t, 0.04, { gain: s % 4 ? 0.025 : 0.045, type: 'highpass', freq: 7000, bus: musicBus });
-    if (s % 4 === 2 && Math.random() < 0.35) tone(mtof(PENTA[Math.floor(Math.random() * PENTA.length)]), t, STEP * 3, { type: 'sine', gain: 0.05, bus: musicBus, attack: 0.02, filter: 2500 });
+    // The lobby moves to the next lobby song after a while; a held song (chapter, boss, or player pick) loops.
+    const N0 = song.steps || 16;
+    if (cycle && step && step % (BARS_PER_LOBBY_SONG * N0) === 0) setTrack(SONGS[(SONGS.indexOf(song) + 1) % SONGS.length]);
+    const sg = song, st = STEP(), N = sg.steps || 16;
+    const barN = Math.floor(step / N), bar = barN % sg.chords.length, s = step % N;
+    const [root, ...notes] = sg.chords[bar], nextRoot = sg.chords[(bar + 1) % sg.chords.length][0];
+    t += (s % 2) ? st * (sg.swing ?? 0.18) : 0; // swing
+
+    const k = sg.keys || { style: 'pad' };
+    if (k.style === 'pad' && s === 0) notes.forEach(n => tone(mtof(n), t, st * N, { type: k.type || 'triangle', gain: k.gain ?? 0.035, bus: musicBus, attack: 0.4, filter: 1400 }));
+    if (k.style === 'stabs' && k.hits.includes(s)) notes.forEach(n => voice(k.type, n, t, st * 1.6, k.gain ?? 0.04, 1800));
+    if (k.style === 'arp' && s % (k.rate || 2) === 0) {
+      const seq = [...notes, ...notes.slice(1, -1).reverse()]; // up and back down
+      voice(k.type, seq[(s / (k.rate || 2)) % seq.length] + (k.oct || 0), t, st * 4, k.gain ?? 0.03);
+    }
+    if (k.under && s === 0) notes.forEach(n => tone(mtof(n), t, st * N, { type: 'sine', gain: k.under, bus: musicBus, attack: 0.8, filter: 900 }));
+
+    const b = sg.bass || { style: 'root' }, bh = b.hits || [0, 10];
+    if (b.style === 'root' && bh.includes(s)) tone(mtof(root), t, st * 6, { type: 'sine', gain: 0.22, bus: musicBus, attack: 0.02 });
+    if (b.style === 'sub' && (s === 0 || (b.hits && bh.includes(s)))) tone(mtof(root - 12), t, s === 0 ? st * N : st * 3, { type: 'sine', gain: 0.3, bus: musicBus, attack: 0.05 });
+    if (b.style === 'walk' && s % 4 === 0) { // quarter notes: root, fifth, octave, then a half step into the next chord
+      const walk = [root, root + 7, root + 12, nextRoot + (nextRoot > root ? -1 : 1)];
+      tone(mtof(walk[s / 4]), t, st * 3.5, { type: 'triangle', gain: 0.26, bus: musicBus, attack: 0.01, filter: 900 });
+    }
+    if (b.style === 'pulse' && s % 2 === 0) tone(mtof(root + (s % 4 ? 12 : 0)), t, st * 1.6, { type: 'sawtooth', gain: 0.1, bus: musicBus, attack: 0.005, filter: 500 });
+
+    const kick = sg.kick || [0, 7, 10], snare = sg.snare || [4, 12];
+    if (kick.includes(s)) tone(120, t, 0.25, { type: 'sine', slide: -75, gain: sg.kickGain ?? 0.35, bus: musicBus });
+    if (snare.includes(s)) sg.brush ? noise(t, 0.14, { gain: 0.05, freq: 4500, q: 0.5, bus: musicBus })
+      : noise(t, sg.snareLen || 0.18, { gain: 0.12, freq: 1800, q: 0.8, bus: musicBus });
+    const hat = sg.hat === undefined ? { every: 2, gain: 0.045 } : sg.hat;
+    if (hat && s % hat.every === 0) noise(t, 0.04, { gain: s % 4 ? hat.gain * 0.55 : hat.gain, type: 'highpass', freq: 7000, bus: musicBus });
+
+    const lead = sg.lead || { chance: 0.35 };
+    if (sg.melody) { const m = sg.melody.replace(/[^0-9.]/g, ''), c = m[step % m.length]; if (c !== '.') voice(lead.type || 'sine', sg.scale[+c], t, st * 3, lead.gain ?? 0.045); }
+    else if (s % 4 === 2 && Math.random() < lead.chance) voice(lead.type || 'sine', sg.scale[Math.floor(Math.random() * sg.scale.length)], t, st * 3, lead.type && lead.type !== 'sine' ? 0.035 : 0.05);
+
+    if (sg.rain && Math.random() < 0.06) tone(1800 + Math.random() * 1600, t, 0.05, { type: 'sine', gain: 0.015, bus: musicBus, slide: -600 }); // drips
     if (Math.random() < 0.08) noise(t, 0.01, { gain: 0.06, type: 'highpass', freq: 3000, bus: musicBus });
     step++;
+  }
+  function setTrack(sg) {
+    song = sg; step = 0;
+    if (rainGain) rainGain.gain.setTargetAtTime(sg.rain || 0, ctx.currentTime, 1);
+  }
+  // sg = a song object to hold, or null to cycle the lobby songs.
+  function setSong(sg) {
+    if (!sg) { if (!cycle && !SONGS.includes(song)) setTrack(SONGS[0]); cycle = true; return; }
+    cycle = false; if (song !== sg) setTrack(sg);
   }
   let musicEl;
   function startMusic(files) {
@@ -102,12 +169,30 @@ window.Sound = (() => {
     const f = ctx.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 5000; f.Q.value = 0.5;
     const g = ctx.createGain(); g.gain.value = 0.012;
     crackle.connect(f); f.connect(g); g.connect(musicBus); crackle.start();
+    const rain = ctx.createBufferSource(); rain.buffer = noiseBuf; rain.loop = true;
+    const rf = ctx.createBiquadFilter(); rf.type = 'lowpass'; rf.frequency.value = 1100;
+    rainGain = ctx.createGain(); rainGain.gain.value = song.rain || 0;
+    rain.connect(rf); rf.connect(rainGain); rainGain.connect(musicBus); rain.start();
     nextTime = ctx.currentTime + 0.1;
-    timer = setInterval(() => { while (nextTime < ctx.currentTime + 0.3) { scheduleStep(nextTime); nextTime += STEP; } }, 80);
+    timer = setInterval(() => { while (nextTime < ctx.currentTime + 0.3) { scheduleStep(nextTime); nextTime += STEP(); } }, 80);
   }
 
   return {
     unlock(files) { init(); if (ctx.state === 'suspended') ctx.resume(); startMusic(files); },
+    setSong, LOBBY: SONGS,
+    // Character "voice": short random-pitch blips with word gaps. Returns seconds played (0 if audio isn't running yet).
+    talk(secs = 3, pitch = 1, wave = 'square') {
+      if (!ctx) return 0;
+      this.hush();
+      const g = ctx.createGain(); g.connect(sfxBus); talkGain = g;
+      const t0 = ctx.currentTime + 0.02;
+      for (let t = 0; t < secs; t += 0.07 + Math.random() * 0.04) {
+        if (Math.random() < 0.15) { t += 0.12; continue; } // pause between "words"
+        tone(240 * pitch * (0.85 + Math.random() * 0.45), t0 + t, 0.055, { type: wave, gain: 0.05, bus: g, filter: 2400 });
+      }
+      return secs;
+    },
+    hush() { if (talkGain) { talkGain.gain.setTargetAtTime(0, ctx.currentTime, 0.02); talkGain = null; } },
     setVolumes(v) { vol = { ...vol, ...v }; apply(); },
     sfx(name) { if (!ctx || !SFX[name]) return; SFX[name](ctx.currentTime + 0.01); },
     speak(text, on) {
