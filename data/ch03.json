@@ -1,0 +1,1291 @@
+{
+  "id": "ch03",
+  "number": 3,
+  "title": "Alkanes",
+  "floorName": "Floor 3: The Gargoyle's Ledge",
+  "music": { "name": "Grumpy Ledge", "note": "Lazy, swung lo-fi in E minor for Newman the Gargoyle: low chord stabs, deep sub, and a grumbling bell tune that never quite cheers up.",
+    "bpm": 70, "swing": 0.22, "keys": { "style": "stabs", "type": "triangle", "hits": [0, 6, 10], "gain": 0.035 },
+    "bass": { "style": "sub", "hits": [0, 7] }, "kick": [0, 7, 10], "snare": [4, 12], "snareLen": 0.3, "hat": { "every": 2, "gain": 0.04 },
+    "lead": { "type": "bell", "gain": 0.045 },
+    "melody": "0...0.2.1....... 0...4...3.2..... 2...1...0...2... 3.......3...2...",
+    "chords": [[40, 52, 55, 59, 62, 66], [36, 48, 52, 55, 59], [45, 48, 52, 55, 57], [47, 51, 54, 57, 60]],
+    "scale": [64, 67, 69, 71, 74, 76] },
+  "paths": { "A": "Functional Groups & Properties", "B": "Isomers & Naming", "C": "Conformations" },
+  "sections": {
+    "3.1": "Functional Groups",
+    "3.2": "Alkanes and Alkane Isomers",
+    "3.3": "Alkyl Groups",
+    "3.4": "Naming Alkanes",
+    "3.5": "Properties of Alkanes",
+    "3.6": "Conformations of Ethane",
+    "3.7": "Conformations of Other Alkanes"
+  },
+  "npc": {
+    "voice": { "pitch": 0.6, "wave": "square" },
+    "name": "Newman the Gargoyle",
+    "title": "Grump of the Third Floor",
+    "color": "#9aa0a8",
+    "palette": { "g": "#7d7f86", "G": "#4a4c52", "k": "#1b1b2f", "e": "#ffd23f", "w": "#e8e8e8", "m": "#5e7d3a" },
+    "portrait": [
+      "................",
+      ".G............G.",
+      ".Gg..gggggg..gG.",
+      "..gggggggggggg..",
+      "..gkkkggggkkkg..",
+      "..ggekggggkegg..",
+      "..gggggGGggggg..",
+      "G.ggggGGGGgggg.G",
+      "GG.gkwkwwkwkg.GG",
+      "GGG.gkkkkkkg.GGG",
+      "GGGG.gggggg.GGGG",
+      "GGGGggggggggGGGG",
+      ".GGgggmggmgggGG.",
+      "..gggggggggggg..",
+      "..gg.gg..gg.gg..",
+      ".GGG.GG..GG.GGG."
+    ]
+  },
+  "cards": {
+    "f-c7h16": { "type": "concept", "name": "C₇H₁₆", "art": "C₇H₁₆", "desc": "A molecular formula: 7 carbons, 16 hydrogens." },
+    "f-c7h14": { "type": "concept", "name": "C₇H₁₄", "art": "C₇H₁₄", "desc": "A molecular formula: 7 carbons, 14 hydrogens." },
+    "f-c7h12": { "type": "concept", "name": "C₇H₁₂", "art": "C₇H₁₂", "desc": "A molecular formula: 7 carbons, 12 hydrogens." },
+    "f-c6h14": { "type": "concept", "name": "C₆H₁₄", "art": "C₆H₁₄", "desc": "A molecular formula: 6 carbons, 14 hydrogens." },
+    "f-c6h12": { "type": "concept", "name": "C₆H₁₂", "art": "C₆H₁₂", "desc": "A molecular formula: 6 carbons, 12 hydrogens." },
+    "f-c6h10": { "type": "concept", "name": "C₆H₁₀", "art": "C₆H₁₀", "desc": "A molecular formula: 6 carbons, 10 hydrogens." },
+    "f-c6h16": { "type": "concept", "name": "C₆H₁₆", "art": "C₆H₁₆", "desc": "A molecular formula: 6 carbons, 16 hydrogens." },
+    "nm-octane": { "type": "concept", "name": "Octane", "art": "oct-", "desc": "The straight-chain alkane named with the prefix oct-." },
+    "nm-nonane": { "type": "concept", "name": "Nonane", "art": "non-", "desc": "The straight-chain alkane named with the prefix non-." },
+    "nm-decane": { "type": "concept", "name": "Decane", "art": "dec-", "desc": "The straight-chain alkane named with the prefix dec-." },
+    "nm-heptane": { "type": "concept", "name": "Heptane", "art": "hept-", "desc": "The straight-chain alkane named with the prefix hept-." },
+    "nm-ethane": { "type": "concept", "name": "Ethane", "art": "eth-", "desc": "The straight-chain alkane named with the prefix eth-." },
+    "nm-propane": { "type": "concept", "name": "Propane", "art": "prop-", "desc": "The straight-chain alkane named with the prefix prop-." },
+    "nm-butane": { "type": "concept", "name": "Butane", "art": "but-", "desc": "The straight-chain alkane named with the prefix but-." },
+    "nm-pentane": { "type": "concept", "name": "Pentane", "art": "pent-", "desc": "The straight-chain alkane named with the prefix pent-." },
+    "sat-maxh": { "type": "concept", "name": "Max H's: Single Bonds Only", "art": "C–C", "desc": "Claim: they hold as many hydrogens per carbon as possible, because every bond is single." },
+    "sat-water": { "type": "concept", "name": "Saturate Water", "art": "H₂O", "desc": "Claim: they dissolve in water until the water is saturated." },
+    "sat-ring": { "type": "concept", "name": "Contain a Ring", "art": "⬡", "desc": "Claim: the name means the carbons are joined in a ring." },
+    "sat-double": { "type": "concept", "name": "Full of Double Bonds", "art": "C=C", "desc": "Claim: the carbons are saturated with double bonds." },
+    "iso-const": { "type": "concept", "name": "Constitutional Isomers", "art": "≠ links", "desc": "Same molecular formula, atoms connected differently." },
+    "iso-same": { "type": "concept", "name": "The Same Compound", "art": "=", "desc": "Claim: one compound, just drawn two ways." },
+    "iso-conf": { "type": "concept", "name": "Conformers", "art": "⟳", "desc": "Claim: they differ only by rotating around single bonds." },
+    "iso-diff": { "type": "concept", "name": "Not Isomers", "art": "C≠C", "desc": "Claim: their molecular formulas are different." },
+    "s-butane": { "type": "structure", "name": "Butane", "smiles": "CCCC", "desc": "CH₃CH₂CH₂CH₃, C₄H₁₀." },
+    "s-isobutane": { "type": "structure", "name": "2-Methylpropane (Isobutane)", "smiles": "CC(C)C", "desc": "(CH₃)₃CH, C₄H₁₀." },
+    "s-propane": { "type": "structure", "name": "Propane", "smiles": "CCC", "desc": "CH₃CH₂CH₃, C₃H₈." },
+
+    "fg-alkene": { "type": "concept", "name": "Alkene", "art": "C=C", "desc": "A carbon–carbon double bond. Name ending -ene." },
+    "fg-alkyne": { "type": "concept", "name": "Alkyne", "art": "C≡C", "desc": "A carbon–carbon triple bond. Name ending -yne." },
+    "fg-alcohol": { "type": "concept", "name": "Alcohol", "art": "C–OH", "desc": "A carbon bonded to an –OH (hydroxyl) group. Name ending -ol." },
+    "fg-ether": { "type": "concept", "name": "Ether", "art": "C–O–C", "desc": "One oxygen bonded to two carbons." },
+    "fg-amine": { "type": "concept", "name": "Amine", "art": "C–N", "desc": "A carbon singly bonded to a nitrogen (with no C=O on that carbon). Name ending -amine." },
+    "fg-thiol": { "type": "concept", "name": "Thiol", "art": "C–SH", "desc": "A carbon bonded to an –SH group. Name ending -thiol." },
+    "fg-sulfide": { "type": "concept", "name": "Sulfide", "art": "C–S–C", "desc": "One sulfur bonded to two carbons." },
+    "fg-disulfide": { "type": "concept", "name": "Disulfide", "art": "C–S–S–C", "desc": "Two sulfurs bonded to each other, each also bonded to a carbon." },
+    "fg-nitrile": { "type": "concept", "name": "Nitrile", "art": "C≡N", "desc": "A carbon–nitrogen triple bond. Name ending -nitrile." },
+    "fg-aldehyde": { "type": "concept", "name": "Aldehyde", "art": "–CHO", "desc": "A carbonyl (C=O) whose carbon has at least one H. Name ending -al." },
+    "fg-ketone": { "type": "concept", "name": "Ketone", "art": "C–CO–C", "desc": "A carbonyl (C=O) whose carbon has two carbons attached. Name ending -one." },
+    "fg-acid": { "type": "concept", "name": "Carboxylic Acid", "art": "–COOH", "desc": "A carbonyl (C=O) whose carbon also has an –OH. Name ending -oic acid." },
+    "fg-ester": { "type": "concept", "name": "Ester", "art": "–COO–C", "desc": "A carbonyl (C=O) whose carbon also has an ether-like –O–C. Name ending -oate." },
+    "fg-amide": { "type": "concept", "name": "Amide", "art": "–CO–N", "desc": "A carbonyl (C=O) whose carbon also has a nitrogen. Name ending -amide." },
+    "fg-imine": { "type": "concept", "name": "Imine", "art": "C=N", "desc": "A carbon–nitrogen double bond." },
+    "end-ol": { "type": "concept", "name": "-ol", "art": "-ol", "desc": "A name ending." },
+    "end-one": { "type": "concept", "name": "-one", "art": "-one", "desc": "A name ending." },
+    "end-al": { "type": "concept", "name": "-al", "art": "-al", "desc": "A name ending." },
+    "end-ene": { "type": "concept", "name": "-ene", "art": "-ene", "desc": "A name ending." },
+    "end-oate": { "type": "concept", "name": "-oate", "art": "-oate", "desc": "A name ending." },
+
+    "s-pentane": { "type": "structure", "name": "Pentane", "smiles": "CCCCC", "desc": "CH₃(CH₂)₃CH₃, C₅H₁₂." },
+    "s-isopentane": { "type": "structure", "name": "2-Methylbutane (Isopentane)", "smiles": "CC(C)CC", "desc": "(CH₃)₂CHCH₂CH₃, C₅H₁₂." },
+    "s-neopentane": { "type": "structure", "name": "2,2-Dimethylpropane (Neopentane)", "smiles": "CC(C)(C)C", "desc": "C(CH₃)₄, C₅H₁₂." },
+    "bp-sphere": { "type": "concept", "name": "Rounder: Less Surface", "art": "●", "desc": "Claim: branched molecules are more spherical, have less surface area, and so have weaker dispersion forces." },
+    "bp-hbond": { "type": "concept", "name": "Branches H-Bond", "art": "C–H···H", "desc": "Claim: branches let alkanes hydrogen-bond with each other." },
+    "bp-lighter": { "type": "concept", "name": "Branched = Lighter", "art": "↓ MW", "desc": "Claim: branched alkanes weigh less than their straight-chain isomers." },
+    "bp-weakcc": { "type": "concept", "name": "Weaker C–C Bonds", "art": "C~C", "desc": "Claim: branching weakens the C–C bonds, so the liquid boils sooner." },
+    "io-lower": { "type": "concept", "name": "Lower: 99.3 °C", "art": "99 °C", "desc": "A boiling point of 99.3 °C." },
+    "io-higher": { "type": "concept", "name": "Higher: about 150 °C", "art": "150 °C", "desc": "A boiling point of about 150 °C." },
+    "io-same": { "type": "concept", "name": "Same: 125.7 °C", "art": "126 °C", "desc": "A boiling point of 125.7 °C." },
+    "cb-co2": { "type": "product", "name": "CO₂ + H₂O (+ heat)", "art": "CO₂ H₂O", "desc": "Carbon dioxide and water, with heat released." },
+    "cb-coh2": { "type": "product", "name": "CO + H₂", "art": "CO H₂", "desc": "Carbon monoxide and hydrogen gas." },
+    "cb-meoh": { "type": "product", "name": "CH₃OH", "art": "CH₃OH", "desc": "Methanol." },
+    "cb-none": { "type": "concept", "name": "No Reaction", "art": "✕", "desc": "Claim: nothing happens." },
+    "cl-mix": { "type": "product", "name": "Mixture: CH₃Cl → CCl₄", "art": "Cl₁₋₄", "desc": "A mixture of CH₃Cl, CH₂Cl₂, CHCl₃, and CCl₄." },
+    "cl-one": { "type": "product", "name": "Only CH₃Cl", "art": "CH₃Cl", "desc": "Chloromethane, and nothing else." },
+    "cl-alkene": { "type": "product", "name": "CH₂=CH₂ + HCl", "art": "C=C", "desc": "Ethylene and hydrogen chloride." },
+    "pf-little": { "type": "concept", "name": "Little Affinity", "art": "parum affinis", "desc": "Claim: they don't react with much." },
+    "pf-reactive": { "type": "concept", "name": "React with Almost Anything", "art": "⚡", "desc": "Claim: they're among the most reactive organic compounds." },
+    "pf-soluble": { "type": "concept", "name": "Dissolve in Water", "art": "H₂O", "desc": "Claim: they mix easily with water." },
+    "pf-polar": { "type": "concept", "name": "Very Polar", "art": "δ+δ−", "desc": "Claim: their C–H bonds are strongly polar." },
+    "im-disp": { "type": "concept", "name": "Dispersion Forces", "art": "δ~δ", "desc": "Weak attractions from temporary, shifting dipoles." },
+    "im-dipole": { "type": "concept", "name": "Dipole–Dipole", "art": "+−···+−", "desc": "Attractions between permanent molecular dipoles." },
+    "im-hbond": { "type": "concept", "name": "Hydrogen Bonding", "art": "O–H···O", "desc": "An O–H or N–H hydrogen attracted to a lone pair on O or N." },
+    "im-ionic": { "type": "concept", "name": "Ionic Attraction", "art": "+···−", "desc": "Attraction between full charges." },
+    "bp-ethane": { "type": "concept", "name": "Ethane", "art": "C₂", "desc": "CH₃CH₃, a 2-carbon straight-chain alkane." },
+    "bp-butane": { "type": "concept", "name": "Butane", "art": "C₄", "desc": "CH₃CH₂CH₂CH₃, a 4-carbon straight-chain alkane." },
+    "bp-hexane": { "type": "concept", "name": "Hexane", "art": "C₆", "desc": "CH₃(CH₂)₄CH₃, a 6-carbon straight-chain alkane." },
+    "bp-decane": { "type": "concept", "name": "Decane", "art": "C₁₀", "desc": "CH₃(CH₂)₈CH₃, a 10-carbon straight-chain alkane." },
+
+    "n2": { "type": "concept", "name": "2", "art": "2", "desc": "The number two." },
+    "n3": { "type": "concept", "name": "3", "art": "3", "desc": "The number three." },
+    "n4": { "type": "concept", "name": "4", "art": "4", "desc": "The number four." },
+    "n5": { "type": "concept", "name": "5", "art": "5", "desc": "The number five." },
+    "n6": { "type": "concept", "name": "6", "art": "6", "desc": "The number six." },
+    "n9": { "type": "concept", "name": "9", "art": "9", "desc": "The number nine." },
+    "n1": { "type": "concept", "name": "1", "art": "1", "desc": "The number one." },
+    "n0": { "type": "concept", "name": "0", "art": "0", "desc": "Zero." },
+    "c-primary": { "type": "concept", "name": "Primary (1°)", "art": "1°", "desc": "A carbon bonded to ONE other carbon." },
+    "c-secondary": { "type": "concept", "name": "Secondary (2°)", "art": "2°", "desc": "A carbon bonded to TWO other carbons." },
+    "c-tertiary": { "type": "concept", "name": "Tertiary (3°)", "art": "3°", "desc": "A carbon bonded to THREE other carbons." },
+    "c-quaternary": { "type": "concept", "name": "Quaternary (4°)", "art": "4°", "desc": "A carbon bonded to FOUR other carbons." },
+    "ag-iso": { "type": "structure", "name": "–CH(CH₃)₂", "art": "–CH(CH₃)₂", "desc": "An alkyl group attached through a CH that carries two methyls." },
+    "ag-tert": { "type": "structure", "name": "–C(CH₃)₃", "art": "–C(CH₃)₃", "desc": "An alkyl group attached through a carbon that carries three methyls." },
+    "ag-isobu": { "type": "structure", "name": "–CH₂CH(CH₃)₂", "art": "–CH₂CH(CH₃)₂", "desc": "An alkyl group attached through a CH₂, next to a CH that carries two methyls." },
+    "ag-sec": { "type": "structure", "name": "–CH(CH₃)CH₂CH₃", "art": "–CH(CH₃)Et", "desc": "An alkyl group attached through a CH that carries a methyl and an ethyl." },
+    "qh-room": { "type": "concept", "name": "No Room for an H", "art": "C(C)₄", "desc": "Claim: a quaternary carbon's four bonds all go to carbons." },
+    "qh-acidic": { "type": "concept", "name": "Too Acidic to Survive", "art": "H⁺", "desc": "Claim: such a hydrogen would instantly leave as H⁺." },
+    "qh-rare": { "type": "concept", "name": "They Exist, Just Rarely", "art": "rare", "desc": "Claim: quaternary hydrogens are real but uncommon." },
+    "qh-methyl": { "type": "concept", "name": "They're Called Methyls", "art": "CH₃", "desc": "Claim: a quaternary hydrogen is just another name for a methyl H." },
+    "ta-3c": { "type": "concept", "name": "Three Other Carbons", "art": "C(C)₃", "desc": "The carbon holding the –OH is bonded to three other carbons." },
+    "ta-3oh": { "type": "concept", "name": "Three –OH Groups", "art": "(OH)₃", "desc": "The molecule has three hydroxyl groups." },
+    "ta-3h": { "type": "concept", "name": "Three Hydrogens", "art": "CH₃", "desc": "The carbon holding the –OH also carries three hydrogens." },
+    "ta-c3": { "type": "concept", "name": "Carbon Number 3", "art": "C3", "desc": "The –OH is on carbon 3 of the chain." },
+
+    "na-23dmp": { "type": "concept", "name": "2,3-Dimethylpentane", "art": "2,3", "desc": "An IUPAC name: pentane chain, methyls on C2 and C3." },
+    "na-34dmp": { "type": "concept", "name": "3,4-Dimethylpentane", "art": "3,4", "desc": "An IUPAC-style name: pentane chain, methyls on C3 and C4." },
+    "na-2e3mb": { "type": "concept", "name": "2-Ethyl-3-methylbutane", "art": "2-Et", "desc": "A name: butane chain, ethyl on C2, methyl on C3." },
+    "na-heptane": { "type": "concept", "name": "Heptane", "art": "C₇", "desc": "The 7-carbon straight-chain alkane." },
+    "na-24dmp": { "type": "concept", "name": "2,4-Dimethylpentane", "art": "2,4", "desc": "An IUPAC name: pentane chain, methyls on C2 and C4." },
+    "na-13dmp": { "type": "concept", "name": "1,3-Dimethylpentane", "art": "1,3", "desc": "A name: pentane chain, methyls on C1 and C3." },
+    "na-2m4mp": { "type": "concept", "name": "2-Methyl-4-methylpentane", "art": "2-,4-", "desc": "A name: pentane chain, one methyl on C2 and another on C4." },
+    "na-225tmh": { "type": "concept", "name": "2,2,5-Trimethylhexane", "art": "2,2,5", "desc": "An IUPAC name: hexane chain, methyls on C2, C2, and C5." },
+    "na-255tmh": { "type": "concept", "name": "2,5,5-Trimethylhexane", "art": "2,5,5", "desc": "A name: hexane chain, methyls on C2, C5, and C5." },
+    "na-225tmhep": { "type": "concept", "name": "2,2,5-Trimethylheptane", "art": "2,2,5 C₇", "desc": "A name: heptane chain, methyls on C2, C2, and C5." },
+    "na-3e2mh": { "type": "concept", "name": "3-Ethyl-2-methylhexane", "art": "3-Et-2-Me", "desc": "An IUPAC name: hexane chain, ethyl on C3, methyl on C2." },
+    "na-2m3eh": { "type": "concept", "name": "2-Methyl-3-ethylhexane", "art": "2-Me-3-Et", "desc": "A name: hexane chain, methyl on C2, ethyl on C3, written methyl first." },
+    "na-4e5mh": { "type": "concept", "name": "4-Ethyl-5-methylhexane", "art": "4-Et-5-Me", "desc": "A name: hexane chain, ethyl on C4, methyl on C5." },
+    "na-3iph": { "type": "concept", "name": "3-Isopropylhexane", "art": "3-iPr", "desc": "A name: hexane chain with an isopropyl group on C3." },
+    "s-3ip2mh": { "type": "structure", "name": "3-Isopropyl-2-methylhexane", "smiles": "CC(C)C(C(C)C)CCC", "desc": "A branched C₁₀H₂₂ alkane." },
+    "s-4iph": { "type": "structure", "name": "4-Isopropylheptane", "smiles": "CC(C)C(CCC)CCC", "desc": "A branched C₁₀H₂₂ alkane." },
+    "s-ipfar": { "type": "structure", "name": "A C₁₀H₂₂ isomer", "smiles": "CC(C)CC(C(C)C)CC", "desc": "A branched C₁₀H₂₂ alkane." },
+    "s-2mh": { "type": "structure", "name": "2-Methylhexane", "smiles": "CC(C)CCCC", "desc": "A branched C₇H₁₆ alkane." },
+    "ab-tbu": { "type": "concept", "name": "tert-Butyl", "art": "t-Bu", "desc": "A substituent prefix: –C(CH₃)₃." },
+    "ab-ethyl": { "type": "concept", "name": "Ethyl", "art": "Et", "desc": "A substituent prefix: –CH₂CH₃." },
+    "ab-ipr": { "type": "concept", "name": "Isopropyl", "art": "iPr", "desc": "A substituent prefix: –CH(CH₃)₂." },
+    "ab-dime": { "type": "concept", "name": "Dimethyl", "art": "di-Me", "desc": "A substituent prefix: two –CH₃ groups." },
+    "nm-2mp": { "type": "concept", "name": "2-Methylpentane", "art": "2-Me", "desc": "A name: pentane chain, methyl on C2." },
+    "nm-4mp": { "type": "concept", "name": "4-Methylpentane", "art": "4-Me", "desc": "A name: pentane chain, methyl on C4." },
+    "nm-3mp": { "type": "concept", "name": "3-Methylpentane", "art": "3-Me", "desc": "A name: pentane chain, methyl on C3." },
+    "nm-2mb": { "type": "concept", "name": "2-Methylbutane", "art": "2-Me C₄", "desc": "A name: butane chain, methyl on C2." },
+
+    "e-12": { "type": "concept", "name": "12 kJ/mol", "art": "12", "desc": "An energy of 12 kJ/mol (2.9 kcal/mol)." },
+    "e-4": { "type": "concept", "name": "4.0 kJ/mol", "art": "4.0", "desc": "An energy of 4.0 kJ/mol." },
+    "e-1kj": { "type": "concept", "name": "1.0 kJ/mol", "art": "1.0", "desc": "An energy of 1.0 kJ/mol." },
+    "e-38": { "type": "concept", "name": "3.8 kJ/mol", "art": "3.8", "desc": "An energy of 3.8 kJ/mol." },
+    "e-19": { "type": "concept", "name": "19 kJ/mol", "art": "19", "desc": "An energy of 19 kJ/mol." },
+    "e-14": { "type": "concept", "name": "14 kJ/mol", "art": "14", "desc": "An energy of 14 kJ/mol." },
+    "e-16": { "type": "concept", "name": "16 kJ/mol", "art": "16", "desc": "An energy of 16 kJ/mol." },
+    "e-18": { "type": "concept", "name": "18 kJ/mol", "art": "18", "desc": "An energy of 18 kJ/mol." },
+    "e-6": { "type": "concept", "name": "6.0 kJ/mol", "art": "6.0", "desc": "An energy of 6.0 kJ/mol." },
+    "e-10": { "type": "concept", "name": "10 kJ/mol", "art": "10", "desc": "An energy of 10 kJ/mol." },
+    "e-11": { "type": "concept", "name": "11 kJ/mol", "art": "11", "desc": "An energy of 11 kJ/mol." },
+    "e-15": { "type": "concept", "name": "15 kJ/mol", "art": "15", "desc": "An energy of 15 kJ/mol." },
+    "st-torsional": { "type": "concept", "name": "Torsional Strain", "art": "⟲", "desc": "Strain that comes from bonds on neighboring carbons being eclipsed." },
+    "st-steric": { "type": "concept", "name": "Steric Strain", "art": "⇥⇤", "desc": "Strain that comes from atoms being forced closer than their sizes allow." },
+    "st-angle": { "type": "concept", "name": "Angle Strain", "art": "∠", "desc": "Strain that comes from bond angles squeezed away from their ideal value." },
+    "st-hbond": { "type": "concept", "name": "Hydrogen Bonding", "art": "H···H", "desc": "Claim: the hydrogens hydrogen-bond to each other." },
+    "st-resonance": { "type": "concept", "name": "Resonance Energy", "art": "↔", "desc": "Claim: it's energy from resonance forms." },
+    "nw-edge": { "type": "concept", "name": "To the Circle's Edge", "art": "◯—", "desc": "Lines that stop at the edge of the circle." },
+    "nw-center": { "type": "concept", "name": "To the Center", "art": "—•", "desc": "Lines that meet at the center of the circle." },
+    "nw-wedge": { "type": "concept", "name": "As Wedges", "art": "▶", "desc": "Solid wedge bonds, pointing toward you." },
+    "nw-dash": { "type": "concept", "name": "As Dashes", "art": "┄", "desc": "Dashed bonds, pointing away from you." },
+    "cf-fast": { "type": "concept", "name": "They Interconvert Too Fast", "art": "⟳⟳", "desc": "Claim: the shapes change into each other far too quickly to separate." },
+    "cf-explode": { "type": "concept", "name": "Eclipsed Ethane Explodes", "art": "💥", "desc": "Claim: the eclipsed form is dangerously unstable." },
+    "cf-formula": { "type": "concept", "name": "Different Formulas", "art": "C₂H₆?", "desc": "Claim: the two shapes have different molecular formulas." },
+    "cf-norot": { "type": "concept", "name": "No Rotation Possible", "art": "⊘⟳", "desc": "Claim: C–C single bonds can't rotate at all." },
+    "pc-99": { "type": "concept", "name": "About 99%", "art": "99%", "desc": "Ninety-nine percent." },
+    "pc-50": { "type": "concept", "name": "About 50%", "art": "50%", "desc": "Half." },
+    "pc-1": { "type": "concept", "name": "About 1%", "art": "1%", "desc": "One percent." },
+    "pc-100": { "type": "concept", "name": "Exactly 100%", "art": "100%", "desc": "All of them, always." },
+    "cn-ecl": { "type": "concept", "name": "Eclipsed", "art": "⊙ ‖", "desc": "Front and back bonds line up when viewed end-on." },
+    "cn-stag": { "type": "concept", "name": "Staggered", "art": "⊙ ✶", "desc": "Front and back bonds sit 60° apart when viewed end-on." },
+    "cn-anti": { "type": "concept", "name": "Anti", "art": "180°", "desc": "Staggered, with the two largest groups 180° apart." },
+    "cn-gauche": { "type": "concept", "name": "Gauche", "art": "60°", "desc": "Staggered, with the two largest groups 60° apart." },
+    "cn-ecl-mh": { "type": "concept", "name": "Eclipsed (CH₃ ↔ H)", "art": "120°", "desc": "Eclipsed, with each methyl lined up with a hydrogen." },
+    "cn-ecl-mm": { "type": "concept", "name": "Eclipsed (CH₃ ↔ CH₃)", "art": "0°", "desc": "Eclipsed, with the two methyls lined up with each other." },
+    "cp-anti": { "type": "concept", "name": "Staggered, Cl Anti to CH₃", "art": "Cl 180° CH₃", "desc": "A staggered conformation with Cl and CH₃ 180° apart." },
+    "cp-gauche": { "type": "concept", "name": "Staggered, Cl Gauche to CH₃", "art": "Cl 60° CH₃", "desc": "A staggered conformation with Cl and CH₃ 60° apart." },
+    "cp-eclmm": { "type": "concept", "name": "Eclipsed, Cl on CH₃", "art": "Cl 0° CH₃", "desc": "An eclipsed conformation with Cl lined up with CH₃." },
+    "cp-eclh": { "type": "concept", "name": "Eclipsed, Cl on H", "art": "Cl 0° H", "desc": "An eclipsed conformation with Cl lined up with a hydrogen." },
+    "eq-more": { "type": "concept", "name": "More Molecules, Not All", "art": "⇌", "desc": "Claim: conformers keep interconverting; the stabler one is just more common at any instant." },
+    "eq-locked": { "type": "concept", "name": "Locked in Place", "art": "🔒", "desc": "Claim: once anti, a butane molecule stays anti." },
+    "eq-never": { "type": "concept", "name": "Gauche Never Forms", "art": "⊘", "desc": "Claim: less stable conformers don't exist at room temperature." },
+    "eq-formula": { "type": "concept", "name": "Anti Has a New Formula", "art": "C₄H₁₀?", "desc": "Claim: the anti and gauche shapes are different compounds." },
+
+    "na-224tmh": { "type": "concept", "name": "2,2,4-Trimethylhexane", "art": "2,2,4", "desc": "An IUPAC name: hexane chain, methyls on C2, C2, and C4." },
+    "na-355tmh": { "type": "concept", "name": "3,5,5-Trimethylhexane", "art": "3,5,5", "desc": "A name: hexane chain, methyls on C3, C5, and C5." },
+    "na-244tmh": { "type": "concept", "name": "2,4,4-Trimethylhexane", "art": "2,4,4", "desc": "A name: hexane chain, methyls on C2, C4, and C4." },
+    "na-224tmp": { "type": "concept", "name": "2,2,4-Trimethylpentane", "art": "2,2,4 C₅", "desc": "A name: pentane chain, methyls on C2, C2, and C4." },
+    "bb-octane": { "type": "concept", "name": "Octane", "art": "C₈ ─", "desc": "Straight-chain C₈H₁₈." },
+    "bb-isooctane": { "type": "concept", "name": "Isooctane", "art": "C₈ ✶", "desc": "2,2,4-Trimethylpentane, a branched C₈H₁₈." },
+    "bb-pentane": { "type": "concept", "name": "Pentane", "art": "C₅ ─", "desc": "Straight-chain C₅H₁₂." },
+    "bb-neopentane": { "type": "concept", "name": "Neopentane", "art": "C₅ ✶", "desc": "2,2-Dimethylpropane, a branched C₅H₁₂." },
+    "t-torsional": { "type": "concept", "name": "Torsional Strain", "art": "⟲", "desc": "A kind of strain." },
+    "t-steric": { "type": "concept", "name": "Steric Strain", "art": "⇥⇤", "desc": "A kind of strain." },
+    "t-const": { "type": "concept", "name": "Constitutional Isomers", "art": "≠ links", "desc": "A kind of isomer relationship." },
+    "t-conformers": { "type": "concept", "name": "Conformers", "art": "⟳", "desc": "A kind of isomer relationship." },
+    "ip-1me": { "type": "concept", "name": "4-(1-Methylethyl)heptane", "art": "1-Me-Et", "desc": "A systematic name with a branched substituent in parentheses." },
+    "ip-1mp": { "type": "concept", "name": "4-(1-Methylpropyl)heptane", "art": "1-Me-Pr", "desc": "A systematic name with a branched substituent in parentheses." },
+    "ip-prop": { "type": "concept", "name": "4-Propylheptane", "art": "4-Pr", "desc": "A name: heptane chain with a propyl group on C4." },
+    "ip-2m3p": { "type": "concept", "name": "2-Methyl-3-propylhexane", "art": "2-Me-3-Pr", "desc": "A name: hexane chain, methyl on C2, propyl on C3." }
+  },
+  "levels": [
+    {
+      "id": "intro", "path": "intro", "title": "The Ledge: Alkanes 101", "pick": 3,
+      "lesson": [
+        { "text": "Hmph. Another climber. I'm Newman. I've been stuck on this ledge so long I can only see molecules END-ON. Don't ask. Let's get this over with." },
+        { "text": "Alkanes are the simplest family: only carbon and hydrogen, and only single bonds. Chemists call them SATURATED hydrocarbons, because every carbon holds as many hydrogens as it possibly can.", "smiles": "CCCC" },
+        { "text": "That gives every alkane the formula CₙH₂ₙ₊₂. Count the carbons, double it, add two. Five carbons? C₅H₁₂. Even a gargoyle can do that.", "art": "CₙH₂ₙ₊₂" },
+        { "text": "Memorize the first ten names. I'm not repeating them. Meth-, eth-, prop-, but- (1 to 4), then the Greek counting: pent-, hex-, hept-, oct-, non-, dec- (5 to 10). Add -ane.", "art": "1 meth · 2 eth · 3 prop · 4 but · 5 pent · 6 hex · 7 hept · 8 oct · 9 non · 10 dec" },
+        { "text": "Four carbons can line up in a row (butane) or branch (isobutane, 2-methylpropane). Same formula, C₄H₁₀, different connections. Those are CONSTITUTIONAL ISOMERS: different compounds with different properties.", "smiles": "CC(C)C" },
+        { "text": "Worked example: what's the formula of octane? Eight carbons: 2 × 8 + 2 = 18 hydrogens. C₈H₁₈. There. Now go away and answer some questions.", "art": "C₈H₁₈" }
+      ],
+      "problems": [
+        {
+          "id": "i3-heptane", "kind": "single", "section": "3.2",
+          "prompt": "What's the molecular formula of heptane?",
+          "slots": [{ "label": "Heptane is...", "answer": "f-c7h16" }],
+          "hand": ["f-c7h16", "f-c7h14", "f-c7h12", "f-c6h14"],
+          "hint": "Hept- means 7. Use CₙH₂ₙ₊₂.",
+          "explain": {
+            "f-c7h16": "Right! Hept- is 7 carbons, and 2 × 7 + 2 = 16. Heptane is C₇H₁₆.",
+            "f-c7h14": "C₇H₁₄ is two hydrogens short. That's CₙH₂ₙ, which means a ring or a double bond. An alkane is CₙH₂ₙ₊₂: C₇H₁₆.",
+            "f-c7h12": "C₇H₁₂ is four hydrogens short of an alkane. Heptane is CₙH₂ₙ₊₂: C₇H₁₆.",
+            "f-c6h14": "C₆H₁₄ is hexane, with 6 carbons. Hept- means 7: C₇H₁₆."
+          }
+        },
+        {
+          "id": "i3-nonane", "kind": "single", "section": "3.2",
+          "prompt": "A straight-chain alkane has the formula C₉H₂₀. What is it called?",
+          "slots": [{ "label": "Name:", "answer": "nm-nonane" }],
+          "hand": ["nm-nonane", "nm-octane", "nm-decane", "nm-heptane"],
+          "hint": "Count the carbons, then use the Greek prefix.",
+          "explain": {
+            "nm-nonane": "Right! Nine carbons: non- plus -ane. Nonane, C₉H₂₀.",
+            "nm-octane": "Octane has 8 carbons (C₈H₁₈). Nine carbons is nonane.",
+            "nm-decane": "Decane has 10 carbons (C₁₀H₂₂). Nine is nonane.",
+            "nm-heptane": "Heptane has 7 carbons (C₇H₁₆). Nine is nonane."
+          }
+        },
+        {
+          "id": "i3-saturated", "kind": "single", "section": "3.2",
+          "prompt": "Why are alkanes called SATURATED hydrocarbons?",
+          "slots": [{ "label": "Because they...", "answer": "sat-maxh" }],
+          "hand": ["sat-maxh", "sat-water", "sat-ring", "sat-double"],
+          "hint": "Saturated with what?",
+          "explain": {
+            "sat-maxh": "Right! With only C–C and C–H single bonds, each carbon holds the maximum possible number of hydrogens. They're 'saturated' with hydrogen.",
+            "sat-water": "Alkanes barely dissolve in water at all. 'Saturated' means each carbon holds the most hydrogens possible, because all bonds are single.",
+            "sat-ring": "Rings aren't required (butane has none). 'Saturated' means only single bonds, so the maximum number of hydrogens per carbon.",
+            "sat-double": "Backwards! Double bonds make a compound UNsaturated. Alkanes have only single bonds, so they hold the most hydrogens possible."
+          }
+        },
+        {
+          "id": "i3-isomers", "kind": "single", "section": "3.2",
+          "prompt": "Butane and isobutane (2-methylpropane) are both C₄H₁₀. What are they to each other?",
+          "slots": [{ "label": "They are...", "answer": "iso-const" }],
+          "hand": ["iso-const", "iso-same", "iso-conf", "iso-diff"],
+          "hint": "Same formula. Are the atoms connected the same way?",
+          "explain": {
+            "iso-const": "Right! Same formula, different connections (four in a row vs. branched). They're constitutional isomers: different compounds with different boiling points.",
+            "iso-same": "No rotation or redrawing turns butane into isobutane. The atoms are connected differently, so they're different compounds: constitutional isomers.",
+            "iso-conf": "Conformers differ only by rotation around single bonds. Butane and isobutane have different connections, so they're constitutional isomers.",
+            "iso-diff": "Both are C₄H₁₀, so they ARE isomers. Different connections make them constitutional isomers."
+          }
+        },
+        {
+          "id": "i3-match", "kind": "match", "section": "3.2",
+          "prompt": "Match each drawing to its name.",
+          "slots": [
+            { "label": "Butane", "answer": "s-butane" },
+            { "label": "2-Methylpropane", "answer": "s-isobutane" },
+            { "label": "Propane", "answer": "s-propane" }
+          ],
+          "hand": ["s-isobutane", "s-propane", "s-butane"],
+          "hint": "Count the line ends and corners: each one is a carbon. Then check for branches.",
+          "explain": {
+            "s-butane": "Butane: four carbons in a zigzag row, no branches.",
+            "s-isobutane": "2-Methylpropane: a three-carbon chain with a methyl on the middle carbon. Four carbons total, branched.",
+            "s-propane": "Propane: just three carbons."
+          }
+        },
+        {
+          "id": "i3-which", "kind": "single", "section": "3.2",
+          "prompt": "Which formula could belong to an alkane?",
+          "slots": [{ "label": "Alkane formula:", "answer": "f-c6h14" }],
+          "hand": ["f-c6h14", "f-c6h12", "f-c6h10", "f-c6h16"],
+          "hint": "Check each one against CₙH₂ₙ₊₂.",
+          "explain": {
+            "f-c6h14": "Right! 2 × 6 + 2 = 14. C₆H₁₄ is hexane (or one of its isomers).",
+            "f-c6h12": "C₆H₁₂ is CₙH₂ₙ: two H's short. It needs a ring or a double bond, so it isn't an alkane.",
+            "f-c6h10": "C₆H₁₀ is four H's short of CₙH₂ₙ₊₂. Not an alkane.",
+            "f-c6h16": "Impossible! Six carbons can hold at most 2 × 6 + 2 = 14 hydrogens. C₆H₁₆ would need a carbon with five bonds."
+          }
+        },
+        {
+          "id": "i3-rank", "kind": "rank", "section": "3.2",
+          "prompt": "Rank these from FEWEST carbons to MOST carbons.",
+          "slots": [
+            { "label": "Fewest", "answer": "nm-ethane" },
+            { "label": "2nd", "answer": "nm-propane" },
+            { "label": "3rd", "answer": "nm-butane" },
+            { "label": "Most", "answer": "nm-pentane" }
+          ],
+          "hand": ["nm-pentane", "nm-butane", "nm-ethane", "nm-propane"],
+          "hint": "Meth, eth, prop, but, pent: 1, 2, 3, 4, 5.",
+          "why": "Ethane 2, propane 3, butane 4, pentane 5.",
+          "explain": {
+            "nm-ethane": "Ethane: 2 carbons, C₂H₆.",
+            "nm-propane": "Propane: 3 carbons, C₃H₈.",
+            "nm-butane": "Butane: 4 carbons, C₄H₁₀.",
+            "nm-pentane": "Pentane: 5 carbons, C₅H₁₂."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1", "path": "A", "title": "Functional Group Spotting", "requires": ["intro"], "pick": 3,
+      "lesson": [
+        { "text": "Alkanes are boring. That's the point. The interesting part of a molecule is its FUNCTIONAL GROUP: a group of atoms that reacts the same way in every molecule it's in. Big molecule, small molecule, doesn't matter." },
+        { "text": "Carbon–carbon multiple bonds: alkenes have C=C (-ene), alkynes have C≡C (-yne), and arenes have a six-carbon ring of alternating double and single bonds.", "smiles": "C=C" },
+        { "text": "Carbon singly bonded to an electronegative atom: halides (C–X), alcohols (C–OH, -ol), ethers (C–O–C), amines (C–N, -amine), thiols (C–SH), sulfides (C–S–C), disulfides (C–S–S–C). Carbon ends up δ+.", "smiles": "CCO" },
+        { "text": "Then the big family: the carbonyl, C=O. What ELSE is on the carbonyl carbon decides the name. At least one H: aldehyde (-al). Two carbons: ketone (-one). An –OH: carboxylic acid. An –OR: ester. A nitrogen: amide. A chlorine: acid chloride.", "art": "C=O + H · C · OH · OR · N · Cl" },
+        { "text": "Worked example: acetone, CH₃COCH₃. The C=O carbon has two carbons on it. Two carbons on the carbonyl carbon means ketone. That's all I'm explaining.", "smiles": "CC(=O)C" }
+      ],
+      "problems": [
+        {
+          "id": "a1-ketone", "kind": "single", "section": "3.1",
+          "prompt": "What functional group does this molecule contain?",
+          "smiles": "CCC(=O)C",
+          "slots": [{ "label": "Functional group:", "answer": "fg-ketone" }],
+          "hand": ["fg-ketone", "fg-aldehyde", "fg-ester", "fg-acid"],
+          "hint": "Find the C=O. What's attached to its carbon?",
+          "explain": {
+            "fg-ketone": "Right! The carbonyl carbon has two carbons attached, one on each side. That's a ketone (this one is butan-2-one).",
+            "fg-aldehyde": "An aldehyde needs an H on the carbonyl carbon. Here the C=O carbon has two carbons on it: a ketone.",
+            "fg-ester": "An ester needs an –O–C on the carbonyl carbon. This one has only carbons attached: a ketone.",
+            "fg-acid": "A carboxylic acid needs an –OH on the carbonyl carbon. There's no –OH here: it's a ketone."
+          }
+        },
+        {
+          "id": "a1-aldehyde", "kind": "single", "section": "3.1",
+          "prompt": "What functional group does this molecule contain?",
+          "smiles": "CCC=O",
+          "slots": [{ "label": "Functional group:", "answer": "fg-aldehyde" }],
+          "hand": ["fg-aldehyde", "fg-ketone", "fg-alcohol", "fg-acid"],
+          "hint": "The C=O is at the END of the chain. What's on that carbon besides the chain?",
+          "explain": {
+            "fg-aldehyde": "Right! The C=O sits at the end of the chain, so its carbon carries an H. A carbonyl with an H on it is an aldehyde (this is propanal).",
+            "fg-ketone": "A ketone's carbonyl carbon has TWO carbons on it. This one is at the chain's end, with one carbon and one H: an aldehyde.",
+            "fg-alcohol": "An alcohol has C–OH. This oxygen is double-bonded, with no H: a carbonyl, here an aldehyde.",
+            "fg-acid": "A carboxylic acid needs an –OH on the carbonyl carbon too. This one only has an H: an aldehyde."
+          }
+        },
+        {
+          "id": "a1-ether", "kind": "single", "section": "3.1",
+          "prompt": "What functional group does this molecule contain?",
+          "smiles": "CCOCC",
+          "slots": [{ "label": "Functional group:", "answer": "fg-ether" }],
+          "hand": ["fg-ether", "fg-alcohol", "fg-ester", "fg-ketone"],
+          "hint": "What's on each side of the oxygen?",
+          "explain": {
+            "fg-ether": "Right! One oxygen with a carbon on each side: C–O–C. That's an ether (diethyl ether).",
+            "fg-alcohol": "An alcohol needs an O–H. This oxygen has carbons on both sides and no H: an ether.",
+            "fg-ester": "An ester needs a C=O next to the oxygen. There's no carbonyl here: just C–O–C, an ether.",
+            "fg-ketone": "A ketone needs a C=O. This oxygen is singly bonded to two carbons: an ether."
+          }
+        },
+        {
+          "id": "a1-ester", "kind": "single", "section": "3.1",
+          "prompt": "What functional group does this molecule contain?",
+          "smiles": "CC(=O)OC",
+          "slots": [{ "label": "Functional group:", "answer": "fg-ester" }],
+          "hand": ["fg-ester", "fg-acid", "fg-ether", "fg-ketone"],
+          "hint": "There's a C=O AND another oxygen on the same carbon. What's on that second oxygen?",
+          "explain": {
+            "fg-ester": "Right! The carbonyl carbon also carries an –O–CH₃. A carbonyl plus an ether-like oxygen is an ester (methyl acetate).",
+            "fg-acid": "Close! A carboxylic acid has –OH on the carbonyl carbon. Here the second oxygen carries a CH₃, not an H: that's an ester.",
+            "fg-ether": "There IS a C–O–C, but its carbon is also a C=O. Carbonyl plus –O–C on the same carbon is an ester.",
+            "fg-ketone": "A ketone has only carbons on the carbonyl carbon. This one also has an oxygen: an ester."
+          }
+        },
+        {
+          "id": "a1-amine", "kind": "single", "section": "3.1",
+          "prompt": "What functional group does this molecule contain?",
+          "smiles": "CCN",
+          "slots": [{ "label": "Functional group:", "answer": "fg-amine" }],
+          "hand": ["fg-amine", "fg-amide", "fg-nitrile", "fg-imine"],
+          "hint": "How is the nitrogen bonded? Is there a C=O anywhere?",
+          "explain": {
+            "fg-amine": "Right! A carbon singly bonded to nitrogen, with no C=O: an amine (ethylamine).",
+            "fg-amide": "An amide needs the nitrogen on a C=O carbon. There's no carbonyl here: it's an amine.",
+            "fg-nitrile": "A nitrile has C≡N, a triple bond. Here the C–N bond is single: an amine.",
+            "fg-imine": "An imine has C=N, a double bond. This C–N is single: an amine."
+          }
+        },
+        {
+          "id": "a1-amide", "kind": "single", "section": "3.1",
+          "prompt": "What functional group does this molecule contain?",
+          "smiles": "CC(N)=O",
+          "slots": [{ "label": "Functional group:", "answer": "fg-amide" }],
+          "hand": ["fg-amide", "fg-amine", "fg-ketone", "fg-ester"],
+          "hint": "The nitrogen and the C=O share a carbon.",
+          "explain": {
+            "fg-amide": "Right! The nitrogen sits on the carbonyl carbon. Carbonyl plus nitrogen on the same carbon is an amide (acetamide).",
+            "fg-amine": "There's a C–N, but that carbon is also C=O. Nitrogen on a carbonyl carbon makes an amide, which behaves very differently from an amine.",
+            "fg-ketone": "A ketone has two carbons on the carbonyl carbon. This one has a carbon and a nitrogen: an amide.",
+            "fg-ester": "An ester has an –O–C on the carbonyl carbon. This one has a nitrogen: an amide."
+          }
+        },
+        {
+          "id": "a1-thiol", "kind": "single", "section": "3.1",
+          "prompt": "What functional group does this molecule contain?",
+          "smiles": "CCS",
+          "slots": [{ "label": "Functional group:", "answer": "fg-thiol" }],
+          "hand": ["fg-thiol", "fg-sulfide", "fg-alcohol", "fg-disulfide"],
+          "hint": "What's attached to the sulfur besides the chain?",
+          "explain": {
+            "fg-thiol": "Right! A carbon bonded to an –SH: a thiol (ethanethiol). It's the sulfur version of an alcohol.",
+            "fg-sulfide": "A sulfide has carbons on BOTH sides of the sulfur (C–S–C). This sulfur has one carbon and one H: a thiol.",
+            "fg-alcohol": "Alcohols have –OH. This is –SH, sulfur instead of oxygen: a thiol.",
+            "fg-disulfide": "A disulfide has two sulfurs bonded together (C–S–S–C). There's only one sulfur here: a thiol."
+          }
+        },
+        {
+          "id": "a1-gaba", "kind": "multi", "section": "3.1",
+          "prompt": "This molecule (GABA, a brain chemical) has two functional groups. Name each one.",
+          "smiles": "NCCCC(=O)O",
+          "slots": [
+            { "label": "The nitrogen group:", "answer": "fg-amine" },
+            { "label": "The C=O group:", "answer": "fg-acid" }
+          ],
+          "hand": ["fg-amine", "fg-acid", "fg-amide", "fg-ester", "fg-ketone"],
+          "hint": "The N is at one end and the C=O at the other. Look at what's on each.",
+          "explain": {
+            "fg-amine": "Right! The –NH₂ is on a plain CH₂ carbon, with no C=O next to it: an amine.",
+            "fg-acid": "Right! The carbonyl carbon also has an –OH: a carboxylic acid.",
+            "fg-amide": "An amide needs the N on the carbonyl carbon itself. Here they're at opposite ends of the chain: an amine and a carboxylic acid.",
+            "fg-ester": "An ester needs –O–C on the carbonyl carbon. This one has –OH, with an H: a carboxylic acid.",
+            "fg-ketone": "A ketone has two carbons on the carbonyl carbon. This one has a carbon and an –OH: a carboxylic acid."
+          }
+        },
+        {
+          "id": "a1-endings", "kind": "match", "section": "3.1",
+          "prompt": "Match each family to its name ending. (Table 3.1)",
+          "slots": [
+            { "label": "Alcohol", "answer": "end-ol" },
+            { "label": "Ketone", "answer": "end-one" },
+            { "label": "Aldehyde", "answer": "end-al" },
+            { "label": "Alkene", "answer": "end-ene" }
+          ],
+          "hand": ["end-al", "end-ene", "end-ol", "end-one", "end-oate"],
+          "hint": "Methanol, acetone (propanone), propanal, ethene.",
+          "explain": {
+            "end-ol": "-ol is the alcohol ending: methanol, ethanol.",
+            "end-one": "-one is the ketone ending: propanone (acetone), butanone.",
+            "end-al": "-al is the aldehyde ending: propanal, ethanal.",
+            "end-ene": "-ene is the alkene ending: ethene, propene.",
+            "end-oate": "-oate is the ESTER ending (methyl ethanoate, for example). None of these four families uses it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2", "path": "A", "title": "Paraffins & Boiling Points", "requires": ["a1"], "pick": 3,
+      "lesson": [
+        { "text": "Alkanes are also called paraffins, from Latin for 'little affinity.' Accurate. They ignore most lab reagents. A lot like me." },
+        { "text": "They DO react with a few things. With oxygen, they burn: methane + 2 O₂ gives CO₂ + 2 H₂O and a lot of heat. With Cl₂ under UV light, the H's get swapped for Cl's one by one, giving a messy mixture: CH₃Cl, CH₂Cl₂, CHCl₃, and CCl₄.", "art": "CH₄ + 2 O₂ → CO₂ + 2 H₂O" },
+        { "text": "Alkanes are held together in the liquid only by DISPERSION forces, those weak, flickering temporary dipoles. Bigger molecules have more of them, so boiling points climb as chains get longer." },
+        { "text": "Branching LOWERS the boiling point. Pentane boils at 36.1 °C, 2-methylbutane at 27.85 °C, and 2,2-dimethylpropane at 9.5 °C. Same formula! Branched molecules are rounder, with less surface area, so less dispersion attraction.", "smiles": "CC(C)(C)C" },
+        { "text": "Same story for octane, 125.7 °C, versus isooctane (2,2,4-trimethylpentane), 99.3 °C. Rounder molecules touch less. Now leave me alone with my pigeons.", "art": "─ 125.7 °C vs ✶ 99.3 °C" }
+      ],
+      "problems": [
+        {
+          "id": "a2-rank-c5", "kind": "rank", "section": "3.5",
+          "prompt": "These three C₅H₁₂ isomers boil at different temperatures. Rank them from HIGHEST to LOWEST boiling point.",
+          "slots": [
+            { "label": "Highest bp", "answer": "s-pentane" },
+            { "label": "Middle", "answer": "s-isopentane" },
+            { "label": "Lowest bp", "answer": "s-neopentane" }
+          ],
+          "hand": ["s-neopentane", "s-pentane", "s-isopentane"],
+          "hint": "More branches, rounder molecule, less surface area.",
+          "why": "Pentane 36.1 °C (no branches) > 2-methylbutane 27.85 °C (one branch) > 2,2-dimethylpropane 9.5 °C (two branches).",
+          "explain": {
+            "s-pentane": "Pentane, the straight chain: the most surface area and the strongest dispersion forces. bp 36.1 °C, the highest.",
+            "s-isopentane": "2-Methylbutane: one branch. bp 27.85 °C, in the middle.",
+            "s-neopentane": "2,2-Dimethylpropane: the roundest, almost a ball. bp 9.5 °C, the lowest."
+          }
+        },
+        {
+          "id": "a2-why", "kind": "single", "section": "3.5",
+          "prompt": "Why does branching LOWER an alkane's boiling point?",
+          "slots": [{ "label": "Because...", "answer": "bp-sphere" }],
+          "hand": ["bp-sphere", "bp-hbond", "bp-lighter", "bp-weakcc"],
+          "hint": "What force holds alkane molecules together in the liquid?",
+          "explain": {
+            "bp-sphere": "Right! Branched alkanes are more nearly spherical, with smaller surface areas, so they have weaker dispersion forces between molecules.",
+            "bp-hbond": "Alkanes can't hydrogen-bond: they have no O–H or N–H. Branching lowers bp because rounder molecules have less surface for dispersion forces.",
+            "bp-lighter": "Isomers have the SAME formula, so the same mass. The difference is shape: rounder means less surface area and weaker dispersion forces.",
+            "bp-weakcc": "Boiling doesn't break C–C bonds. It only pulls molecules apart, and rounder molecules have weaker dispersion forces between them."
+          }
+        },
+        {
+          "id": "a2-isooctane", "kind": "single", "section": "3.5",
+          "prompt": "Octane boils at 125.7 °C. Isooctane (2,2,4-trimethylpentane) has the same formula, C₈H₁₈. What's its boiling point?",
+          "smiles": "CC(C)CC(C)(C)C",
+          "slots": [{ "label": "Isooctane bp:", "answer": "io-lower" }],
+          "hand": ["io-lower", "io-higher", "io-same"],
+          "hint": "Isooctane has three branches.",
+          "explain": {
+            "io-lower": "Right! Isooctane is heavily branched and rounder, so its dispersion forces are weaker. It boils at 99.3 °C.",
+            "io-higher": "Branching LOWERS the boiling point. Isooctane is rounder than octane, so it boils lower, at 99.3 °C.",
+            "io-same": "Same formula, but different shapes and different properties. Isooctane's rounder shape gives weaker dispersion forces: bp 99.3 °C."
+          }
+        },
+        {
+          "id": "a2-burn", "kind": "single", "section": "3.5",
+          "prompt": "Methane burns completely in oxygen. What are the products?",
+          "slots": [{ "label": "CH₄ + 2 O₂ →", "answer": "cb-co2" }],
+          "hand": ["cb-co2", "cb-coh2", "cb-meoh", "cb-none"],
+          "hint": "Think of a gas stove.",
+          "explain": {
+            "cb-co2": "Right! CH₄ + 2 O₂ → CO₂ + 2 H₂O, releasing a lot of heat. That's why natural gas is a fuel.",
+            "cb-coh2": "Complete combustion makes carbon dioxide and water: CH₄ + 2 O₂ → CO₂ + 2 H₂O.",
+            "cb-meoh": "Burning doesn't stop at methanol. Complete combustion goes all the way to CO₂ and H₂O.",
+            "cb-none": "Alkanes are unreactive toward most reagents, but they DO burn. CH₄ + 2 O₂ → CO₂ + 2 H₂O + heat."
+          }
+        },
+        {
+          "id": "a2-chlor", "kind": "single", "section": "3.5",
+          "prompt": "Methane and Cl₂ are mixed and hit with ultraviolet light. What forms?",
+          "slots": [{ "label": "CH₄ + Cl₂, hν →", "answer": "cl-mix" }],
+          "hand": ["cl-mix", "cl-one", "cl-alkene", "cb-none"],
+          "hint": "There are four H's on methane, and nothing stops the reaction after the first one.",
+          "explain": {
+            "cl-mix": "Right! The hydrogens get replaced by chlorine one after another, so you get a mixture: CH₃Cl, CH₂Cl₂, CHCl₃, and CCl₄. (More in Section 6.6.)",
+            "cl-one": "The reaction doesn't stop after one Cl. The other H's get substituted too, giving a mixture of CH₃Cl, CH₂Cl₂, CHCl₃, and CCl₄.",
+            "cl-alkene": "One carbon can't make a C=C. Chlorine substitutes for H's, giving CH₃Cl through CCl₄.",
+            "cb-none": "In the dark, maybe. Under UV light, methane and Cl₂ react, giving a mixture of chloromethanes."
+          }
+        },
+        {
+          "id": "a2-paraffin", "kind": "single", "section": "3.5",
+          "prompt": "Alkanes are also called 'paraffins' (Latin parum affinis). What does that say about them?",
+          "slots": [{ "label": "They have...", "answer": "pf-little" }],
+          "hand": ["pf-little", "pf-reactive", "pf-soluble", "pf-polar"],
+          "hint": "'Parum' means little.",
+          "explain": {
+            "pf-little": "Right! 'Little affinity': alkanes are chemically inert to most lab reagents. They react only with oxygen, halogens, and a few others.",
+            "pf-reactive": "The opposite! Alkanes are among the LEAST reactive organic compounds. 'Paraffin' means 'little affinity.'",
+            "pf-soluble": "Alkanes are hydrophobic and barely dissolve in water. 'Paraffin' means 'little affinity': they're unreactive.",
+            "pf-polar": "C–H bonds are nearly nonpolar (EN 2.5 vs 2.1). 'Paraffin' means 'little affinity': they're unreactive."
+          }
+        },
+        {
+          "id": "a2-force", "kind": "single", "section": "3.5",
+          "prompt": "What attractive force holds liquid hexane molecules together?",
+          "slots": [{ "label": "Force:", "answer": "im-disp" }],
+          "hand": ["im-disp", "im-dipole", "im-hbond", "im-ionic"],
+          "hint": "Hexane is nonpolar and has no O–H or N–H.",
+          "explain": {
+            "im-disp": "Right! Only dispersion forces. They're weak individually but grow with molecular size, which is why bigger alkanes boil higher.",
+            "im-dipole": "Hexane has essentially no permanent dipole (C–H is nearly nonpolar). Only dispersion forces act.",
+            "im-hbond": "Hydrogen bonds need O–H or N–H. Hexane has only C–H: dispersion forces only.",
+            "im-ionic": "Hexane has no ions. Only weak dispersion forces hold the liquid together."
+          }
+        },
+        {
+          "id": "a2-trend", "kind": "rank", "section": "3.5",
+          "prompt": "Rank these straight-chain alkanes from LOWEST to HIGHEST boiling point. (Figure 3.5)",
+          "slots": [
+            { "label": "Lowest bp", "answer": "bp-ethane" },
+            { "label": "2nd", "answer": "bp-butane" },
+            { "label": "3rd", "answer": "bp-hexane" },
+            { "label": "Highest bp", "answer": "bp-decane" }
+          ],
+          "hand": ["bp-decane", "bp-ethane", "bp-hexane", "bp-butane"],
+          "hint": "Bigger molecule, more dispersion force.",
+          "why": "Boiling points rise steadily with chain length: ethane < butane < hexane < decane.",
+          "explain": {
+            "bp-ethane": "Ethane, the smallest: weakest dispersion forces, lowest bp (a gas well below room temperature).",
+            "bp-butane": "Butane: 4 carbons. Still a gas at room temperature, but it boils higher than ethane.",
+            "bp-hexane": "Hexane: 6 carbons. A liquid at room temperature.",
+            "bp-decane": "Decane: 10 carbons. The largest, with the most dispersion force: the highest bp."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1", "path": "B", "title": "Isomers & Alkyl Groups", "requires": ["intro"], "pick": 3,
+      "lesson": [
+        { "text": "Isomers: same formula, different arrangement. If the CONNECTIONS differ, they're constitutional isomers. Different compounds. Different properties. Don't mix them up or I'll sulk. More than usual." },
+        { "text": "The number of alkane isomers explodes. C₄H₁₀: 2. C₅H₁₂: 3. C₆H₁₄: 5. C₇H₁₆: 9. C₁₀H₂₂: 75. C₂₀H₄₂: over 366,000. (Table 3.2)", "art": "2 · 3 · 5 · 9 · 18 · 35 · 75" },
+        { "text": "Isomers don't have to be alkanes. They can differ in skeleton (butane vs. isobutane), functional group (ethanol vs. dimethyl ether, both C₂H₆O), or where a group sits (propylamine vs. isopropylamine).", "smiles": "COC" },
+        { "text": "Pull an H off an alkane and you get an ALKYL GROUP: -ane becomes -yl. Methyl –CH₃, ethyl –CH₂CH₃, propyl, butyl. Pull the H from an inner carbon and you get branched ones: isopropyl –CH(CH₃)₂, sec-butyl, isobutyl, tert-butyl –C(CH₃)₃.", "art": "–CH(CH₃)₂  –C(CH₃)₃" },
+        { "text": "Carbons get ranks by how many OTHER carbons they're bonded to: one is primary (1°), two is secondary (2°), three is tertiary (3°), four is quaternary (4°). Hydrogens take the rank of their carbon. There's no quaternary hydrogen. Think about why.", "smiles": "CC(C)(C)CC" },
+        { "text": "Worked example: isobutane, (CH₃)₃CH. The middle carbon touches three carbons, so it's tertiary, and its lone H is a tertiary H. The three CH₃ carbons are primary, with 9 primary H's. Done. Shoo." }
+      ],
+      "problems": [
+        {
+          "id": "b1-c6", "kind": "single", "section": "3.2",
+          "prompt": "How many constitutional isomers have the formula C₆H₁₄? (Problem 3-4, Table 3.2)",
+          "slots": [{ "label": "Isomers:", "answer": "n5" }],
+          "hand": ["n5", "n4", "n6", "n9"],
+          "hint": "Hexane, two methylpentanes, and two dimethylbutanes.",
+          "explain": {
+            "n5": "Right! Five: hexane, 2-methylpentane, 3-methylpentane, 2,2-dimethylbutane, and 2,3-dimethylbutane.",
+            "n4": "One short. Don't forget there are TWO dimethylbutanes (2,2- and 2,3-). The total is 5.",
+            "n6": "One too many. Watch for duplicates: '4-methylpentane' is just 2-methylpentane numbered from the wrong end. The total is 5.",
+            "n9": "Nine is the count for C₇H₁₆. C₆H₁₄ has 5."
+          }
+        },
+        {
+          "id": "b1-c3h8o", "kind": "single", "section": "3.2",
+          "prompt": "How many ALCOHOLS have the formula C₃H₈O? (Problem 3-6a)",
+          "slots": [{ "label": "Alcohols:", "answer": "n2" }],
+          "hand": ["n2", "n1", "n3", "n4"],
+          "hint": "Put the –OH on an end carbon, then on the middle carbon.",
+          "explain": {
+            "n2": "Right! Two: 1-propanol (–OH on an end carbon) and 2-propanol (–OH on the middle carbon).",
+            "n1": "The –OH can go on an end carbon OR the middle carbon. That's 2: 1-propanol and 2-propanol.",
+            "n3": "Both end carbons are the same position, so they count once. Only 2: 1-propanol and 2-propanol. (Methyl ethyl ether is also C₃H₈O, but it's an ether.)",
+            "n4": "Too many. Only two alcohols: 1-propanol and 2-propanol."
+          }
+        },
+        {
+          "id": "b1-c4h9br", "kind": "single", "section": "3.2",
+          "prompt": "How many BROMOALKANES have the formula C₄H₉Br? (Problem 3-6b)",
+          "slots": [{ "label": "Bromoalkanes:", "answer": "n4" }],
+          "hand": ["n4", "n2", "n3", "n5"],
+          "hint": "Try both C₄ skeletons (straight and branched), and every unique spot for Br on each.",
+          "explain": {
+            "n4": "Right! Four: 1-bromobutane and 2-bromobutane on the straight chain, and 1-bromo-2-methylpropane and 2-bromo-2-methylpropane on the branched one.",
+            "n2": "That's only the straight chain. The branched C₄ skeleton gives two more, so 4 in all.",
+            "n3": "One short. Each skeleton has TWO unique positions for Br, so 4 in all.",
+            "n5": "One too many. Watch for duplicates numbered from opposite ends. There are 4."
+          }
+        },
+        {
+          "id": "b1-etoh", "kind": "single", "section": "3.2",
+          "prompt": "Ethanol (CH₃CH₂OH) and dimethyl ether (CH₃OCH₃) are both C₂H₆O. What are they?",
+          "smiles": "CCO",
+          "slots": [{ "label": "They are...", "answer": "iso-const" }],
+          "hand": ["iso-const", "iso-same", "iso-conf", "iso-diff"],
+          "hint": "Is the O connected the same way in both?",
+          "explain": {
+            "iso-const": "Right! Same formula, different connections: C–C–O–H vs C–O–C. Constitutional isomers with DIFFERENT functional groups (an alcohol and an ether).",
+            "iso-same": "Ethanol has C–C–O and dimethyl ether has C–O–C. No redrawing changes that. Different compounds: constitutional isomers.",
+            "iso-conf": "No bond rotation turns C–C–O into C–O–C. The connections differ, so they're constitutional isomers.",
+            "iso-diff": "Count again: both are C₂H₆O. Same formula, different connections: constitutional isomers."
+          }
+        },
+        {
+          "id": "b1-quat", "kind": "single", "section": "3.3",
+          "prompt": "In 2,2-dimethylbutane, what kind of carbon is C2 (the one carrying both methyls)?",
+          "smiles": "CC(C)(C)CC",
+          "slots": [{ "label": "C2 is...", "answer": "c-quaternary" }],
+          "hand": ["c-quaternary", "c-tertiary", "c-secondary", "c-primary"],
+          "hint": "Count the carbons bonded to C2: C1, C3, and the two methyls.",
+          "explain": {
+            "c-quaternary": "Right! C2 is bonded to C1, C3, and two methyls: four other carbons. That's quaternary (4°), and it has no hydrogens left.",
+            "c-tertiary": "Tertiary means three carbon neighbors. C2 has four (C1, C3, and two methyls): quaternary.",
+            "c-secondary": "Secondary means two carbon neighbors, like a CH₂ in a chain. C2 has four: quaternary.",
+            "c-primary": "Primary means one carbon neighbor, like a CH₃ end. C2 has four: quaternary."
+          }
+        },
+        {
+          "id": "b1-alkyl", "kind": "match", "section": "3.3",
+          "prompt": "Match each alkyl group to its name. (Figure 3.4)",
+          "slots": [
+            { "label": "Isopropyl", "answer": "ag-iso" },
+            { "label": "tert-Butyl", "answer": "ag-tert" },
+            { "label": "Isobutyl", "answer": "ag-isobu" },
+            { "label": "sec-Butyl", "answer": "ag-sec" }
+          ],
+          "hand": ["ag-sec", "ag-iso", "ag-isobu", "ag-tert"],
+          "hint": "Look at the attachment carbon (written first). How many carbons are bonded to it?",
+          "explain": {
+            "ag-iso": "Isopropyl, –CH(CH₃)₂: three carbons, attached through the MIDDLE one.",
+            "ag-tert": "tert-Butyl, –C(CH₃)₃: four carbons, attached through a tertiary carbon that carries three methyls.",
+            "ag-isobu": "Isobutyl, –CH₂CH(CH₃)₂: four carbons, attached through an end CH₂, with the branch one carbon away.",
+            "ag-sec": "sec-Butyl, –CH(CH₃)CH₂CH₃: four carbons in a row, attached through a secondary (inner) carbon."
+          }
+        },
+        {
+          "id": "b1-quatH", "kind": "single", "section": "3.3",
+          "prompt": "There are primary, secondary, and tertiary hydrogens, but no QUATERNARY hydrogens. Why not?",
+          "slots": [{ "label": "Because...", "answer": "qh-room" }],
+          "hand": ["qh-room", "qh-acidic", "qh-rare", "qh-methyl"],
+          "hint": "How many bonds does a quaternary carbon have left over?",
+          "explain": {
+            "qh-room": "Right! A quaternary carbon uses all four bonds on other carbons. There's no bond left for a hydrogen.",
+            "qh-acidic": "It's not about acidity. A quaternary carbon has four carbon neighbors, so it has no room for an H at all.",
+            "qh-rare": "They don't exist at all. A quaternary carbon's four bonds all go to carbons.",
+            "qh-methyl": "Methyl H's are PRIMARY (a CH₃ has one carbon neighbor). Quaternary carbons have no H's at all."
+          }
+        },
+        {
+          "id": "b1-tertOH", "kind": "single", "section": "3.3",
+          "prompt": "'Citric acid is a TERTIARY alcohol.' What does that tell you?",
+          "slots": [{ "label": "The –OH carbon has...", "answer": "ta-3c" }],
+          "hand": ["ta-3c", "ta-3oh", "ta-3h", "ta-c3"],
+          "hint": "1°, 2°, 3° count something on the carbon holding the group.",
+          "explain": {
+            "ta-3c": "Right! A tertiary alcohol has its –OH on a carbon that is itself bonded to three other carbons.",
+            "ta-3oh": "'Tertiary' isn't a count of –OH groups. It means the –OH carbon is bonded to three other carbons.",
+            "ta-3h": "A carbon with an –OH and three H's would be methanol's carbon, with zero carbon neighbors. Tertiary means three CARBON neighbors.",
+            "ta-c3": "It's not a position number. Tertiary means the –OH carbon is bonded to three other carbons."
+          }
+        },
+        {
+          "id": "b1-isobuH", "kind": "single", "section": "3.3",
+          "prompt": "How many TERTIARY hydrogens does 2-methylpropane, (CH₃)₃CH, have?",
+          "smiles": "CC(C)C",
+          "slots": [{ "label": "Tertiary H's:", "answer": "n1" }],
+          "hand": ["n1", "n3", "n9", "n0"],
+          "hint": "Find the tertiary carbon first. How many H's does it hold?",
+          "explain": {
+            "n1": "Right! The central carbon is bonded to three carbons (tertiary) and holds just ONE hydrogen. The other 9 H's are on primary CH₃ carbons.",
+            "n3": "Three is the number of carbons on the central carbon. That carbon holds only one H, so there's 1 tertiary H.",
+            "n9": "Those 9 are on the three CH₃ groups, which are PRIMARY carbons. The one tertiary H is on the central carbon.",
+            "n0": "The central carbon is tertiary (three carbon neighbors), and it still has room for one H. So there's 1."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2", "path": "B", "title": "Naming Alkanes", "requires": ["b1"], "pick": 3,
+      "lesson": [
+        { "text": "Naming. Finally, rules. I like rules. Rules don't ask me to smile. An IUPAC name has a parent (the main chain), prefixes (substituents), and locants (numbers that say where)." },
+        { "text": "Step 1: find the LONGEST continuous chain, even if you have to turn corners. That's the parent. If two chains tie, pick the one with MORE branch points.", "smiles": "CC(C)C(C)CC" },
+        { "text": "Step 2: number from the end NEARER the first branch. If the first branches tie, go to the second branch. Step 3: give every substituent a number. Two on the same carbon? Both get that number.", "art": "2,2,5 not 2,5,5" },
+        { "text": "Step 4: write it as one word. Commas between numbers, hyphens between numbers and words. List different substituents ALPHABETICALLY. Use di-, tri-, tetra- for repeats, but IGNORE those for alphabetizing.", "art": "3-ethyl-2-methylhexane" },
+        { "text": "Common names are allowed for a few groups: isopropyl, isobutyl, sec-butyl, tert-butyl. For alphabetizing, 'iso' counts (isopropyl goes under i), but sec- and tert- don't (tert-butyl goes under b).", "art": "t-Bu → b · iPr → i" },
+        { "text": "Worked example: 2,3-dimethylpentane. The longest chain is 5 (pentane). Numbering from the left puts methyls on C2 and C3, which beats C3 and C4 from the right. Two methyls make 'dimethyl.' Now you do it.", "smiles": "CC(C)C(C)CC" }
+      ],
+      "problems": [
+        {
+          "id": "b2-23dmp", "kind": "single", "section": "3.4",
+          "prompt": "Give the IUPAC name. (Problem 3-11b)",
+          "smiles": "CC(C)C(C)CC",
+          "slots": [{ "label": "Name:", "answer": "na-23dmp" }],
+          "hand": ["na-23dmp", "na-34dmp", "na-2e3mb", "na-heptane"],
+          "hint": "Longest chain first, then number from the end closer to a branch.",
+          "explain": {
+            "na-23dmp": "Right! The longest chain is 5 carbons (pentane). Numbering from the end nearer the branches puts methyls on C2 and C3.",
+            "na-34dmp": "Right chain, wrong end. Number from the end NEARER the first branch: 2,3 beats 3,4.",
+            "na-2e3mb": "That chain is only 4 long. Going through the 'ethyl' gives a 5-carbon chain, so the parent is pentane: 2,3-dimethylpentane.",
+            "na-heptane": "It has 7 carbons (C₇H₁₆), but heptane is the STRAIGHT 7-chain. This one branches: 2,3-dimethylpentane."
+          }
+        },
+        {
+          "id": "b2-24dmp", "kind": "single", "section": "3.4",
+          "prompt": "Give the IUPAC name. (Problem 3-11c)",
+          "smiles": "CC(C)CC(C)C",
+          "slots": [{ "label": "Name:", "answer": "na-24dmp" }],
+          "hand": ["na-24dmp", "na-13dmp", "na-2m4mp", "nm-3mp"],
+          "hint": "Two identical substituents get one multiplier prefix.",
+          "explain": {
+            "na-24dmp": "Right! A 5-carbon chain with methyls on C2 and C4. Two methyls: 2,4-dimethylpentane.",
+            "na-13dmp": "A methyl on C1 means you didn't use the longest chain. That 'methyl' is really part of the chain. The longest chain is 5 with methyls on 2 and 4.",
+            "na-2m4mp": "Identical substituents get combined with a multiplier: 2,4-DImethylpentane, not 2-methyl-4-methyl.",
+            "nm-3mp": "3-Methylpentane has only 6 carbons. This molecule has 7: 2,4-dimethylpentane."
+          }
+        },
+        {
+          "id": "b2-225tmh", "kind": "single", "section": "3.4",
+          "prompt": "Give the IUPAC name. (Problem 3-11d)",
+          "smiles": "CC(C)(C)CCC(C)C",
+          "slots": [{ "label": "Name:", "answer": "na-225tmh" }],
+          "hand": ["na-225tmh", "na-255tmh", "na-225tmhep", "na-24dmp"],
+          "hint": "Both ends hit a branch at C2. Then compare the next number.",
+          "explain": {
+            "na-225tmh": "Right! The longest chain is 6 (hexane). Either end gives a first branch at C2, so compare the next: 2,2,5 beats 2,5,5.",
+            "na-255tmh": "Both ends reach a branch at C2, so look at the next branch: 2,2,5 is lower than 2,5,5 at the first difference.",
+            "na-225tmhep": "Count the main chain again: 6 carbons, so hexane. The 9 carbons include 3 methyls.",
+            "na-24dmp": "This has 9 carbons, not 7. Hexane chain with three methyls: 2,2,5-trimethylhexane."
+          }
+        },
+        {
+          "id": "b2-3e2mh", "kind": "single", "section": "3.4",
+          "prompt": "Give the IUPAC name.",
+          "smiles": "CC(C)C(CC)CCC",
+          "slots": [{ "label": "Name:", "answer": "na-3e2mh" }],
+          "hand": ["na-3e2mh", "na-2m3eh", "na-4e5mh", "na-3iph"],
+          "hint": "Two different 6-carbon chains tie. Pick the one with more branch points. Then alphabetize.",
+          "explain": {
+            "na-3e2mh": "Right! Six-carbon chain with two branch points: a methyl on C2 and an ethyl on C3. Alphabetical: ethyl before methyl.",
+            "na-2m3eh": "Right numbers, wrong order. Substituents are listed alphabetically: Ethyl comes before Methyl. 3-Ethyl-2-methylhexane.",
+            "na-4e5mh": "You numbered from the wrong end. The first branch should get the LOWEST number: C2, not C5.",
+            "na-3iph": "That 6-chain has only ONE branch point. A tying 6-chain with TWO branch points wins (Rule 1b): 3-ethyl-2-methylhexane."
+          }
+        },
+        {
+          "id": "b2-3ip2mh", "kind": "single", "section": "3.4",
+          "prompt": "Which structure is 3-isopropyl-2-methylhexane? (Worked Example 3.3)",
+          "slots": [{ "label": "3-Isopropyl-2-methylhexane:", "answer": "s-3ip2mh" }],
+          "hand": ["s-3ip2mh", "s-4iph", "s-ipfar", "s-2mh"],
+          "hint": "Draw hexane, put a methyl on C2 and an isopropyl on C3, right next to it.",
+          "explain": {
+            "s-3ip2mh": "Right! A hexane chain with a methyl on C2 and an isopropyl, –CH(CH₃)₂, on the neighboring C3.",
+            "s-4iph": "This one is 4-isopropylheptane: the isopropyl sits in the middle of a 7-carbon chain, and there's no 2-methyl.",
+            "s-ipfar": "This has the isopropyl group farther down the chain, not on C3 right next to the methyl-bearing C2.",
+            "s-2mh": "This is 2-methylhexane, with no isopropyl group at all."
+          }
+        },
+        {
+          "id": "b2-alpha", "kind": "order", "section": "3.4",
+          "prompt": "A name contains these four prefixes. Put them in the order they're CITED (alphabetical).",
+          "slots": [
+            { "label": "1st", "answer": "ab-tbu" },
+            { "label": "2nd", "answer": "ab-ethyl" },
+            { "label": "3rd", "answer": "ab-ipr" },
+            { "label": "4th", "answer": "ab-dime" }
+          ],
+          "hand": ["ab-dime", "ab-ipr", "ab-tbu", "ab-ethyl"],
+          "hint": "Ignore 'tert-' and 'di-'. Keep 'iso'.",
+          "why": "Alphabetize on butyl (b), ethyl (e), isopropyl (i), methyl (m). tert- and di- are ignored; iso is part of the name.",
+          "explain": {
+            "ab-tbu": "tert-Butyl alphabetizes under B (tert- is ignored), so it comes FIRST.",
+            "ab-ethyl": "Ethyl: E, second.",
+            "ab-ipr": "Isopropyl alphabetizes under I, because the unhyphenated 'iso' counts. Third.",
+            "ab-dime": "Dimethyl alphabetizes under M, because the multiplier 'di' is ignored. Last."
+          }
+        },
+        {
+          "id": "b2-4mp", "kind": "single", "section": "3.4",
+          "prompt": "Someone named a compound '4-methylpentane.' That breaks a numbering rule. What's the correct name?",
+          "slots": [{ "label": "Correct name:", "answer": "nm-2mp" }],
+          "hand": ["nm-2mp", "nm-4mp", "nm-3mp", "nm-2mb"],
+          "hint": "Renumber from the other end of the chain.",
+          "explain": {
+            "nm-2mp": "Right! Number from the end nearer the branch: a methyl on C4 counted one way is on C2 counted the other way. 2-Methylpentane.",
+            "nm-4mp": "That's the broken name. Number from the end nearer the branch: 2-methylpentane.",
+            "nm-3mp": "3-Methylpentane is a DIFFERENT compound (the methyl is in the exact middle). C4 from one end is C2 from the other: 2-methylpentane.",
+            "nm-2mb": "Renumbering doesn't change the chain length. It's still pentane: 2-methylpentane."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c1", "path": "C", "title": "Newman Projections", "requires": ["intro"], "pick": 3,
+      "lesson": [
+        { "text": "Ah. MY chapter. Single bonds are cylindrically symmetrical, so they can ROTATE. Each different arrangement from rotation is a CONFORMATION. Molecules in different conformations are conformers." },
+        { "text": "A Newman projection looks straight down a C–C bond, end-on. Like I do. All day. Every day. The front carbon is a dot where its three bonds meet in the CENTER. The back carbon is a circle, and its bonds stick out from the circle's EDGE.", "art": "front: to center · back: from the edge" },
+        { "text": "Rotation isn't perfectly free. In ethane, STAGGERED (bonds 60° apart, as far as possible) is the most stable. ECLIPSED (bonds lined up) is the least stable, 12 kJ/mol higher. At any instant about 99% of ethane molecules are roughly staggered.", "art": "staggered ✶ · eclipsed ‖" },
+        { "text": "That extra 12 kJ/mol is TORSIONAL STRAIN. There are three H↔H eclipsing interactions, so each one costs about 4.0 kJ/mol (1.0 kcal/mol). Mind the units.", "art": "12 ÷ 3 = 4.0 kJ/mol" },
+        { "text": "Conformers interconvert far too fast to separate. Spin the back carbon: staggered, eclipsed, staggered, eclipsed, every 60°. Energy minimum, maximum, minimum. Like my mood." }
+      ],
+      "problems": [
+        {
+          "id": "c1-barrier", "kind": "single", "section": "3.6",
+          "prompt": "How much higher in energy is ethane's eclipsed conformation than its staggered one?",
+          "slots": [{ "label": "Barrier:", "answer": "e-12" }],
+          "hand": ["e-12", "e-4", "e-38", "e-19"],
+          "hint": "Three H↔H eclipsing interactions in total.",
+          "explain": {
+            "e-12": "Right! 12 kJ/mol (2.9 kcal/mol): three H↔H eclipsing interactions at about 4.0 kJ/mol each.",
+            "e-4": "4.0 kJ/mol is ONE H↔H interaction. Eclipsed ethane has three, for a total of 12 kJ/mol.",
+            "e-38": "3.8 kJ/mol is butane's gauche (steric) strain. Ethane's eclipsing barrier is 12 kJ/mol.",
+            "e-19": "19 kJ/mol is butane's fully eclipsed conformation. Ethane's barrier is 12 kJ/mol."
+          }
+        },
+        {
+          "id": "c1-perHH", "kind": "single", "section": "3.6",
+          "prompt": "Ethane's 12 kJ/mol barrier comes from three equal H↔H eclipsing interactions. How much does EACH one cost?",
+          "slots": [{ "label": "Per H↔H:", "answer": "e-4" }],
+          "hand": ["e-4", "e-12", "e-1kj", "e-6"],
+          "hint": "Divide, and watch the units.",
+          "explain": {
+            "e-4": "Right! 12 ÷ 3 = 4.0 kJ/mol per H↔H eclipsing interaction (which is 1.0 kcal/mol).",
+            "e-12": "12 kJ/mol is the TOTAL for all three. Each one is 12 ÷ 3 = 4.0 kJ/mol.",
+            "e-1kj": "Unit trap! It's 1.0 kcal/mol, which is 4.0 kJ/mol. Not 1.0 kJ/mol.",
+            "e-6": "6.0 kJ/mol is an H↔CH₃ eclipsing interaction (from propane). H↔H is 4.0 kJ/mol."
+          }
+        },
+        {
+          "id": "c1-strain", "kind": "single", "section": "3.6",
+          "prompt": "What is the extra energy of ethane's eclipsed conformation called?",
+          "slots": [{ "label": "It's called...", "answer": "st-torsional" }],
+          "hand": ["st-torsional", "st-steric", "st-angle", "st-resonance"],
+          "hint": "It's about bonds on neighboring carbons lining up, not atoms bumping into each other.",
+          "explain": {
+            "st-torsional": "Right! Torsional strain: the cost of eclipsed bonds on neighboring carbons. In ethane, mostly from C–H bonding/antibonding orbital interactions favoring staggered.",
+            "st-steric": "Steric strain is atoms crammed closer than their size allows, like the methyls in gauche butane. Ethane's tiny H's give torsional strain.",
+            "st-angle": "Angle strain comes from squeezed bond angles, as in small rings (next floor). Ethane's angles are normal: this is torsional strain.",
+            "st-resonance": "Resonance isn't involved. Ethane's eclipsed form is higher in energy because of torsional strain."
+          }
+        },
+        {
+          "id": "c1-back", "kind": "single", "section": "3.6",
+          "prompt": "In a Newman projection, how are the bonds to the BACK carbon drawn?",
+          "slots": [{ "label": "Back-carbon bonds go...", "answer": "nw-edge" }],
+          "hand": ["nw-edge", "nw-center", "nw-wedge", "nw-dash"],
+          "hint": "The back carbon is hidden behind a circle.",
+          "explain": {
+            "nw-edge": "Right! The back carbon is the circle, so its bonds start at the circle's edge. The front carbon's bonds meet at the center.",
+            "nw-center": "Bonds meeting at the center belong to the FRONT carbon. The back carbon's bonds come out from the circle's edge.",
+            "nw-wedge": "Wedges are for regular 3-D drawings. In a Newman projection, back-carbon bonds come off the circle's edge.",
+            "nw-dash": "Dashes are for regular 3-D drawings. In a Newman projection, back-carbon bonds come off the circle's edge."
+          }
+        },
+        {
+          "id": "c1-bottle", "kind": "single", "section": "3.6",
+          "prompt": "Why can't you fill one bottle with staggered ethane and another with eclipsed ethane?",
+          "slots": [{ "label": "Because...", "answer": "cf-fast" }],
+          "hand": ["cf-fast", "cf-explode", "cf-formula", "cf-norot"],
+          "hint": "How high is the barrier compared to room-temperature energy?",
+          "explain": {
+            "cf-fast": "Right! The barrier is only 12 kJ/mol, so conformers interconvert far too rapidly to isolate. (Unlike constitutional isomers, which you can bottle separately.)",
+            "cf-explode": "Eclipsed ethane is only 12 kJ/mol higher. It just rotates back. The conformers interconvert too quickly to separate.",
+            "cf-formula": "Conformers have the same formula AND the same connections. They only differ by rotation, which happens too fast to separate them.",
+            "cf-norot": "C–C single bonds rotate easily, which is exactly why you can't separate conformers. They interconvert constantly."
+          }
+        },
+        {
+          "id": "c1-percent", "kind": "single", "section": "3.6",
+          "prompt": "At any given instant, roughly what fraction of ethane molecules are in an approximately staggered conformation?",
+          "slots": [{ "label": "Fraction staggered:", "answer": "pc-99" }],
+          "hand": ["pc-99", "pc-50", "pc-1", "pc-100"],
+          "hint": "Staggered is lower in energy by 12 kJ/mol, but rotation never stops.",
+          "explain": {
+            "pc-99": "Right! About 99% are near staggered, and only about 1% are near eclipsed at any instant.",
+            "pc-50": "If both were equally stable, maybe. Staggered is 12 kJ/mol lower, so about 99% are near staggered.",
+            "pc-1": "Backwards: about 1% are near ECLIPSED. About 99% are near staggered.",
+            "pc-100": "Not quite all. Rotation never stops, so about 1% are passing through eclipsed at any instant. About 99% are staggered."
+          }
+        },
+        {
+          "id": "c1-spin", "kind": "order", "section": "3.6",
+          "prompt": "Start ethane in a staggered conformation (0°). Rotate the back carbon in 60° steps. What conformation do you reach at each step?",
+          "slots": [
+            { "label": "+60°", "answer": "cn-ecl" },
+            { "label": "+120°", "answer": "cn-stag" },
+            { "label": "+180°", "answer": "cn-ecl" }
+          ],
+          "hand": ["cn-ecl", "cn-stag", "cn-ecl", "cn-gauche"],
+          "hint": "Staggered and eclipsed alternate every 60°.",
+          "why": "Staggered (0°) → eclipsed (60°) → staggered (120°) → eclipsed (180°): they alternate every 60°.",
+          "explain": {
+            "cn-ecl": "Eclipsed: 60° from any staggered conformation, the front and back C–H bonds line up.",
+            "cn-stag": "Staggered: another 60° turns eclipsed back into staggered.",
+            "cn-gauche": "'Gauche' describes two LARGE groups 60° apart, as in butane. Ethane has only H's, so its staggered forms are all identical."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c2", "path": "C", "title": "Butane's Bad Days", "requires": ["c1"], "pick": 3,
+      "lesson": [
+        { "text": "Bigger alkanes, bigger problems. Propane's barrier is 14 kJ/mol. Its eclipsed form has two H↔H interactions (4.0 each) and one H↔CH₃. So H↔CH₃ costs 14 − 8 = 6.0 kJ/mol.", "art": "14 − 2(4.0) = 6.0" },
+        { "text": "Now butane, looking down C2–C3. ANTI: the methyls are 180° apart. The most stable. Rotate 60°: eclipsed, with two CH₃↔H plus one H↔H, 2(6.0) + 4.0 = 16 kJ/mol." },
+        { "text": "Another 60°: GAUCHE. Staggered, but the methyls are 60° apart, close enough to bump. That's STERIC STRAIN: atoms forced closer than their size allows. Gauche is 3.8 kJ/mol above anti.", "art": "anti 0 · gauche 3.8" },
+        { "text": "Another 60°: methyls fully eclipsed. Torsional AND steric strain: 19 kJ/mol. Subtract the two H↔H (8.0), and CH₃↔CH₃ eclipsing costs 11 kJ/mol. Then the cycle mirrors back. (Table 3.5)", "art": "H↔H 4.0 · H↔CH₃ 6.0 · CH₃↔CH₃ 11 · gauche 3.8" },
+        { "text": "Rule of thumb: the most stable conformation of any alkane is staggered, with the big groups anti. And 'more stable' doesn't mean stuck. Everything keeps interconverting; the stable one is just the most common at any moment." },
+        { "text": "Worked example: 1-chloropropane, sighting down C1–C2. Most stable: staggered with Cl anti to CH₃. Least stable: eclipsed with Cl lined up on CH₃. Now go. I've talked more today than in a century." }
+      ],
+      "problems": [
+        {
+          "id": "c2-propane", "kind": "single", "section": "3.7",
+          "prompt": "What is propane's barrier to rotation around a C–C bond?",
+          "slots": [{ "label": "Barrier:", "answer": "e-14" }],
+          "hand": ["e-14", "e-12", "e-16", "e-18"],
+          "hint": "Slightly higher than ethane's, because one H is now a CH₃.",
+          "explain": {
+            "e-14": "Right! 14 kJ/mol (3.4 kcal/mol): two H↔H (4.0 each) plus one H↔CH₃ (6.0).",
+            "e-12": "12 kJ/mol is ethane's. Propane's is a bit higher, 14 kJ/mol, because one eclipsing partner is a CH₃.",
+            "e-16": "16 kJ/mol is butane's CH₃↔H eclipsed form. Propane's barrier is 14 kJ/mol.",
+            "e-18": "Too high. Propane: 2(4.0) + 6.0 = 14 kJ/mol."
+          }
+        },
+        {
+          "id": "c2-hch3", "kind": "single", "section": "3.7",
+          "prompt": "Propane's barrier is 14 kJ/mol. Its eclipsed form has two H↔H interactions (4.0 kJ/mol each) and one H↔CH₃. What does the H↔CH₃ interaction cost?",
+          "slots": [{ "label": "H↔CH₃:", "answer": "e-6" }],
+          "hand": ["e-6", "e-10", "e-4", "e-14"],
+          "hint": "Subtract what you already know from the total.",
+          "explain": {
+            "e-6": "Right! 14 − 2(4.0) = 6.0 kJ/mol (1.4 kcal/mol). Mostly torsional strain.",
+            "e-10": "You subtracted only ONE H↔H. There are two: 14 − 8.0 = 6.0 kJ/mol.",
+            "e-4": "4.0 kJ/mol is H↔H. The bulkier H↔CH₃ costs more: 14 − 8.0 = 6.0 kJ/mol.",
+            "e-14": "14 kJ/mol is the total for all three interactions. H↔CH₃ alone is 14 − 8.0 = 6.0 kJ/mol."
+          }
+        },
+        {
+          "id": "c2-rank", "kind": "rank", "section": "3.7",
+          "prompt": "Rank butane's conformations (around C2–C3) from MOST stable to LEAST stable. (Figure 3.10)",
+          "slots": [
+            { "label": "Most stable", "answer": "cn-anti" },
+            { "label": "2nd", "answer": "cn-gauche" },
+            { "label": "3rd", "answer": "cn-ecl-mh" },
+            { "label": "Least stable", "answer": "cn-ecl-mm" }
+          ],
+          "hand": ["cn-ecl-mm", "cn-gauche", "cn-ecl-mh", "cn-anti"],
+          "hint": "Staggered beats eclipsed. Then: how close are the methyls?",
+          "why": "Anti 0 < gauche 3.8 < eclipsed CH₃↔H 16 < eclipsed CH₃↔CH₃ 19 kJ/mol.",
+          "explain": {
+            "cn-anti": "Anti (180°): staggered, methyls as far apart as possible. The energy minimum.",
+            "cn-gauche": "Gauche (60°): staggered, but the methyls bump. 3.8 kJ/mol of steric strain.",
+            "cn-ecl-mh": "Eclipsed, CH₃↔H (120°): 2(6.0) + 4.0 = 16 kJ/mol.",
+            "cn-ecl-mm": "Eclipsed, CH₃↔CH₃ (0°): torsional plus steric strain, 19 kJ/mol. The energy maximum."
+          }
+        },
+        {
+          "id": "c2-gauche", "kind": "single", "section": "3.7",
+          "prompt": "Gauche butane has NO eclipsing interactions, yet it's 3.8 kJ/mol above anti. What kind of strain is that?",
+          "slots": [{ "label": "Strain:", "answer": "st-steric" }],
+          "hand": ["st-steric", "st-torsional", "st-angle", "st-hbond"],
+          "hint": "The methyls aren't eclipsed. They're just too close.",
+          "explain": {
+            "st-steric": "Right! Steric strain: the methyl groups' hydrogens are forced closer than their atomic radii allow.",
+            "st-torsional": "Torsional strain comes from ECLIPSED bonds. Gauche is staggered. Its 3.8 kJ/mol is steric strain from the crowded methyls.",
+            "st-angle": "Butane's bond angles are normal. Gauche strain comes from methyls bumping: steric strain.",
+            "st-hbond": "C–H's don't hydrogen-bond, and H-bonds would LOWER the energy anyway. This is steric strain."
+          }
+        },
+        {
+          "id": "c2-isobutane", "kind": "single", "section": "3.7",
+          "prompt": "Sight down the C2–C1 bond of 2-methylpropane. Its eclipsed conformation has two H↔CH₃ interactions and one H↔H. What's the barrier? (Problem 3-16)",
+          "smiles": "CC(C)C",
+          "slots": [{ "label": "Barrier:", "answer": "e-16" }],
+          "hand": ["e-16", "e-14", "e-12", "e-18"],
+          "hint": "H↔CH₃ is 6.0 kJ/mol and H↔H is 4.0 kJ/mol.",
+          "explain": {
+            "e-16": "Right! 2(6.0) + 4.0 = 16 kJ/mol.",
+            "e-14": "That's propane, with only ONE H↔CH₃. 2-Methylpropane has two: 2(6.0) + 4.0 = 16 kJ/mol.",
+            "e-12": "That's ethane, with three H↔H. Here two of them are H↔CH₃: 2(6.0) + 4.0 = 16 kJ/mol.",
+            "e-18": "That would be three H↔CH₃. Only two methyls are on C2 here: 2(6.0) + 4.0 = 16 kJ/mol."
+          }
+        },
+        {
+          "id": "c2-fullecl", "kind": "single", "section": "3.7",
+          "prompt": "Butane's fully eclipsed conformation (methyls lined up) costs 19 kJ/mol total. It also has two H↔H eclipses (4.0 each). What does CH₃↔CH₃ eclipsing cost?",
+          "slots": [{ "label": "CH₃↔CH₃:", "answer": "e-11" }],
+          "hand": ["e-11", "e-19", "e-15", "e-38"],
+          "hint": "Total minus the two H↔H.",
+          "explain": {
+            "e-11": "Right! 19 − 2(4.0) = 11 kJ/mol (2.6 kcal/mol): torsional plus steric strain.",
+            "e-19": "19 kJ/mol is the whole conformation. Subtract the two H↔H: 19 − 8.0 = 11 kJ/mol.",
+            "e-15": "You subtracted only one H↔H. There are two: 19 − 8.0 = 11 kJ/mol.",
+            "e-38": "3.8 kJ/mol is the GAUCHE interaction (staggered). Eclipsed CH₃↔CH₃ is 19 − 8.0 = 11 kJ/mol."
+          }
+        },
+        {
+          "id": "c2-clprop", "kind": "single", "section": "3.7",
+          "prompt": "Sight down the C1–C2 bond of 1-chloropropane, ClCH₂–CH₂CH₃. Which conformation is MOST stable? (Worked Example 3.4)",
+          "smiles": "ClCCC",
+          "slots": [{ "label": "Most stable:", "answer": "cp-anti" }],
+          "hand": ["cp-anti", "cp-gauche", "cp-eclmm", "cp-eclh"],
+          "hint": "Staggered first, then keep the two big groups as far apart as possible.",
+          "explain": {
+            "cp-anti": "Right! Staggered, with the two largest groups (Cl and CH₃) anti, 180° apart.",
+            "cp-gauche": "Staggered is good, but Cl and CH₃ 60° apart crowd each other. Anti is better.",
+            "cp-eclmm": "That's the LEAST stable: eclipsed, with the two biggest groups lined up.",
+            "cp-eclh": "Any eclipsed conformation has torsional strain. Staggered with Cl anti to CH₃ is the most stable."
+          }
+        },
+        {
+          "id": "c2-23dmb", "kind": "single", "section": "3.7",
+          "prompt": "Sight down C2–C3 of 2,3-dimethylbutane. Each carbon has two CH₃'s and one H. In the MOST stable conformation, how many CH₃↔CH₃ gauche interactions are there? (Problem 3-17)",
+          "smiles": "CC(C)C(C)C",
+          "slots": [{ "label": "Gauche CH₃↔CH₃:", "answer": "n2" }],
+          "hand": ["n2", "n0", "n1", "n3"],
+          "hint": "Try putting the two H's anti to each other. Then check each front methyl against each back methyl.",
+          "explain": {
+            "n2": "Right! With the two H's anti, each front methyl is gauche to one back methyl and anti to the other. Two gauche interactions, 2 × 3.8 = 7.6 kJ/mol. The other staggered option has three.",
+            "n0": "With four methyls on two neighboring carbons, you can't put every pair anti. The best arrangement (H's anti) still has 2 gauche pairs.",
+            "n1": "Count both front methyls. With the H's anti, EACH front methyl is gauche to one back methyl: 2 in total.",
+            "n3": "That's the other staggered conformation (H's gauche). Putting the H's anti cuts it to 2, which is the most stable."
+          }
+        },
+        {
+          "id": "c2-equil", "kind": "single", "section": "3.7",
+          "prompt": "'Anti butane is more stable than gauche butane.' What does that actually mean?",
+          "slots": [{ "label": "It means...", "answer": "eq-more" }],
+          "hand": ["eq-more", "eq-locked", "eq-never", "eq-formula"],
+          "hint": "Rotation at room temperature is very fast.",
+          "explain": {
+            "eq-more": "Right! All conformers are in rapid equilibrium. At any instant, a larger percentage of molecules happens to be anti.",
+            "eq-locked": "Nothing is locked. Rotation is so fast that every molecule keeps passing through all the conformations. Anti is just the most common.",
+            "eq-never": "Gauche absolutely forms: it's only 3.8 kJ/mol higher. It's just less common than anti at any instant.",
+            "eq-formula": "Anti and gauche are the SAME compound, just rotated. They're conformers, not different compounds."
+          }
+        }
+      ]
+    }
+  ],
+  "boss": {
+    "id": "boss",
+    "name": "Magister Mordant",
+    "title": "The Fallen Alchemist",
+    "requires": ["a2", "b2", "c2"],
+    "pick": 8,
+    "drawFromLevels": true,
+    "damagePerCard": 10,
+    "coinReward": 140,
+    "palette": { "p": "#4b2a6b", "k": "#0d0614", "e": "#ff5a5a", "m": "#b34cff", "g": "#ff9e3c" },
+    "portrait": [
+      "......pppp......",
+      ".....pppppp.....",
+      "....pppppppp....",
+      "...pppkkkkppp...",
+      "...ppkkkkkkpp...",
+      "..ppkkekkekkpp..",
+      "..ppkkkkkkkkpp..",
+      "..ppkkkmmkkkpp..",
+      "..pppkkkkkkppp..",
+      ".ppppppkkpppppp.",
+      ".pppppppppppppp.",
+      "pppppppggppppppp",
+      "ppppppggggpppppp",
+      "pppppggggggppppp",
+      "ppppppggggpppppp",
+      "pppppppppppppppp"
+    ],
+    "intro": [
+      { "speaker": "boss", "text": "A gargoyle? THIS is your teacher now? A lump of stone that can only look at things end-on? How fitting. Stone memorizes. Stone never asks why." },
+      { "speaker": "npc", "text": "Hmph. I may be stone, Mordant, but I know WHY gauche costs 3.8 and anti costs nothing. You just carved the numbers into the wall." },
+      { "speaker": "boss", "text": "Then let's twist some chains, child. I'll scramble every name and eclipse every bond!" }
+    ],
+    "taunts": {
+      "wrong": [
+        "Longest chain? Who has time to count?",
+        "Eclipsed, just like your hopes.",
+        "You numbered from the wrong end. Again."
+      ],
+      "right": [
+        "Hmph. The gargoyle's grumbling sank in.",
+        "Staggered. Barely.",
+        "Fine. But my chains have more branches than that."
+      ]
+    },
+    "defeat": [
+      { "speaker": "boss", "text": "Impossible! You found the longest chain... around a CORNER!" },
+      { "speaker": "npc", "text": "That's what happens when you understand the rules instead of memorizing names. Not bad, climber. ...Don't tell anyone I said that." },
+      { "speaker": "boss", "text": "Enjoy your straight lines. Upstairs, the chains close into RINGS, and rings don't rotate so easily..." }
+    ],
+    "story": [
+      { "speaker": "narrator", "text": "Mordant's tangled chains unravel into neat, staggered zigzags. He vanishes up the stairwell in a puff of purple smoke." },
+      { "speaker": "npc", "text": "Take this. A chip of my own stone skin. Use it on a hard problem, and your mistakes there won't cost you a thing. You'll still have to read why you were wrong, though. I insist." },
+      { "speaker": "narrator", "text": "As you climb toward Floor 4, you hear fussy muttering from above: someone rearranging furniture and complaining about 'axial clutter.'" }
+    ],
+    "legendary": { "id": "gargoyle-stone", "name": "Gargoyle's Stone Skin", "effect": "stone", "rarity": "legendary", "desc": "For the rest of the current problem, wrong cards cost no hearts. They still flip and explain why. Won from Floor 3's boss." },
+    "cosmetic": { "id": "back-stone", "kind": "back", "name": "Gargoyle Stone" },
+    "problems": [
+      {
+        "id": "boss3-224tmh", "kind": "single", "section": "3.4",
+        "prompt": "Give the IUPAC name.",
+        "smiles": "CCC(C)CC(C)(C)C",
+        "slots": [{ "label": "Name:", "answer": "na-224tmh" }],
+        "hand": ["na-224tmh", "na-355tmh", "na-244tmh", "na-224tmp"],
+        "hint": "Count the longest chain, then pick the end that reaches a branch first.",
+        "explain": {
+          "na-224tmh": "Right! The longest chain is 6 (hexane). Numbering from the end with two methyls on one carbon gives 2,2,4. The other end gives 3,5,5.",
+          "na-355tmh": "Wrong end. From the other end, the first branch is at C2, not C3: 2,2,4-trimethylhexane.",
+          "na-244tmh": "That would put two methyls on C4. Here the carbon with two methyls is C2 (counted from the nearer end), and the single methyl is on C4.",
+          "na-224tmp": "Count the chain again: the longest chain has 6 carbons, so hexane. (2,2,4-Trimethylpentane is isooctane, with 8 carbons.)"
+        }
+      },
+      {
+        "id": "boss3-arecoline", "kind": "single", "section": "3.1",
+        "prompt": "Arecoline (Problem 3-3) contains an amine and a C=C. What's its oxygen-containing functional group?",
+        "smiles": "CN1CCC=C(C1)C(=O)OC",
+        "slots": [{ "label": "O-containing group:", "answer": "fg-ester" }],
+        "hand": ["fg-ester", "fg-acid", "fg-ether", "fg-ketone"],
+        "hint": "Find the C=O. Its carbon has another oxygen on it. What's on THAT oxygen?",
+        "explain": {
+          "fg-ester": "Right! The carbonyl carbon also carries –O–CH₃. Carbonyl plus –OR is an ester (a methyl ester).",
+          "fg-acid": "A carboxylic acid needs –OH on the carbonyl carbon. Here the second oxygen carries a CH₃: an ester.",
+          "fg-ether": "The –O–CH₃ is attached to a C=O carbon, which makes the whole thing an ester, not an ether.",
+          "fg-ketone": "A ketone has two CARBONS on its carbonyl carbon. This one has a carbon and an oxygen: an ester."
+        }
+      },
+      {
+        "id": "boss3-bp", "kind": "rank", "section": "3.5",
+        "prompt": "Rank from HIGHEST to LOWEST boiling point.",
+        "slots": [
+          { "label": "Highest bp", "answer": "bb-octane" },
+          { "label": "2nd", "answer": "bb-isooctane" },
+          { "label": "3rd", "answer": "bb-pentane" },
+          { "label": "Lowest bp", "answer": "bb-neopentane" }
+        ],
+        "hand": ["bb-pentane", "bb-neopentane", "bb-octane", "bb-isooctane"],
+        "hint": "Size matters most. Then, within the same size, branching lowers bp.",
+        "why": "Octane 125.7 °C > isooctane 99.3 °C > pentane 36.1 °C > neopentane 9.5 °C. The C₈'s beat the C₅'s, and branching lowers each pair.",
+        "explain": {
+          "bb-octane": "Octane: 8 carbons in a row. Biggest and least branched: 125.7 °C.",
+          "bb-isooctane": "Isooctane: also 8 carbons, but branched, so lower: 99.3 °C. Still far above the C₅'s.",
+          "bb-pentane": "Pentane: a 5-carbon straight chain: 36.1 °C.",
+          "bb-neopentane": "Neopentane: 5 carbons balled up. The lowest: 9.5 °C."
+        }
+      },
+      {
+        "id": "boss3-c5", "kind": "single", "section": "3.2",
+        "prompt": "How many constitutional isomers have the formula C₅H₁₂?",
+        "slots": [{ "label": "Isomers:", "answer": "n3" }],
+        "hand": ["n3", "n2", "n4", "n5"],
+        "hint": "Straight, one branch, two branches on the same carbon.",
+        "explain": {
+          "n3": "Right! Pentane, 2-methylbutane, and 2,2-dimethylpropane.",
+          "n2": "Two is the count for C₄H₁₀. C₅H₁₂ has 3.",
+          "n4": "One too many. Watch for duplicates numbered from opposite ends: there are only 3.",
+          "n5": "Five is the count for C₆H₁₄. C₅H₁₂ has 3."
+        }
+      },
+      {
+        "id": "boss3-min", "kind": "single", "section": "3.7",
+        "prompt": "On a graph of butane's energy vs. rotation around C2–C3, where is the lowest point?",
+        "slots": [{ "label": "Lowest energy:", "answer": "cn-anti" }],
+        "hand": ["cn-anti", "cn-gauche", "cn-ecl-mm", "cn-ecl-mh"],
+        "hint": "Staggered, with the methyls as far apart as possible.",
+        "explain": {
+          "cn-anti": "Right! Anti, at 180°: staggered with the methyls opposite each other. Zero strain on this graph.",
+          "cn-gauche": "Gauche IS a minimum, but a local one, 3.8 kJ/mol up. Anti is the lowest point.",
+          "cn-ecl-mm": "That's the HIGHEST point (19 kJ/mol), with the methyls eclipsed.",
+          "cn-ecl-mh": "That's a maximum (16 kJ/mol). The lowest point is anti."
+        }
+      },
+      {
+        "id": "boss3-terms", "kind": "match", "section": "3.7",
+        "prompt": "Match each term to its meaning.",
+        "slots": [
+          { "label": "Strain from eclipsed bonds", "answer": "t-torsional" },
+          { "label": "Strain from atoms crammed too close", "answer": "t-steric" },
+          { "label": "Same formula, different connections", "answer": "t-const" },
+          { "label": "Differ only by rotation around single bonds", "answer": "t-conformers" }
+        ],
+        "hand": ["t-conformers", "t-steric", "t-torsional", "t-const"],
+        "hint": "Two are strains, two are isomer relationships.",
+        "explain": {
+          "t-torsional": "Torsional strain: the cost of eclipsing bonds on neighboring carbons (ethane's 12 kJ/mol).",
+          "t-steric": "Steric strain: atoms forced closer than their radii allow (gauche butane's 3.8 kJ/mol).",
+          "t-const": "Constitutional isomers: same formula, different connections, like butane and isobutane.",
+          "t-conformers": "Conformers: the same molecule in different rotational arrangements, like anti and gauche butane."
+        }
+      },
+      {
+        "id": "boss3-ipr", "kind": "single", "section": "3.4",
+        "prompt": "4-Isopropylheptane can also be given a fully systematic name. Which one?",
+        "smiles": "CC(C)C(CCC)CCC",
+        "slots": [{ "label": "Systematic name:", "answer": "ip-1me" }],
+        "hand": ["ip-1me", "ip-1mp", "ip-prop", "ip-2m3p"],
+        "hint": "Name the substituent like its own compound, numbering from where it attaches.",
+        "explain": {
+          "ip-1me": "Right! Isopropyl is a 2-carbon ethyl group with a methyl on its C1 (the attachment carbon): 1-methylethyl. So: 4-(1-methylethyl)heptane.",
+          "ip-1mp": "1-Methylpropyl is sec-butyl, with four carbons. Isopropyl has three: 1-methylethyl.",
+          "ip-prop": "Propyl is a straight 3-carbon group attached at its end. Isopropyl attaches at the MIDDLE carbon: 1-methylethyl.",
+          "ip-2m3p": "That chain is only 6 long. The longest chain here is 7 (heptane), so the parent must be heptane."
+        }
+      }
+    ]
+  }
+}

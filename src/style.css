@@ -1,6 +1,6 @@
-﻿@font-face { font-family: 'Press Start 2P'; src: url('../vendor/press-start-2p-latin-400-normal.woff2?v=0.2.0-mwd6mx61') format('woff2'); }
-@font-face { font-family: 'VT323'; src: url('../vendor/vt323-latin-400-normal.woff2?v=0.2.0-mwd6mx61') format('woff2'); }
-@font-face { font-family: 'VT323'; src: url('../vendor/vt323-latin-ext-400-normal.woff2?v=0.2.0-mwd6mx61') format('woff2'); unicode-range: U+0100-024F, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF; }
+﻿@font-face { font-family: 'Press Start 2P'; src: url('../vendor/press-start-2p-latin-400-normal.woff2?v=0.3.0-mwd84tpu') format('woff2'); }
+@font-face { font-family: 'VT323'; src: url('../vendor/vt323-latin-400-normal.woff2?v=0.3.0-mwd84tpu') format('woff2'); }
+@font-face { font-family: 'VT323'; src: url('../vendor/vt323-latin-ext-400-normal.woff2?v=0.3.0-mwd84tpu') format('woff2'); unicode-range: U+0100-024F, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF; }
 
 :root {
   --ts: 1;
@@ -52,6 +52,8 @@ p { margin: 0; line-height: 1.15; }
 .tag { font-size: 1.2rem; color: var(--blue); }
 .menu { display: flex; flex-direction: column; gap: 14px; min-width: 300px; }
 .code-box { display: flex; gap: 8px; }
+.panel.tutor { max-width: 640px; max-height: 85vh; overflow-y: auto; border-color: #ffd23f; box-shadow: 0 0 24px rgba(255,210,63,0.45); }
+.tutor-head { display: flex; align-items: center; gap: 14px; }
 .code-box input { width: 150px; font-family: var(--body); font-size: 1.2rem; padding: 4px 8px; background: #1b1b2f; color: #f4ecdc; border: 3px solid #000; border-radius: 6px; }
 .foot { font-size: 0.75rem; color: var(--dim); max-width: 600px; }
 
@@ -148,6 +150,7 @@ p { margin: 0; line-height: 1.15; }
 .card::before { content: ''; position: absolute; inset: 4px; border-radius: 6px; border: 2px solid var(--tc, #888); pointer-events: none; }
 .card.t-concept { --tc: #3d6bd8; } .card.t-structure { --tc: #e8553a; } .card.t-product { --tc: #2a9d6f; } .card.t-reagent { --tc: #c79100; }
 .card-name { font-family: var(--body); font-size: 1.05rem; text-align: center; line-height: 1; min-height: 2.1em; display: flex; align-items: center; z-index: 1; }
+.card-name.long { font-size: 0.88rem; overflow-wrap: anywhere; }
 .card .art { flex: 1; width: 100%; display: flex; align-items: center; justify-content: center; border-radius: 6px; background: #fff; overflow: hidden; }
 .card .glyph { font-family: var(--body); font-size: clamp(1rem, calc(3.2rem - var(--len) * 0.3rem), 2.6rem); color: var(--tc); text-shadow: 2px 2px 0 rgba(0,0,0,0.12); text-align: center; line-height: 1; }
 .card-type { font-size: 0.3rem; color: var(--tc); text-transform: uppercase; }
@@ -245,6 +248,11 @@ p { margin: 0; line-height: 1.15; }
 .shop-item.wide small { flex: 1; font-size: 1rem; }
 .shop-item b { font-family: var(--pixel); font-size: 0.45rem; color: var(--gold); width: 130px; }
 .shop-item .btn { font-size: 0.42rem; padding: 8px 10px; display: inline-flex; align-items: center; gap: 4px; }
+.shop-item .rt { font-family: var(--pixel); font-size: 0.3rem; text-transform: uppercase; color: #9aa5b8; }
+.tier-rare .rt { color: #3d8bfd; } .tier-epic .rt { color: #c77dff; }
+.tier-legendary .rt { background: linear-gradient(90deg, #ffd23f, #ff7b00, #ff4d6d, #ffd23f); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 3s linear infinite; }
+.tier-rare .swatch { box-shadow: 0 0 0 2px #3d8bfd; } .tier-epic .swatch { box-shadow: 0 0 0 2px #b34cff, 0 0 8px rgba(179,76,255,0.5); }
+.tier-legendary .swatch { box-shadow: 0 0 0 2px #ffd23f, 0 0 12px rgba(255,210,63,0.7); }
 .swatch { width: 70px; height: 90px; border: 3px solid #000; border-radius: 6px; }
 .swatch.table { width: 100px; height: 64px; }
 

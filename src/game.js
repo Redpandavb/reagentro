@@ -80,7 +80,7 @@ function cardHTML(ch, id, { uid = '', cls = '', mystery = false } = {}) {
     ? `<div class="art mol" data-smiles="${esc(c.smiles)}"></div>`
     : `<div class="art glyph" style="--len:${[...(c.art || c.name)].length}">${esc(c.art || c.name)}</div>`;
   return `<div class="card t-${c.type} ${cls}" data-uid="${uid}" data-id="${esc(id)}" data-ch="${ch.id}">
-    <div class="card-name">${esc(c.name)}</div>${art}<div class="card-type">${esc(c.type)}</div></div>`;
+    <div class="card-name${[...c.name].length > 16 ? ' long' : ''}">${esc(c.name)}</div>${art}<div class="card-type">${esc(c.type)}</div></div>`;
 }
 function powerHTML(id, i) {
   const p = powerDef(id);
@@ -333,6 +333,7 @@ function setupProblem() {
   p.hand.forEach(id => { S.seen[`${ch.id}/${id}`] = true; });
   save();
   renderPlay();
+  if (R.tutor) { const run = R; setTimeout(() => { if (R === run) tutorSolve(); }, 700); }
 }
 
 const KIND = { single: 'Pick the right card', match: 'Match each pair', order: 'Put them in order', rank: 'Rank them', multi: 'Fill every blank' };
@@ -352,7 +353,7 @@ function renderPlay() {
   const powers = S.powers.map((id, i) => powerHTML(id, i)).join('') || '<div class="small">No power cards</div>';
   const bossBar = R.boss ? `<div class="bossbar"><b>${esc(ch.boss.name)}</b><div class="hp"><div style="width:${100 * R.boss.hp / R.boss.max}%"></div></div><span>${R.boss.hp} / ${R.boss.max}</span></div>` : '';
   screen(`<div class="topbar"><div class="lvl"><b>${esc(R.title)}</b><span>Problem ${R.index + 1} / ${R.items.length}</span></div>${bossBar}
-      <div class="stats">${heartsHTML()}${R.shield ? `<span class="shield-on" title="Shield active">${icon('shield', 4)}</span>` : ''}${coinBadge()}</div></div>
+      <div class="stats">${heartsHTML()}${R.shield || R.stone === R.index ? `<span class="shield-on" title="${R.stone === R.index ? 'Stone Skin active' : 'Shield active'}">${icon('shield', 4)}</span>` : ''}${coinBadge()}</div></div>
     <div class="prompt-row"><div class="npc-mini ${who}">${portrait(who, ch, 4)}</div>
       <div class="prompt"><div class="kind">${KIND[p.kind] || ''}</div><div class="ptext">${esc(p.prompt)}</div><div class="bubble" id="bubble"></div></div>
       ${p.smiles ? `<div class="mol-panel" data-smiles="${esc(p.smiles)}"></div>` : ''}</div>
@@ -437,7 +438,12 @@ async function wrong(inst) {
   S.missed[key] = true;
   const sk = `${ch.id}|${p.section}`; S.sectionMisses[sk] = (S.sectionMisses[sk] || 0) + 1;
   let msg;
-  if (R.shield) { R.shield = false; sfx('shield'); msg = 'Your Shield blocked the hit!'; }
+  if (R.stone === R.index) { sfx('shield'); msg = 'Stone Skin: no heart lost.'; }
+  else if (R.shield) {
+    const holds = Math.random() < G.shieldHoldChance;
+    if (!holds) R.shield = false;
+    sfx('shield'); msg = holds ? 'Your Shield blocked the hit, and it HELD!' : 'Your Shield blocked the hit and broke.';
+  }
   else if (R.hearts !== Infinity) { R.hearts--; sfx('heart'); msg = R.hearts > 0 ? 'Lost a heart.' : 'Out of hearts!'; }
   else { sfx('wrong'); msg = 'Study mode: no heart lost.'; }
   save();
@@ -478,6 +484,7 @@ async function problemDone() {
     if (R.mode === 'review') delete S.missed[`${ch.id}/${p.id}`];
     if (Math.random() < G.powerDropChance) grantPower(randomPower());
   }
+  if (Math.random() < G.tutorDropChance) grantPower('tutor'); // one roll per finished question, not per slot
   save();
   const run = R;
   await sleep(900);
@@ -487,7 +494,7 @@ async function problemDone() {
 }
 function randomPower() {
   const weights = { common: 50, uncommon: 30, rare: 13, epic: 7 };
-  const pool = Object.entries(G.powers).flatMap(([id, p]) => Array(weights[p.rarity] || 1).fill(id));
+  const pool = Object.entries(G.powers).filter(([, p]) => p.price).flatMap(([id, p]) => Array(weights[p.rarity] || 1).fill(id));
   return pick(pool);
 }
 function grantPower(id, force = false) {
@@ -515,6 +522,12 @@ async function usePower(i) {
     case 'shield':
       if (R.shield) return toast('Shield already active.');
       consume(); R.shield = true; renderPlay(); toast('Shield up! Your next mistake is free.', 'good'); return;
+    case 'tutor':
+      if (R.tutor) return toast('The Tutor is already helping you.');
+      consume(); R.tutor = 2; return tutorSolve();
+    case 'stone': // every mistake on THIS problem is free (cards still flip and explain)
+      if (R.stone === R.index) return toast('Stone Skin is already active for this problem.');
+      consume(); R.stone = R.index; renderPlay(); toast('Stone Skin! Mistakes on this problem cost no hearts.', 'good'); return;
     case 'eliminate': {
       const need = needed();
       const spare = R.hand.filter(c => { if (need[c.id]) { need[c.id]--; return false; } return true; });
@@ -556,6 +569,38 @@ async function usePower(i) {
       if (R.filled.every(Boolean)) await problemDone();
     }
   }
+}
+
+// Tutor: the NPC places every remaining correct card on the current question, then explains each answer in one panel.
+// Uses one of R.tutor's charges. No card coins; counts as a hint for stars. Boss still takes damage so the fight can end.
+async function tutorSolve() {
+  if (!R || !R.tutor || R.busy) return;
+  const { ch, p } = R.items[R.index];
+  R.tutor--; R.hints++; R.busy = true;
+  const placed = [];
+  p.slots.forEach((s, k) => {
+    if (R.filled[k]) return;
+    const inst = R.hand.find(c => c.id === s.answer);
+    if (!inst) return;
+    R.filled[k] = inst.id; R.hand = R.hand.filter(c => c !== inst); placed.push([s.label, inst.id]);
+    if (R.boss) R.boss.hp = Math.max(0, R.boss.hp - ch.boss.damagePerCard);
+  });
+  sfx('power'); renderPlay();
+  const items = placed.map(([label, id]) => ({ label, id, text: p.explain[id] || '' }));
+  if (p.why) items.push({ label: 'Why:', id: null, text: p.why }); // once, not repeated under every card
+  if (S.difficulty === 'exam') items.filter(it => it.id).forEach(it => R.log.push({ ch, id: it.id, text: explainText(p, it.id), section: p.section, prompt: p.prompt }));
+  else await new Promise(resolve => {
+    const ov = $('#overlay');
+    ov.innerHTML = `<div class="panel tutor"><div class="tutor-head">${portrait('npc', ch, 5)}<h2>${esc(ch.npc.name)} tutors you</h2></div>
+      <p class="small">${esc(p.prompt)}</p>${items.map(it => `<div class="log-item"><b>${esc(it.label)} ${it.id ? esc(cardDef(ch, it.id).name) : ''}</b><p>${esc(it.text)}</p></div>`).join('')}
+      <p class="src">${esc(sourceLine(ch, p.section))}</p><p class="small">${R.tutor ? 'I\'ll take the next question too.' : 'That was my last one. You\'re on your own now!'}</p>
+      <button class="btn" id="tutor-ok">Got it</button></div>`;
+    ov.classList.add('show');
+    speak(items.map(it => it.text).join(' '));
+    $('#tutor-ok').onclick = () => { closeOverlay(); speak(''); resolve(); };
+  });
+  R.busy = false;
+  if (R.filled.every(Boolean)) await problemDone();
 }
 
 /* ---------------- End of run ---------------- */
@@ -612,18 +657,30 @@ function finishRun() {
 }
 
 /* ---------------- Shop ---------------- */
+const KINDS = ['back', 'table', 'finish'], TIERS = ['common', 'rare', 'epic', 'legendary'];
+// Mystery pack odds: 45% power card, 30% cosmetic, 25% coins. A cosmetic's tier is rolled first, then a random unowned
+// shop cosmetic of that tier (any unowned tier if that one is used up). Boss rewards never drop. Null when you own them all.
+const PACK_TIER_WEIGHTS = { common: 55, rare: 30, epic: 12, legendary: 3 };
+function packCosmetic() {
+  const pool = Object.keys(G.cosmetics).filter(id => G.cosmetics[id].price && !S.owned.includes(id));
+  if (!pool.length) return null;
+  let r = Math.random() * 100, tier = 'common';
+  for (const t of TIERS) { if ((r -= PACK_TIER_WEIGHTS[t]) < 0) { tier = t; break; } }
+  const inTier = pool.filter(id => G.cosmetics[id].rarity === tier);
+  return pick(inTier.length ? inTier : pool);
+}
 function showShop(next) {
   const full = S.powers.length >= maxPowerSlots();
-  const powers = Object.entries(G.powers).map(([id, p]) => `<div class="shop-item"><div class="power r-${p.rarity}" data-power="${id}"><div class="p-name">${p.name}</div><div class="p-rar">${p.rarity}</div></div>
+  const powers = Object.entries(G.powers).filter(([, p]) => p.price).map(([id, p]) => `<div class="shop-item"><div class="power r-${p.rarity}" data-power="${id}"><div class="p-name">${p.name}</div><div class="p-rar">${p.rarity}</div></div>
     <button class="btn buy" data-kind="power" data-id="${id}" ${S.coins < p.price || full ? 'disabled' : ''}>${icon('coin', 2)} ${p.price}</button></div>`).join('');
   const ups = Object.entries(G.upgrades).map(([id, u]) => { const n = S.upgrades[id]; return `<div class="shop-item wide"><b>${u.name}</b><small>${u.desc} (${n}/${u.max})</small>
     <button class="btn buy" data-kind="upgrade" data-id="${id}" ${n >= u.max || S.coins < u.price ? 'disabled' : ''}>${n >= u.max ? 'Maxed' : `${icon('coin', 2)} ${u.price}`}</button></div>`; }).join('');
-  const cos = Object.entries(G.cosmetics).map(([id, c]) => {
+  const cos = Object.entries(G.cosmetics).sort(([, a], [, b]) => KINDS.indexOf(a.kind) - KINDS.indexOf(b.kind) || TIERS.indexOf(a.rarity) - TIERS.indexOf(b.rarity)).map(([id, c]) => {
     const own = S.owned.includes(id), on = S.equipped[c.kind] === id;
     const action = on ? '<button class="btn" disabled>Equipped</button>' : own ? `<button class="btn alt buy" data-kind="equip" data-id="${id}">Equip</button>`
       : c.price == null ? '<button class="btn" disabled>Boss reward</button>' : `<button class="btn buy" data-kind="cosmetic" data-id="${id}" ${S.coins < c.price ? 'disabled' : ''}>${icon('coin', 2)} ${c.price}</button>`;
     const swatch = c.kind === 'finish' ? `<div class="swatch finish" data-fx="${c.fx}"></div>` : `<div class="swatch ${c.kind}" style="background:${esc(c.css)}"></div>`;
-    return `<div class="shop-item">${swatch}<small>${esc(c.name)}<br><i>${{ back: 'card back', table: 'table', finish: 'card finish' }[c.kind]}</i></small>${action}</div>`;
+    return `<div class="shop-item tier-${c.rarity}">${swatch}<small>${esc(c.name)}<br><i>${{ back: 'card back', table: 'table', finish: 'card finish' }[c.kind]}</i><br><b class="rt">${c.rarity}</b></small>${action}</div>`;
   }).join('');
   screen(`<div class="top"><h2>The Tower Shop</h2>${coinBadge()}</div>
     <p class="small center">Your powers: ${S.powers.map(id => esc(powerDef(id).name)).join(', ') || 'none'} (${S.powers.length}/${maxPowerSlots()} slots)</p>
@@ -642,8 +699,9 @@ function showShop(next) {
     if (kind === 'equip') S.equipped[G.cosmetics[id].kind] = id;
     if (kind === 'mystery') {
       S.coins -= G.mysteryPack.price;
-      const roll = Math.random();
-      if (roll < 0.6) { const ids = Object.keys(G.powers).filter(k => ['common', 'uncommon'].includes(G.powers[k].rarity)); grantPower(pick(ids)); }
+      const roll = Math.random(), prize = roll < 0.75 ? packCosmetic() : null;
+      if (roll < 0.45) { const ids = Object.keys(G.powers).filter(k => ['common', 'uncommon'].includes(G.powers[k].rarity)); grantPower(pick(ids)); }
+      else if (prize) { S.owned.push(prize); const c = G.cosmetics[prize]; toast(`The pack held a <b>${c.rarity}</b> ${c.kind === 'back' ? 'card back' : c.kind === 'finish' ? 'card finish' : 'table'}: ${esc(c.name)}! Equip it below.`, 'good'); }
       else { const back = 20 + Math.floor(Math.random() * 21); S.coins += back; toast(`The pack held ${back} coins!`, 'good'); }
     }
     sfx('coin'); save(); applySettings(); showShop(next);
