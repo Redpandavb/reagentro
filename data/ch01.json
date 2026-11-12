@@ -1,0 +1,2966 @@
+{
+  "id": "ch01",
+  "number": 1,
+  "title": "Structure & Bonding",
+  "floorName": "Floor 1: The Dotted Study",
+  "paths": {
+    "A": "Atoms & Orbitals",
+    "B": "Hybridization & Geometry",
+    "C": "Drawing Structures"
+  },
+  "sections": {
+    "1.1": "Atomic Structure: The Nucleus",
+    "1.2": "Atomic Structure: Orbitals",
+    "1.3": "Atomic Structure: Electron Configurations",
+    "1.4": "Development of Chemical Bonding Theory",
+    "1.5": "Describing Chemical Bonds: Valence Bond Theory",
+    "1.6": "sp3 Hybrid Orbitals and the Structure of Methane",
+    "1.7": "sp3 Hybrid Orbitals and the Structure of Ethane",
+    "1.8": "sp2 Hybrid Orbitals and the Structure of Ethylene",
+    "1.9": "sp Hybrid Orbitals and the Structure of Acetylene",
+    "1.10": "Hybridization of Nitrogen, Oxygen, Phosphorus, and Sulfur",
+    "1.11": "Describing Chemical Bonds: Molecular Orbital Theory",
+    "1.12": "Drawing Chemical Structures"
+  },
+  "npc": {
+    "name": "Professor Lewis Dott",
+    "title": "Keeper of the First Floor",
+    "color": "#7fd6ff",
+    "palette": {
+      "b": "#3a5fcd",
+      "d": "#ffd23f",
+      "w": "#f2f2f2",
+      "s": "#f1c27d",
+      "g": "#9ad1ff",
+      "k": "#1b1b2f",
+      "n": "#d9a066"
+    },
+    "portrait": [
+      "................",
+      ".....bbbbbb.....",
+      "....bbdbbdbb....",
+      "...bbbbbbbbbb...",
+      "..wwssssssssww..",
+      "..wsggssssggsw..",
+      "..wskgsssskgsw..",
+      "..wssssnnssssw..",
+      "..wwssssssssww..",
+      "..wwwwkkkkwwww..",
+      "...wwwwwwwwww...",
+      "....wwwwwwww....",
+      "...bbbwwwwbbb...",
+      "..bbbbbwwbbbbb..",
+      ".bbdbbbbbbbbdbb.",
+      ".bbbbbbbbbbbbbb."
+    ]
+  },
+  "prologue": [
+    {
+      "speaker": "narrator",
+      "text": "The Alchemist's Tower once trained the best chemists in the land. Every floor had a teacher, and every teacher asked one question above all others: WHY?"
+    },
+    {
+      "speaker": "narrator",
+      "text": "Then its greatest teacher, Magister Mordant, decided 'why' was a waste of time. He had his students memorize answers instead. Faster, he said."
+    },
+    {
+      "speaker": "narrator",
+      "text": "His shortcut students mixed reagents they didn't understand. The explosion blew the top clean off the tower. Mordant was never seen again... at least, not alive."
+    },
+    {
+      "speaker": "narrator",
+      "text": "Now his ghost haunts every floor, twisting the lessons into flashcards. Climb the tower, learn the WHY, and set things right."
+    }
+  ],
+  "cards": {
+    "n-bonds-4": {
+      "type": "concept",
+      "name": "4 Bonds",
+      "art": "4",
+      "desc": "Four covalent bonds to one atom."
+    },
+    "n-bonds-2": {
+      "type": "concept",
+      "name": "2 Bonds",
+      "art": "2",
+      "desc": "Two covalent bonds to one atom."
+    },
+    "n-bonds-3": {
+      "type": "concept",
+      "name": "3 Bonds",
+      "art": "3",
+      "desc": "Three covalent bonds to one atom."
+    },
+    "n-bonds-8": {
+      "type": "concept",
+      "name": "8 Bonds",
+      "art": "8",
+      "desc": "Eight covalent bonds to one atom."
+    },
+    "f-ph3": {
+      "type": "structure",
+      "name": "PH₃",
+      "art": "PH₃",
+      "desc": "Phosphorus bonded to three hydrogens."
+    },
+    "f-ph5": {
+      "type": "structure",
+      "name": "PH₅",
+      "art": "PH₅",
+      "desc": "Phosphorus bonded to five hydrogens."
+    },
+    "f-ph2": {
+      "type": "structure",
+      "name": "PH₂",
+      "art": "PH₂",
+      "desc": "Phosphorus bonded to two hydrogens."
+    },
+    "f-ph4": {
+      "type": "structure",
+      "name": "PH₄",
+      "art": "PH₄",
+      "desc": "Phosphorus bonded to four hydrogens (no charge)."
+    },
+    "f-ccl4": {
+      "type": "structure",
+      "name": "CCl₄",
+      "art": "CCl₄",
+      "desc": "Carbon bonded to four chlorines."
+    },
+    "f-ccl2": {
+      "type": "structure",
+      "name": "CCl₂",
+      "art": "CCl₂",
+      "desc": "Carbon bonded to two chlorines."
+    },
+    "f-alh3": {
+      "type": "structure",
+      "name": "AlH₃",
+      "art": "AlH₃",
+      "desc": "Aluminum bonded to three hydrogens."
+    },
+    "f-alh5": {
+      "type": "structure",
+      "name": "AlH₅",
+      "art": "AlH₅",
+      "desc": "Aluminum bonded to five hydrogens."
+    },
+    "f-sif4": {
+      "type": "structure",
+      "name": "SiF₄",
+      "art": "SiF₄",
+      "desc": "Silicon bonded to four fluorines."
+    },
+    "f-sif2": {
+      "type": "structure",
+      "name": "SiF₂",
+      "art": "SiF₂",
+      "desc": "Silicon bonded to two fluorines."
+    },
+    "c2h7-toomanyh": {
+      "type": "concept",
+      "name": "Too Many H's",
+      "art": "C₂H₇",
+      "desc": "Claim: two bonded carbons don't have enough bonding spots left for seven hydrogens."
+    },
+    "c2h7-h2bonds": {
+      "type": "concept",
+      "name": "H Forms 2 Bonds",
+      "art": "H=",
+      "desc": "Claim: hydrogen forms two covalent bonds."
+    },
+    "c2h7-nocc": {
+      "type": "concept",
+      "name": "C Can't Bond to C",
+      "art": "C✕C",
+      "desc": "Claim: carbon atoms can't bond to each other."
+    },
+    "c2h7-odd": {
+      "type": "concept",
+      "name": "Odd Atoms Forbidden",
+      "art": "#9",
+      "desc": "Claim: a molecule can't have an odd number of atoms."
+    },
+    "lp-1": {
+      "type": "concept",
+      "name": "1 Lone Pair",
+      "art": ":",
+      "desc": "One pair of nonbonding (lone-pair) electrons on the atom."
+    },
+    "lp-0": {
+      "type": "concept",
+      "name": "No Lone Pairs",
+      "art": "∅",
+      "desc": "No nonbonding electrons: every valence electron is in a bond."
+    },
+    "lp-2": {
+      "type": "concept",
+      "name": "2 Lone Pairs",
+      "art": ": :",
+      "desc": "Two pairs of nonbonding electrons on the atom."
+    },
+    "lp-3": {
+      "type": "concept",
+      "name": "3 Lone Pairs",
+      "art": ":::",
+      "desc": "Three pairs of nonbonding electrons on the atom."
+    },
+    "el-o": {
+      "type": "concept",
+      "name": "Oxygen",
+      "art": "O",
+      "desc": "Oxygen: atomic number 8, group 6A."
+    },
+    "el-n": {
+      "type": "concept",
+      "name": "Nitrogen",
+      "art": "N",
+      "desc": "Nitrogen: atomic number 7, group 5A."
+    },
+    "el-c": {
+      "type": "concept",
+      "name": "Carbon",
+      "art": "C",
+      "desc": "Carbon: atomic number 6, group 4A."
+    },
+    "el-cl": {
+      "type": "concept",
+      "name": "Chlorine",
+      "art": "Cl",
+      "desc": "Chlorine: atomic number 17, group 7A."
+    },
+    "el-h": {
+      "type": "concept",
+      "name": "Hydrogen",
+      "art": "H",
+      "desc": "Hydrogen: atomic number 1, one electron in a 1s orbital."
+    },
+    "isotopes": {
+      "type": "concept",
+      "name": "Isotopes",
+      "art": "¹²C ¹³C",
+      "desc": "Atoms with the same atomic number (same protons) but different mass numbers (different neutrons)."
+    },
+    "ions": {
+      "type": "concept",
+      "name": "Ions",
+      "art": "±",
+      "desc": "Atoms that gained or lost electrons, giving them a charge. Na⁺ and Cl⁻ are ions."
+    },
+    "isomers": {
+      "type": "concept",
+      "name": "Isomers",
+      "art": "≠",
+      "desc": "Different compounds with the same molecular formula. Coming up in later floors!"
+    },
+    "diff-elements": {
+      "type": "concept",
+      "name": "Different Elements",
+      "art": "C≠N",
+      "desc": "Different elements have different atomic numbers (numbers of protons)."
+    },
+    "cfg-o": {
+      "type": "concept",
+      "name": "1s² 2s² 2p⁴",
+      "art": "2p⁴",
+      "desc": "An electron configuration. Add the superscripts to count the electrons."
+    },
+    "cfg-ne": {
+      "type": "concept",
+      "name": "1s² 2s² 2p⁶",
+      "art": "2p⁶",
+      "desc": "An electron configuration. Add the superscripts to count the electrons."
+    },
+    "cfg-skip2s": {
+      "type": "concept",
+      "name": "1s² 2p⁶",
+      "art": "2s?",
+      "desc": "An electron configuration. Add the superscripts to count the electrons."
+    },
+    "cfg-c": {
+      "type": "concept",
+      "name": "1s² 2s² 2p²",
+      "art": "2p²",
+      "desc": "An electron configuration. Add the superscripts to count the electrons."
+    },
+    "cfg-n": {
+      "type": "concept",
+      "name": "1s² 2s² 2p³",
+      "art": "2p³",
+      "desc": "An electron configuration. Add the superscripts to count the electrons."
+    },
+    "cfg-2s3": {
+      "type": "concept",
+      "name": "1s² 2s³ 2p²",
+      "art": "2s³",
+      "desc": "An electron configuration. Add the superscripts to count the electrons."
+    },
+    "cfg-f": {
+      "type": "concept",
+      "name": "1s² 2s² 2p⁵",
+      "art": "2p⁵",
+      "desc": "An electron configuration. Add the superscripts to count the electrons."
+    },
+    "cfg-s": {
+      "type": "concept",
+      "name": "1s² 2s² 2p⁶ 3s² 3p⁴",
+      "art": "3p⁴",
+      "desc": "An electron configuration. Add the superscripts to count the electrons."
+    },
+    "cfg-ar": {
+      "type": "concept",
+      "name": "1s² 2s² 2p⁶ 3s² 3p⁶",
+      "art": "3p⁶",
+      "desc": "An electron configuration. Add the superscripts to count the electrons."
+    },
+    "cfg-s3d": {
+      "type": "concept",
+      "name": "1s² 2s² 2p⁶ 3s² 3d⁴",
+      "art": "3d⁴",
+      "desc": "An electron configuration. Add the superscripts to count the electrons."
+    },
+    "rule-aufbau": {
+      "type": "concept",
+      "name": "Aufbau Principle",
+      "art": "↑",
+      "desc": "The lowest-energy orbitals fill up first: 1s, 2s, 2p, 3s, 3p, 4s, 3d..."
+    },
+    "rule-pauli": {
+      "type": "concept",
+      "name": "Pauli Exclusion",
+      "art": "↑↓",
+      "desc": "Only two electrons can share an orbital, and they must have opposite spins."
+    },
+    "rule-hund": {
+      "type": "concept",
+      "name": "Hund's Rule",
+      "art": "↑ ↑ ↑",
+      "desc": "When orbitals have equal energy, electrons go one per orbital with parallel spins before any pair up."
+    },
+    "rule-octet": {
+      "type": "concept",
+      "name": "Octet Rule",
+      "art": "8",
+      "desc": "Main-group atoms are especially stable with 8 valence electrons (an octet)."
+    },
+    "shell-8": {
+      "type": "concept",
+      "name": "8 Electrons",
+      "art": "8e⁻",
+      "desc": "8 electrons: enough to fill four orbitals."
+    },
+    "shell-2": {
+      "type": "concept",
+      "name": "2 Electrons",
+      "art": "2e⁻",
+      "desc": "2 electrons: enough to fill one orbital."
+    },
+    "shell-18": {
+      "type": "concept",
+      "name": "18 Electrons",
+      "art": "18e⁻",
+      "desc": "18 electrons: enough to fill nine orbitals."
+    },
+    "shell-6": {
+      "type": "concept",
+      "name": "6 Electrons",
+      "art": "6e⁻",
+      "desc": "6 electrons: enough to fill three orbitals."
+    },
+    "shape-p": {
+      "type": "concept",
+      "name": "Dumbbell",
+      "art": "∞",
+      "desc": "A dumbbell: two lobes on opposite sides of the nucleus."
+    },
+    "shape-s": {
+      "type": "concept",
+      "name": "Sphere",
+      "art": "●",
+      "desc": "A sphere centered on the nucleus."
+    },
+    "shape-d": {
+      "type": "concept",
+      "name": "Cloverleaf",
+      "art": "✣",
+      "desc": "A cloverleaf with four lobes."
+    },
+    "shape-hybrid": {
+      "type": "concept",
+      "name": "Lopsided Lobes",
+      "art": "◖●",
+      "desc": "Two unequal lobes: one big, one small."
+    },
+    "bond-sigma": {
+      "type": "concept",
+      "name": "σ (Sigma) Bond",
+      "art": "σ",
+      "desc": "A bond from head-on overlap along the line between nuclei. It's cylindrically symmetric. Every single bond is σ."
+    },
+    "bond-pi": {
+      "type": "concept",
+      "name": "π (Pi) Bond",
+      "art": "π",
+      "desc": "A bond from sideways overlap of p orbitals. Its electron density sits above and below the bond axis."
+    },
+    "bond-ionic": {
+      "type": "concept",
+      "name": "Ionic Bond",
+      "art": "+ −",
+      "desc": "Electrical attraction between oppositely charged ions, like Na⁺ Cl⁻. No electrons are shared."
+    },
+    "mo-bonding": {
+      "type": "concept",
+      "name": "Bonding MO",
+      "art": "σ",
+      "desc": "Molecular orbital from the additive combination of atomic orbitals. Lower in energy; electrons here hold the nuclei together."
+    },
+    "mo-anti": {
+      "type": "concept",
+      "name": "Antibonding MO",
+      "art": "σ*",
+      "desc": "Molecular orbital from the subtractive combination. Higher in energy, with a node between the nuclei."
+    },
+    "h2-1s-headon": {
+      "type": "concept",
+      "name": "1s + 1s Head-On",
+      "art": "●●",
+      "desc": "Two singly occupied 1s orbitals overlap head-on, pairing their electrons in a σ bond."
+    },
+    "h2-p-side": {
+      "type": "concept",
+      "name": "p + p Sideways",
+      "art": "∞∞",
+      "desc": "Sideways overlap of two p orbitals makes a π bond."
+    },
+    "h2-transfer": {
+      "type": "concept",
+      "name": "Electron Transfer",
+      "art": "→e⁻",
+      "desc": "One atom gives an electron to the other, making ions. That's ionic bonding."
+    },
+    "h2-2p": {
+      "type": "concept",
+      "name": "2p + 2p Head-On",
+      "art": "∞-∞",
+      "desc": "Head-on overlap of two 2p orbitals."
+    },
+    "e-release436": {
+      "type": "concept",
+      "name": "436 kJ/mol Released",
+      "art": "−436",
+      "desc": "436 kJ/mol of energy given off."
+    },
+    "e-absorb436": {
+      "type": "concept",
+      "name": "436 kJ/mol Absorbed",
+      "art": "+436",
+      "desc": "436 kJ/mol of energy taken in."
+    },
+    "e-release74": {
+      "type": "concept",
+      "name": "74 kJ/mol Released",
+      "art": "74",
+      "desc": "74 kJ/mol of energy given off."
+    },
+    "e-none": {
+      "type": "concept",
+      "name": "No Energy Change",
+      "art": "0",
+      "desc": "The energy stays the same."
+    },
+    "mo-both-bonding": {
+      "type": "concept",
+      "name": "Both in Bonding MO",
+      "art": "↑↓",
+      "desc": "Both electrons go into the bonding MO."
+    },
+    "mo-split": {
+      "type": "concept",
+      "name": "One in Each MO",
+      "art": "↑ ↑",
+      "desc": "One electron goes into the bonding MO, one into the antibonding MO."
+    },
+    "mo-both-anti": {
+      "type": "concept",
+      "name": "Both in Antibonding",
+      "art": "↑↓*",
+      "desc": "Both electrons go into the antibonding MO."
+    },
+    "mo-atomic": {
+      "type": "concept",
+      "name": "Stay on Their Atoms",
+      "art": "●  ●",
+      "desc": "Each electron stays in its own atom's 1s orbital."
+    },
+    "ve-6": {
+      "type": "concept",
+      "name": "6",
+      "art": "6",
+      "desc": "Six electrons."
+    },
+    "ve-16": {
+      "type": "concept",
+      "name": "16",
+      "art": "16",
+      "desc": "Sixteen electrons."
+    },
+    "ve-34": {
+      "type": "concept",
+      "name": "34",
+      "art": "34",
+      "desc": "Thirty-four electrons."
+    },
+    "ve-2": {
+      "type": "concept",
+      "name": "2",
+      "art": "2",
+      "desc": "Two electrons."
+    },
+    "node-zero": {
+      "type": "concept",
+      "name": "Zero Electron Density",
+      "art": "|",
+      "desc": "A node: a region where the electron density is zero, like the plane between the two lobes of a p orbital."
+    },
+    "node-nucleus": {
+      "type": "concept",
+      "name": "The Nucleus",
+      "art": "⊕",
+      "desc": "The dense, positively charged center of an atom."
+    },
+    "node-max": {
+      "type": "concept",
+      "name": "Max Electron Density",
+      "art": "███",
+      "desc": "A region of maximum electron density."
+    },
+    "node-overlap": {
+      "type": "concept",
+      "name": "Orbital Overlap Zone",
+      "art": "◐◑",
+      "desc": "The region where two orbitals overlap."
+    },
+    "hyb-sp3": {
+      "type": "concept",
+      "name": "sp³",
+      "art": "sp³",
+      "desc": "One s + three p orbitals make four sp³ hybrids pointing to the corners of a tetrahedron, 109.5° apart. Four σ bonds/lone pairs."
+    },
+    "hyb-sp2": {
+      "type": "concept",
+      "name": "sp²",
+      "art": "sp²",
+      "desc": "One s + two p orbitals make three sp² hybrids in a flat plane, 120° apart. One p orbital is left over for a π bond."
+    },
+    "hyb-sp": {
+      "type": "concept",
+      "name": "sp",
+      "art": "sp",
+      "desc": "One s + one p orbital make two sp hybrids 180° apart (linear). Two p orbitals are left over for two π bonds."
+    },
+    "hyb-p": {
+      "type": "concept",
+      "name": "Plain p (No Hybrid)",
+      "art": "p",
+      "desc": "Plain, unmixed p orbitals, which sit 90° apart."
+    },
+    "ang-109": {
+      "type": "concept",
+      "name": "109.5°",
+      "art": "109.5°",
+      "desc": "The tetrahedral angle."
+    },
+    "ang-120": {
+      "type": "concept",
+      "name": "120°",
+      "art": "120°",
+      "desc": "The trigonal planar angle."
+    },
+    "ang-180": {
+      "type": "concept",
+      "name": "180°",
+      "art": "180°",
+      "desc": "A straight line: the linear angle."
+    },
+    "ang-90": {
+      "type": "concept",
+      "name": "90°",
+      "art": "90°",
+      "desc": "A right angle."
+    },
+    "geo-planar120": {
+      "type": "concept",
+      "name": "Flat, 120°",
+      "art": "△",
+      "desc": "Trigonal planar: all atoms in one plane, bonds 120° apart. Typical of sp² atoms."
+    },
+    "geo-tetra": {
+      "type": "concept",
+      "name": "Tetrahedral, 109.5°",
+      "art": "◬",
+      "desc": "Four groups pointing to the corners of a tetrahedron. Typical of sp³ atoms."
+    },
+    "geo-linear": {
+      "type": "concept",
+      "name": "Linear, 180°",
+      "art": "—",
+      "desc": "Atoms in a straight line. Typical of sp atoms."
+    },
+    "geo-square": {
+      "type": "concept",
+      "name": "Square, 90°",
+      "art": "□",
+      "desc": "A flat square with 90° angles."
+    },
+    "bl-triple": {
+      "type": "structure",
+      "name": "C≡C (Acetylene)",
+      "art": "C≡C",
+      "desc": "A carbon–carbon triple bond, as in acetylene."
+    },
+    "bl-double": {
+      "type": "structure",
+      "name": "C=C (Ethylene)",
+      "art": "C=C",
+      "desc": "A carbon–carbon double bond, as in ethylene."
+    },
+    "bl-single": {
+      "type": "structure",
+      "name": "C–C (Ethane)",
+      "art": "C–C",
+      "desc": "A carbon–carbon single bond, as in ethane."
+    },
+    "tb-1s2p": {
+      "type": "concept",
+      "name": "1 σ + 2 π",
+      "art": "σππ",
+      "desc": "One σ bond plus two π bonds."
+    },
+    "tb-3s": {
+      "type": "concept",
+      "name": "3 σ",
+      "art": "σσσ",
+      "desc": "Three σ bonds."
+    },
+    "tb-2s1p": {
+      "type": "concept",
+      "name": "2 σ + 1 π",
+      "art": "σσπ",
+      "desc": "Two σ bonds plus one π bond."
+    },
+    "tb-3p": {
+      "type": "concept",
+      "name": "3 π",
+      "art": "πππ",
+      "desc": "Three π bonds."
+    },
+    "db-pi-weaker": {
+      "type": "concept",
+      "name": "π Overlap Is Weaker",
+      "art": "π<σ",
+      "desc": "Claim: the π part of a double bond, made by sideways overlap, is weaker than the σ part."
+    },
+    "db-longer": {
+      "type": "concept",
+      "name": "Double Bonds Are Longer",
+      "art": "↔",
+      "desc": "Claim: double bonds are longer than single bonds."
+    },
+    "db-two-sigma": {
+      "type": "concept",
+      "name": "Two Crowded σ Bonds",
+      "art": "σσ",
+      "desc": "Claim: a double bond is two σ bonds crowding each other."
+    },
+    "db-sigma-weak": {
+      "type": "concept",
+      "name": "Its σ Bond Is Weak",
+      "art": "σ↓",
+      "desc": "Claim: the σ part of a double bond is unusually weak."
+    },
+    "sp3-meaning": {
+      "type": "concept",
+      "name": "Three p Orbitals Mixed In",
+      "art": "s+ppp",
+      "desc": "Reading: one s orbital and three p orbitals were combined."
+    },
+    "sp3-3e": {
+      "type": "concept",
+      "name": "3 Electrons per Hybrid",
+      "art": "3e⁻",
+      "desc": "Reading: each hybrid orbital holds 3 electrons."
+    },
+    "sp3-3bonds": {
+      "type": "concept",
+      "name": "Forms 3 Bonds",
+      "art": "3—",
+      "desc": "Reading: the atom forms 3 bonds."
+    },
+    "sp3-shell3": {
+      "type": "concept",
+      "name": "Third Shell",
+      "art": "n=3",
+      "desc": "Reading: the orbitals come from the third shell."
+    },
+    "lp-sp3-2": {
+      "type": "concept",
+      "name": "sp³, 2 Lone Pairs",
+      "art": "sp³ ::",
+      "desc": "sp³ hybridized, with two lone pairs."
+    },
+    "lp-sp3-1": {
+      "type": "concept",
+      "name": "sp³, 1 Lone Pair",
+      "art": "sp³ :",
+      "desc": "sp³ hybridized, with one lone pair."
+    },
+    "lp-sp2-2": {
+      "type": "concept",
+      "name": "sp², 2 Lone Pairs",
+      "art": "sp² ::",
+      "desc": "sp² hybridized, with two lone pairs."
+    },
+    "lp-sp-2": {
+      "type": "concept",
+      "name": "sp, 2 Lone Pairs",
+      "art": "sp ::",
+      "desc": "sp hybridized, with two lone pairs."
+    },
+    "hyb-none": {
+      "type": "concept",
+      "name": "Can't Hybridize",
+      "art": "✕",
+      "desc": "Claim: this atom doesn't use hybrid orbitals."
+    },
+    "geo-bent": {
+      "type": "concept",
+      "name": "Bent, Near 109°",
+      "art": "∠",
+      "desc": "Bent: two bonds meeting at an angle near 109°."
+    },
+    "benz-planar-sp2": {
+      "type": "concept",
+      "name": "Flat Ring, All sp²",
+      "art": "⬡ sp²",
+      "desc": "A flat ring of sp² carbons."
+    },
+    "benz-pucker-sp3": {
+      "type": "concept",
+      "name": "Puckered Ring, All sp³",
+      "art": "⬡ sp³",
+      "desc": "A puckered ring of sp³ carbons."
+    },
+    "benz-planar-sp": {
+      "type": "concept",
+      "name": "Flat Ring, All sp",
+      "art": "⬡ sp",
+      "desc": "A flat ring of sp carbons."
+    },
+    "benz-alt": {
+      "type": "concept",
+      "name": "Alternating sp³/sp²",
+      "art": "⬡ ±",
+      "desc": "A ring alternating sp³ and sp² carbons."
+    },
+    "cat-sp2": {
+      "type": "concept",
+      "name": "sp², Flat",
+      "art": "C⁺ sp²",
+      "desc": "sp² hybridized, trigonal planar (120°)."
+    },
+    "cat-sp3": {
+      "type": "concept",
+      "name": "sp³, Tetrahedral",
+      "art": "C⁺ sp³",
+      "desc": "sp³ hybridized, tetrahedral (109.5°)."
+    },
+    "cat-sp": {
+      "type": "concept",
+      "name": "sp, Linear",
+      "art": "C⁺ sp",
+      "desc": "sp hybridized, linear (180°)."
+    },
+    "skel-ends": {
+      "type": "concept",
+      "name": "Every End & Corner",
+      "art": "⌇",
+      "desc": "Claim: a carbon sits at every line end and every place lines meet."
+    },
+    "skel-written": {
+      "type": "concept",
+      "name": "Only Where Written",
+      "art": "C?",
+      "desc": "Claim: carbons are only where a \"C\" is written."
+    },
+    "skel-endsonly": {
+      "type": "concept",
+      "name": "Only at Line Ends",
+      "art": "•—•",
+      "desc": "Claim: carbons are only at the ends of lines."
+    },
+    "skel-cornersonly": {
+      "type": "concept",
+      "name": "Only at Corners",
+      "art": "∧",
+      "desc": "Claim: carbons are only where lines meet."
+    },
+    "mf-c5h12": {
+      "type": "concept",
+      "name": "C₅H₁₂",
+      "art": "C₅H₁₂",
+      "desc": "5 carbons, 12 hydrogens."
+    },
+    "mf-c5h10": {
+      "type": "concept",
+      "name": "C₅H₁₀",
+      "art": "C₅H₁₀",
+      "desc": "5 carbons, 10 hydrogens."
+    },
+    "mf-c4h10": {
+      "type": "concept",
+      "name": "C₄H₁₀",
+      "art": "C₄H₁₀",
+      "desc": "4 carbons, 10 hydrogens."
+    },
+    "mf-c5h11": {
+      "type": "concept",
+      "name": "C₅H₁₁",
+      "art": "C₅H₁₁",
+      "desc": "5 carbons, 11 hydrogens."
+    },
+    "mf-c5h8": {
+      "type": "concept",
+      "name": "C₅H₈",
+      "art": "C₅H₈",
+      "desc": "5 carbons, 8 hydrogens."
+    },
+    "mf-c4h6": {
+      "type": "concept",
+      "name": "C₄H₆",
+      "art": "C₄H₆",
+      "desc": "4 carbons, 6 hydrogens."
+    },
+    "mf-c7h14": {
+      "type": "concept",
+      "name": "C₇H₁₄",
+      "art": "C₇H₁₄",
+      "desc": "7 carbons, 14 hydrogens."
+    },
+    "mf-c7h16": {
+      "type": "concept",
+      "name": "C₇H₁₆",
+      "art": "C₇H₁₆",
+      "desc": "7 carbons, 16 hydrogens."
+    },
+    "mf-c6h12": {
+      "type": "concept",
+      "name": "C₆H₁₂",
+      "art": "C₆H₁₂",
+      "desc": "6 carbons, 12 hydrogens."
+    },
+    "mf-c7h12": {
+      "type": "concept",
+      "name": "C₇H₁₂",
+      "art": "C₇H₁₂",
+      "desc": "7 carbons, 12 hydrogens."
+    },
+    "mf-c6h6o": {
+      "type": "concept",
+      "name": "C₆H₆O",
+      "art": "C₆H₆O",
+      "desc": "6 carbons, 6 hydrogens, 1 oxygen."
+    },
+    "mf-c6h5o": {
+      "type": "concept",
+      "name": "C₆H₅O",
+      "art": "C₆H₅O",
+      "desc": "6 carbons, 5 hydrogens, 1 oxygen."
+    },
+    "mf-c6h12o": {
+      "type": "concept",
+      "name": "C₆H₁₂O",
+      "art": "C₆H₁₂O",
+      "desc": "6 carbons, 12 hydrogens, 1 oxygen."
+    },
+    "mf-c6h6": {
+      "type": "concept",
+      "name": "C₆H₆",
+      "art": "C₆H₆",
+      "desc": "6 carbons, 6 hydrogens."
+    },
+    "hc-ch3": {
+      "type": "structure",
+      "name": "CH₃",
+      "art": "CH₃",
+      "desc": "A carbon carrying 3 hydrogens (a methyl group)."
+    },
+    "hc-ch2": {
+      "type": "structure",
+      "name": "CH₂",
+      "art": "CH₂",
+      "desc": "A carbon carrying 2 hydrogens."
+    },
+    "hc-ch": {
+      "type": "structure",
+      "name": "CH",
+      "art": "CH",
+      "desc": "A carbon carrying 1 hydrogen."
+    },
+    "hc-c": {
+      "type": "structure",
+      "name": "C (no H)",
+      "art": "C",
+      "desc": "A carbon carrying no hydrogens."
+    },
+    "hc-ch4": {
+      "type": "structure",
+      "name": "CH₄",
+      "art": "CH₄",
+      "desc": "A carbon carrying 4 hydrogens: methane."
+    },
+    "skel-hetero": {
+      "type": "concept",
+      "name": "Non-C Atoms + Their H's",
+      "art": "OH",
+      "desc": "Claim: everything except carbons and the H's on carbons is written out."
+    },
+    "skel-onlyc": {
+      "type": "concept",
+      "name": "Only Carbons",
+      "art": "C",
+      "desc": "Claim: only the carbons are written out."
+    },
+    "skel-every": {
+      "type": "concept",
+      "name": "Every Atom",
+      "art": "CHO",
+      "desc": "Claim: every atom, H's included, is written out."
+    },
+    "skel-charged": {
+      "type": "concept",
+      "name": "Only Charged Atoms",
+      "art": "±",
+      "desc": "Claim: only atoms with a charge are written out."
+    },
+    "s-butane": {
+      "type": "product",
+      "name": "Butane",
+      "smiles": "CCCC",
+      "desc": "CH₃CH₂CH₂CH₃, C₄H₁₀. A straight chain of four carbons."
+    },
+    "s-isobutane": {
+      "type": "product",
+      "name": "Isobutane",
+      "smiles": "CC(C)C",
+      "desc": "(CH₃)₃CH, also C₄H₁₀. Same formula as butane, but branched: a different compound."
+    },
+    "s-propane": {
+      "type": "product",
+      "name": "Propane",
+      "smiles": "CCC",
+      "desc": "CH₃CH₂CH₃, C₃H₈. Three carbons."
+    },
+    "s-pentane": {
+      "type": "product",
+      "name": "Pentane",
+      "smiles": "CCCCC",
+      "desc": "CH₃(CH₂)₃CH₃, C₅H₁₂. Five carbons in a row."
+    },
+    "s-1butene": {
+      "type": "product",
+      "name": "1-Butene",
+      "smiles": "C=CCC",
+      "desc": "CH₂=CHCH₂CH₃, C₄H₈. Four carbons with a double bond."
+    },
+    "s-dme": {
+      "type": "product",
+      "name": "Dimethyl Ether",
+      "smiles": "COC",
+      "desc": "CH₃OCH₃, C₂H₆O. The oxygen sits between two carbons."
+    },
+    "s-ethanol": {
+      "type": "product",
+      "name": "Ethanol",
+      "smiles": "CCO",
+      "desc": "CH₃CH₂OH, C₂H₆O. An alcohol: the oxygen is on the end with an H."
+    },
+    "s-acetaldehyde": {
+      "type": "product",
+      "name": "Acetaldehyde",
+      "smiles": "CC=O",
+      "desc": "CH₃CHO, C₂H₄O. Has a C=O double bond."
+    },
+    "s-methanol": {
+      "type": "product",
+      "name": "Methanol",
+      "smiles": "CO",
+      "desc": "CH₃OH, CH₄O. One carbon."
+    },
+    "s-propene": {
+      "type": "product",
+      "name": "Propene",
+      "smiles": "C=CC",
+      "desc": "CH₂=CHCH₃, C₃H₆. Three carbons with a double bond."
+    },
+    "s-cyclopropane": {
+      "type": "product",
+      "name": "Cyclopropane",
+      "smiles": "C1CC1",
+      "desc": "C₃H₆. Three carbons in a ring, all single bonds."
+    },
+    "s-propyne": {
+      "type": "product",
+      "name": "Propyne",
+      "smiles": "C#CC",
+      "desc": "HC≡CCH₃, C₃H₄. Three carbons with a triple bond."
+    },
+    "s-methylamine": {
+      "type": "product",
+      "name": "Methylamine",
+      "smiles": "CN",
+      "desc": "CH₃NH₂, CH₅N. Smells like rotting fish!"
+    },
+    "s-methanimine": {
+      "type": "product",
+      "name": "Methanimine",
+      "smiles": "C=N",
+      "desc": "CH₂=NH, CH₃N. Has a C=N double bond."
+    },
+    "s-methanediamine": {
+      "type": "product",
+      "name": "Methanediamine",
+      "smiles": "NCN",
+      "desc": "H₂NCH₂NH₂, CH₆N₂. Two nitrogens."
+    },
+    "s-2mebutane": {
+      "type": "product",
+      "name": "2-Methylbutane",
+      "smiles": "CC(C)CC",
+      "desc": "(CH₃)₂CHCH₂CH₃, C₅H₁₂. A four-carbon chain with a methyl branch on carbon 2."
+    },
+    "s-neopentane": {
+      "type": "product",
+      "name": "2,2-Dimethylpropane",
+      "smiles": "CC(C)(C)C",
+      "desc": "C(CH₃)₄, C₅H₁₂. One central carbon bonded to four CH₃ groups."
+    },
+    "s-vinylcl": {
+      "type": "product",
+      "name": "Vinyl Chloride",
+      "smiles": "C=CCl",
+      "desc": "CH₂=CHCl, C₂H₃Cl. Starting material for PVC plastic."
+    },
+    "s-chloroethane": {
+      "type": "product",
+      "name": "Chloroethane",
+      "smiles": "CCCl",
+      "desc": "CH₃CH₂Cl, C₂H₅Cl. No double bond."
+    },
+    "s-dichloroethene": {
+      "type": "product",
+      "name": "1,2-Dichloroethene",
+      "smiles": "ClC=CCl",
+      "desc": "ClCH=CHCl, C₂H₂Cl₂. Two chlorines."
+    },
+    "s-chloroacetylene": {
+      "type": "product",
+      "name": "Chloroacetylene",
+      "smiles": "C#CCl",
+      "desc": "HC≡CCl, C₂HCl. Has a triple bond."
+    },
+    "ch5-5bonds": {
+      "type": "concept",
+      "name": "C Would Need 5 Bonds",
+      "art": "C⁵",
+      "desc": "Claim: the carbon would need five bonds."
+    },
+    "ch5-hneeds2": {
+      "type": "concept",
+      "name": "H Needs 2 Bonds",
+      "art": "H=",
+      "desc": "Claim: hydrogen needs two bonds."
+    },
+    "ch5-toolight": {
+      "type": "concept",
+      "name": "Too Few Atoms",
+      "art": "6?",
+      "desc": "Claim: the molecule has too few atoms to be stable."
+    },
+    "ch5-noh": {
+      "type": "concept",
+      "name": "C–H Bonds Too Weak",
+      "art": "C–H?",
+      "desc": "Claim: C–H bonds are too weak to hold five H's."
+    },
+    "orb-3p": {
+      "type": "concept",
+      "name": "3p",
+      "art": "3p",
+      "desc": "The three 3p orbitals (third shell)."
+    },
+    "orb-4s": {
+      "type": "concept",
+      "name": "4s",
+      "art": "4s",
+      "desc": "The 4s orbital (fourth shell)."
+    },
+    "orb-3d": {
+      "type": "concept",
+      "name": "3d",
+      "art": "3d",
+      "desc": "The five 3d orbitals (third shell)."
+    },
+    "orb-4p": {
+      "type": "concept",
+      "name": "4p",
+      "art": "4p",
+      "desc": "The three 4p orbitals (fourth shell)."
+    },
+    "mf-c10h14o": {
+      "type": "concept",
+      "name": "C₁₀H₁₄O",
+      "art": "C₁₀H₁₄O",
+      "desc": "10 carbons, 14 hydrogens, 1 oxygen."
+    },
+    "mf-c10h16o": {
+      "type": "concept",
+      "name": "C₁₀H₁₆O",
+      "art": "C₁₀H₁₆O",
+      "desc": "10 carbons, 16 hydrogens, 1 oxygen."
+    },
+    "mf-c10h14": {
+      "type": "concept",
+      "name": "C₁₀H₁₄",
+      "art": "C₁₀H₁₄",
+      "desc": "10 carbons, 14 hydrogens."
+    },
+    "mf-c9h14o": {
+      "type": "concept",
+      "name": "C₉H₁₄O",
+      "art": "C₉H₁₄O",
+      "desc": "9 carbons, 14 hydrogens, 1 oxygen."
+    }
+  },
+  "levels": [
+    {
+      "id": "intro",
+      "path": "intro",
+      "title": "Welcome to the Tower",
+      "pick": 3,
+      "lesson": [
+        {
+          "text": "Ah, a new student! Come in, come in. Mind the dots on the floor. I'm Professor Lewis Dott, and I draw dots on EVERYTHING. Each dot is an electron, you see."
+        },
+        {
+          "text": "First, how this tower works. Each problem deals you a hand of cards. Grab a card, drag it, and drop it on a glowing slot. Hover over a card to read its description. Those descriptions are study notes, so read them!"
+        },
+        {
+          "text": "Pick wrong and you lose a heart ♥, but the card flips over and tells you WHY it was wrong. Lose all your hearts and you restart the level. Don't worry, every mistake teaches you something."
+        },
+        {
+          "text": "You'll also collect POWER cards: Hint calls me back for a nudge, Eliminate throws out a wrong card and explains it, Heal restores a heart, and Shield blocks your next mistake. Use them from the bar at the bottom."
+        },
+        {
+          "text": "Right answers earn coins, and streaks earn bonus coins. Spend them in the shop between levels. Finish with no mistakes, no hints, and good speed for 3 stars. There's no timer, so take your time."
+        },
+        {
+          "text": "Now, chemistry! Organic chemistry is the study of carbon compounds. Why carbon? Carbon is in group 4A: it has 4 valence electrons and needs 4 more to fill its octet. So carbon forms 4 bonds. We call that 'tetravalent'."
+        },
+        {
+          "text": "Here's the trick for counting bonds: count how many electrons an atom is SHORT of an octet. H has 1 and needs 1 → 1 bond. C needs 4 → 4 bonds. N has 5, needs 3 → 3 bonds. O has 6, needs 2 → 2 bonds. Halogens have 7, need 1 → 1 bond.",
+          "art": "H:1  C:4  N:3  O:2  Cl:1"
+        },
+        {
+          "text": "Worked example from the book: how many H's does phosphorus bond to in phosphine? Phosphorus is in group 5A, like nitrogen. 5 valence electrons, needs 3 more... so PH₃! Leftover valence electrons sit as lone pairs, like the one pair on N in NH₃.",
+          "art": "PH₃"
+        }
+      ],
+      "problems": [
+        {
+          "id": "intro-carbon-bonds",
+          "kind": "single",
+          "section": "1.4",
+          "prompt": "How many covalent bonds does carbon usually form?",
+          "slots": [
+            {
+              "label": "Carbon forms...",
+              "answer": "n-bonds-4"
+            }
+          ],
+          "hand": [
+            "n-bonds-4",
+            "n-bonds-2",
+            "n-bonds-3",
+            "n-bonds-8"
+          ],
+          "hint": "Count how many electrons carbon is short of an octet.",
+          "explain": {
+            "n-bonds-4": "Right! Carbon has 4 valence electrons (2s² 2p²) and needs 4 more to reach neon's octet, so it shares 4 pairs: 4 bonds.",
+            "n-bonds-2": "Tempting, since ground-state carbon has only 2 unpaired electrons (2p²). But carbon actually forms 4 bonds. It needs 4 more electrons to complete its octet. (Hybridization in 1.6 explains how.)",
+            "n-bonds-3": "Three bonds is nitrogen's pattern (5 valence electrons, needs 3). Carbon has 4 valence electrons and needs 4 more: 4 bonds.",
+            "n-bonds-8": "8 is the number of electrons in an octet, not the number of bonds. Each bond holds 2 shared electrons, so carbon's 4 bonds give it 8 electrons."
+          }
+        },
+        {
+          "id": "intro-phosphine",
+          "kind": "single",
+          "section": "1.4",
+          "prompt": "How many hydrogens does phosphorus bond to in phosphine, the simple phosphorus hydride?",
+          "slots": [
+            {
+              "label": "Phosphine is...",
+              "answer": "f-ph3"
+            }
+          ],
+          "hand": [
+            "f-ph3",
+            "f-ph5",
+            "f-ph2",
+            "f-ph4"
+          ],
+          "hint": "Phosphorus is in the same group as nitrogen.",
+          "explain": {
+            "f-ph3": "Right! Phosphorus is in group 5A with 5 valence electrons. It needs 3 more for an octet, so it bonds to 3 H's: PH₃. The leftover 2 electrons are a lone pair.",
+            "f-ph5": "Good thinking that phosphorus CAN expand its octet. It often forms 5 bonds in compounds like phosphates (1.10). But the simple hydride follows the octet rule: 5 valence electrons, needs 3 → PH₃.",
+            "f-ph2": "With only 2 H's, phosphorus would have 7 valence electrons, one short of an octet. It needs 3 bonds: PH₃.",
+            "f-ph4": "Neutral PH₄ would give phosphorus 9 valence electrons. (The PH₄⁺ ion exists, but that has a charge.) Group 5A → 3 bonds → PH₃."
+          }
+        },
+        {
+          "id": "intro-formulas",
+          "kind": "match",
+          "section": "1.4",
+          "prompt": "Give the likely formula for each pair of elements. (Based on Problem 1-5.)",
+          "slots": [
+            {
+              "label": "C + Cl",
+              "answer": "f-ccl4"
+            },
+            {
+              "label": "Al + H",
+              "answer": "f-alh3"
+            },
+            {
+              "label": "Si + F",
+              "answer": "f-sif4"
+            }
+          ],
+          "hand": [
+            "f-ccl4",
+            "f-alh3",
+            "f-sif4",
+            "f-alh5",
+            "f-ccl2",
+            "f-sif2"
+          ],
+          "hint": "Aluminum is in group 3A. How many electrons does it have to share?",
+          "explain": {
+            "f-ccl4": "Carbon makes 4 bonds and each chlorine (7 valence electrons) makes 1. So it's CCl₄.",
+            "f-alh3": "Aluminum is in group 3A with 3 valence electrons, so it forms 3 bonds: AlH₃. (Al ends up with only 6 electrons, which is why AlH₃ and AlCl₃ love grabbing electron pairs.)",
+            "f-sif4": "Silicon is right below carbon in group 4A, so it bonds like carbon: 4 bonds. SiF₄.",
+            "f-alh5": "Classic trap: '8 minus 3 = 5'. That trick works for atoms on the RIGHT side (N, O, halogens) that have lots of electrons. Aluminum only has 3 electrons to share, so it forms 3 bonds: AlH₃.",
+            "f-ccl2": "Carbon with 2 bonds would have only 6 electrons around it. Carbon is tetravalent: 4 bonds, so CCl₄.",
+            "f-sif2": "Silicon is in carbon's group (4A) and forms 4 bonds, so it's SiF₄, not SiF₂."
+          }
+        },
+        {
+          "id": "intro-c2h7",
+          "kind": "single",
+          "section": "1.4",
+          "prompt": "Why can't an organic molecule have the formula C₂H₇? (Problem 1-7)",
+          "slots": [
+            {
+              "label": "Because...",
+              "answer": "c2h7-toomanyh"
+            }
+          ],
+          "hand": [
+            "c2h7-toomanyh",
+            "c2h7-h2bonds",
+            "c2h7-nocc",
+            "c2h7-odd"
+          ],
+          "hint": "Count the open bonding spots on two bonded carbons.",
+          "explain": {
+            "c2h7-toomanyh": "Right! Two carbons bonded together each have 3 bonds left, which is 6 spots for H. C₂H₆ (ethane) is the max. A 7th H would need a carbon with 5 bonds.",
+            "c2h7-h2bonds": "Hydrogen has 1 electron and needs just 1 more to match helium, so it always forms exactly 1 bond. The real problem is that two carbons only have room for 6 H's.",
+            "c2h7-nocc": "Carbon bonding to carbon is totally fine. That's how chains and rings form (Kekulé's big idea). The problem is the hydrogen count: max 6 for two carbons.",
+            "c2h7-odd": "Odd numbers of atoms are fine (CH₃Cl has 5). The problem is that two carbons can only hold 6 H's."
+          }
+        },
+        {
+          "id": "intro-nh3-lp",
+          "kind": "single",
+          "section": "1.4",
+          "prompt": "How many lone pairs does the nitrogen in ammonia, NH₃, have?",
+          "slots": [
+            {
+              "label": "Nitrogen has...",
+              "answer": "lp-1"
+            }
+          ],
+          "hand": [
+            "lp-1",
+            "lp-0",
+            "lp-2",
+            "lp-3"
+          ],
+          "hint": "N has 5 valence electrons. How many go into the 3 N–H bonds?",
+          "explain": {
+            "lp-1": "Right! N has 5 valence electrons. 3 of them pair up in the three N–H bonds, and the remaining 2 form one lone pair.",
+            "lp-0": "Nitrogen has 5 valence electrons but uses only 3 in bonds to H. The 2 left over form a lone pair, so there's 1.",
+            "lp-2": "Two lone pairs is oxygen's pattern (as in water). Nitrogen has 5 valence electrons: 3 for bonds, 2 left = 1 lone pair.",
+            "lp-3": "Three lone pairs is a halogen's pattern. Nitrogen has 5 valence electrons: 3 in bonds and 2 left over, which is 1 lone pair."
+          }
+        },
+        {
+          "id": "intro-two-bonds",
+          "kind": "single",
+          "section": "1.4",
+          "prompt": "Which of these atoms normally forms exactly TWO covalent bonds?",
+          "slots": [
+            {
+              "label": "Two bonds:",
+              "answer": "el-o"
+            }
+          ],
+          "hand": [
+            "el-o",
+            "el-n",
+            "el-c",
+            "el-cl",
+            "el-h"
+          ],
+          "hint": "Which one is 2 electrons short of an octet?",
+          "explain": {
+            "el-o": "Right! Oxygen has 6 valence electrons (2s² 2p⁴) and needs 2 more, so it forms 2 bonds, as in H₂O.",
+            "el-n": "Nitrogen has 5 valence electrons and needs 3 more, so it forms 3 bonds (NH₃).",
+            "el-c": "Carbon has 4 valence electrons and needs 4 more, so it forms 4 bonds (CH₄).",
+            "el-cl": "Chlorine has 7 valence electrons and needs only 1 more, so it forms 1 bond.",
+            "el-h": "Hydrogen has 1 electron and needs 1 more to match helium, so it forms 1 bond."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a1",
+      "path": "A",
+      "title": "Shells & Orbitals",
+      "requires": [
+        "intro"
+      ],
+      "pick": 3,
+      "lesson": [
+        {
+          "text": "Path of Atoms! Let's start small. An atom has a tiny, dense nucleus of protons (+) and neutrons (neutral), surrounded by electrons (−). The atomic number Z counts protons. The mass number A counts protons + neutrons."
+        },
+        {
+          "text": "Same element, different number of neutrons? Those are ISOTOPES. Carbon-12 and carbon-13 both have 6 protons. Carbon-13 just has one more neutron.",
+          "art": "¹²C  ¹³C"
+        },
+        {
+          "text": "Electrons live in ORBITALS: regions where an electron spends 90–95% of its time. s orbitals are spheres. p orbitals are dumbbells with two lobes and a NODE between them, a spot with zero electron density."
+        },
+        {
+          "text": "Orbitals come in shells. Shell 1: one 1s orbital (2 electrons). Shell 2: one 2s + three 2p (8 electrons). Shell 3: 3s + three 3p + five 3d (18 electrons). Each orbital holds 2 electrons, max.",
+          "art": "2 · 8 · 18"
+        },
+        {
+          "text": "Three rules fill them. AUFBAU: lowest energy first (1s, 2s, 2p, 3s, 3p, 4s, 3d). PAULI: max two electrons per orbital, opposite spins. HUND: equal-energy orbitals get one electron each, spins parallel, before any pair up."
+        },
+        {
+          "text": "Worked example: carbon has 6 electrons. 1s gets 2, 2s gets 2, and the last 2 go into the 2p orbitals one at a time (Hund!). That's 1s² 2s² 2p². The superscripts are electron counts, so they always add up to Z.",
+          "art": "1s² 2s² 2p²"
+        }
+      ],
+      "problems": [
+        {
+          "id": "a1-isotopes",
+          "kind": "single",
+          "section": "1.1",
+          "prompt": "Carbon-12 and carbon-13 have the same number of protons but different numbers of neutrons. They are...",
+          "slots": [
+            {
+              "label": "They are...",
+              "answer": "isotopes"
+            }
+          ],
+          "hand": [
+            "isotopes",
+            "ions",
+            "isomers",
+            "diff-elements"
+          ],
+          "hint": "Same atomic number, different mass number.",
+          "explain": {
+            "isotopes": "Right! Isotopes have the same atomic number (6 protons for carbon) but different mass numbers because their neutron counts differ.",
+            "ions": "Ions differ in ELECTRONS, which gives them a charge. Carbon-12 and carbon-13 differ in neutrons, so they're isotopes.",
+            "isomers": "Isomers are different COMPOUNDS with the same formula, which is a molecule-level idea. Atoms that differ only in neutrons are isotopes.",
+            "diff-elements": "Same number of protons means same element: both are carbon. Different neutrons makes them isotopes."
+          }
+        },
+        {
+          "id": "a1-config-o",
+          "kind": "single",
+          "section": "1.3",
+          "prompt": "What is the ground-state electron configuration of oxygen (Z = 8)? (Problem 1-1a)",
+          "slots": [
+            {
+              "label": "Oxygen:",
+              "answer": "cfg-o"
+            }
+          ],
+          "hand": [
+            "cfg-o",
+            "cfg-ne",
+            "cfg-skip2s",
+            "cfg-c"
+          ],
+          "hint": "The superscripts must add up to 8.",
+          "explain": {
+            "cfg-o": "Right! 8 electrons: 1s² (2) + 2s² (2) + 2p⁴ (4) = 8.",
+            "cfg-ne": "That adds up to 10 electrons, which is neon (or the O²⁻ ion). Neutral oxygen has 8: 1s² 2s² 2p⁴.",
+            "cfg-skip2s": "This skips 2s. By the Aufbau principle, 2s is lower in energy than 2p and fills first. Oxygen is 1s² 2s² 2p⁴.",
+            "cfg-c": "That's only 6 electrons, which is carbon. Oxygen has 8: 1s² 2s² 2p⁴."
+          }
+        },
+        {
+          "id": "a1-config-n",
+          "kind": "single",
+          "section": "1.3",
+          "prompt": "What is the ground-state electron configuration of nitrogen (Z = 7)? (Problem 1-1b)",
+          "slots": [
+            {
+              "label": "Nitrogen:",
+              "answer": "cfg-n"
+            }
+          ],
+          "hand": [
+            "cfg-n",
+            "cfg-2s3",
+            "cfg-o",
+            "cfg-f"
+          ],
+          "hint": "Total of 7 electrons, and no orbital holds more than 2.",
+          "explain": {
+            "cfg-n": "Right! 2 + 2 + 3 = 7. By Hund's rule, the three 2p electrons spread out, one in each p orbital, spins parallel.",
+            "cfg-2s3": "An s subshell is ONE orbital, and by the Pauli exclusion principle one orbital holds at most 2 electrons. 2s³ is impossible.",
+            "cfg-o": "That's 8 electrons, which is oxygen. Nitrogen has 7: 1s² 2s² 2p³.",
+            "cfg-f": "That's 9 electrons, which is fluorine. Nitrogen has 7: 1s² 2s² 2p³."
+          }
+        },
+        {
+          "id": "a1-config-s",
+          "kind": "single",
+          "section": "1.3",
+          "prompt": "What is the ground-state electron configuration of sulfur (Z = 16)? (Problem 1-1c)",
+          "slots": [
+            {
+              "label": "Sulfur:",
+              "answer": "cfg-s"
+            }
+          ],
+          "hand": [
+            "cfg-s",
+            "cfg-ar",
+            "cfg-s3d",
+            "cfg-o"
+          ],
+          "hint": "After 3s comes 3p, and the total must be 16.",
+          "explain": {
+            "cfg-s": "Right! 2 + 2 + 6 + 2 + 4 = 16. Notice the outer shell, 3s² 3p⁴, looks just like oxygen's 2s² 2p⁴. Same group, same pattern.",
+            "cfg-ar": "That's 18 electrons, which is argon. Sulfur has 16, so 3p only gets 4: 1s² 2s² 2p⁶ 3s² 3p⁴.",
+            "cfg-s3d": "This jumps to 3d before filling 3p. 3p is lower in energy, so it fills first (Aufbau). Sulfur is 1s² 2s² 2p⁶ 3s² 3p⁴.",
+            "cfg-o": "That's oxygen, with 8 electrons. Sulfur is in the same group but one row down, with 16 electrons."
+          }
+        },
+        {
+          "id": "a1-rules",
+          "kind": "match",
+          "section": "1.3",
+          "prompt": "Match each electron-filling rule to its name.",
+          "slots": [
+            {
+              "label": "Lowest-energy orbitals fill first",
+              "answer": "rule-aufbau"
+            },
+            {
+              "label": "Max 2 electrons per orbital, opposite spins",
+              "answer": "rule-pauli"
+            },
+            {
+              "label": "Equal-energy orbitals: one electron each before pairing",
+              "answer": "rule-hund"
+            }
+          ],
+          "hand": [
+            "rule-aufbau",
+            "rule-pauli",
+            "rule-hund",
+            "rule-octet"
+          ],
+          "hint": "'Aufbau' is German for 'building up'.",
+          "explain": {
+            "rule-aufbau": "The Aufbau ('building up') principle: fill orbitals from lowest energy up. It goes on the 'lowest-energy first' slot.",
+            "rule-pauli": "The Pauli exclusion principle: only two electrons per orbital, with opposite spins (↑↓). It goes on the 'max 2 electrons' slot.",
+            "rule-hund": "Hund's rule: in equal-energy orbitals (like the three 2p's), electrons spread out one per orbital with parallel spins before pairing. It goes on the 'one each before pairing' slot.",
+            "rule-octet": "The octet rule is about why atoms BOND (to reach 8 valence electrons), not about the order orbitals fill in. It doesn't match any of these."
+          }
+        },
+        {
+          "id": "a1-shell2",
+          "kind": "single",
+          "section": "1.2",
+          "prompt": "How many electrons can the second shell hold?",
+          "slots": [
+            {
+              "label": "Shell 2 holds...",
+              "answer": "shell-8"
+            }
+          ],
+          "hand": [
+            "shell-8",
+            "shell-2",
+            "shell-18",
+            "shell-6"
+          ],
+          "hint": "Shell 2 has one s orbital and three p orbitals.",
+          "explain": {
+            "shell-8": "Right! One 2s orbital + three 2p orbitals = 4 orbitals × 2 electrons = 8. That's where the octet comes from!",
+            "shell-2": "That's the FIRST shell, which has only a 1s orbital. Shell 2 has 2s + three 2p = 8 electrons.",
+            "shell-18": "That's the THIRD shell (3s + three 3p + five 3d). Shell 2 has no d orbitals: 8 electrons.",
+            "shell-6": "That's just the three 2p orbitals. Don't forget the 2s orbital: 2 + 6 = 8."
+          }
+        },
+        {
+          "id": "a1-pshape",
+          "kind": "single",
+          "section": "1.2",
+          "prompt": "What shape is a p orbital?",
+          "slots": [
+            {
+              "label": "A p orbital is...",
+              "answer": "shape-p"
+            }
+          ],
+          "hand": [
+            "shape-p",
+            "shape-s",
+            "shape-d",
+            "shape-hybrid"
+          ],
+          "hint": "Think of two lobes with a node in between.",
+          "explain": {
+            "shape-p": "Right! A p orbital is dumbbell-shaped: two lobes with opposite algebraic signs, separated by a node at the nucleus.",
+            "shape-s": "Spherical is the s orbital. A p orbital is a dumbbell with two lobes.",
+            "shape-d": "Cloverleaf is the shape of four of the five d orbitals. A p orbital has just two lobes.",
+            "shape-hybrid": "One big lobe and one small lobe is a HYBRID orbital like sp³ (1.6). A plain p orbital has two equal-sized lobes."
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2",
+      "path": "A",
+      "title": "Bonds from Orbitals",
+      "requires": [
+        "a1"
+      ],
+      "pick": 4,
+      "lesson": [
+        {
+          "text": "How do orbitals make bonds? Valence bond theory says a covalent bond forms when a half-filled orbital on one atom overlaps a half-filled orbital on another. The two electrons pair up between the nuclei."
+        },
+        {
+          "text": "In H₂, two 1s orbitals overlap HEAD-ON. Bonds from head-on overlap are called SIGMA (σ) bonds. Slice one across the middle and you get a circle: they're cylindrically symmetric.",
+          "art": "●● → σ"
+        },
+        {
+          "text": "Forming the H–H bond RELEASES 436 kJ/mol. Breaking it ABSORBS 436 kJ/mol. Making bonds always gives off energy, and breaking them always costs energy. The best distance between the nuclei, 74 pm in H₂, is the bond length."
+        },
+        {
+          "text": "Molecular orbital theory tells it differently. Atomic orbitals combine into MOs that belong to the whole molecule. Adding them gives a lower-energy BONDING MO. Subtracting them gives a higher-energy ANTIBONDING MO with a node between the nuclei."
+        },
+        {
+          "text": "Sideways overlap of two p orbitals gives a PI (π) bond, with electron density above and below the bond axis. In ethylene's MO picture, the π bonding MO is filled and the π antibonding MO is empty.",
+          "art": "σ  π  σ*"
+        },
+        {
+          "text": "Last tip: valence electrons are the ones in the OUTERMOST shell. For selenium, that's 4s² 4p⁴, so 6. The 3d electrons sit in an inner shell, so they don't count as outer-shell electrons."
+        }
+      ],
+      "problems": [
+        {
+          "id": "a2-h2-bond",
+          "kind": "single",
+          "section": "1.5",
+          "prompt": "How does the H–H bond in H₂ form, according to valence bond theory?",
+          "slots": [
+            {
+              "label": "The H–H bond is...",
+              "answer": "h2-1s-headon"
+            }
+          ],
+          "hand": [
+            "h2-1s-headon",
+            "h2-p-side",
+            "h2-transfer",
+            "h2-2p"
+          ],
+          "hint": "What orbital does a hydrogen atom have its electron in?",
+          "explain": {
+            "h2-1s-headon": "Right! Each H has one electron in a 1s orbital. The two 1s orbitals overlap head-on, the electrons pair up, and you get a σ bond.",
+            "h2-p-side": "Hydrogen has no p electrons. Its only electron is in 1s. Sideways p overlap makes π bonds, which H₂ doesn't have.",
+            "h2-transfer": "Transferring an electron makes ions (ionic bonding, like Na⁺Cl⁻). In H₂, the two H atoms SHARE electrons in a covalent bond.",
+            "h2-2p": "Hydrogen's electron is in 1s, not 2p. The H–H bond is 1s–1s head-on overlap."
+          }
+        },
+        {
+          "id": "a2-h2-energy",
+          "kind": "single",
+          "section": "1.5",
+          "prompt": "When two H atoms form an H₂ molecule, what happens to the energy?",
+          "slots": [
+            {
+              "label": "Energy is...",
+              "answer": "e-release436"
+            }
+          ],
+          "hand": [
+            "e-release436",
+            "e-absorb436",
+            "e-release74",
+            "e-none"
+          ],
+          "hint": "Is H₂ more or less stable than two separate H atoms?",
+          "explain": {
+            "e-release436": "Right! H₂ is 436 kJ/mol lower in energy than two separate H atoms, so 436 kJ/mol is released when the bond forms. That's the H–H bond strength.",
+            "e-absorb436": "436 kJ/mol is ABSORBED when you BREAK the bond. Forming it does the opposite and releases 436 kJ/mol.",
+            "e-release74": "74 is the H–H bond LENGTH (74 pm), not its energy. Forming the bond releases 436 kJ/mol.",
+            "e-none": "Atoms bond because the result is more stable. Making a bond always releases energy, 436 kJ/mol for H–H."
+          }
+        },
+        {
+          "id": "a2-bond-types",
+          "kind": "match",
+          "section": "1.11",
+          "prompt": "Match each description to the bond or orbital it describes.",
+          "slots": [
+            {
+              "label": "Head-on overlap; cylindrically symmetric",
+              "answer": "bond-sigma"
+            },
+            {
+              "label": "Sideways p overlap; density above & below the axis",
+              "answer": "bond-pi"
+            },
+            {
+              "label": "Additive combination; lower energy",
+              "answer": "mo-bonding"
+            },
+            {
+              "label": "Subtractive combination; node between nuclei",
+              "answer": "mo-anti"
+            }
+          ],
+          "hand": [
+            "bond-sigma",
+            "bond-pi",
+            "mo-bonding",
+            "mo-anti",
+            "bond-ionic"
+          ],
+          "hint": "The 'anti' MO is the one with a node between the nuclei.",
+          "explain": {
+            "bond-sigma": "σ bonds come from head-on overlap along the line between nuclei, so they're cylindrically symmetric (1.5).",
+            "bond-pi": "π bonds come from sideways overlap of p orbitals. Their electron density sits above and below the internuclear axis (1.8).",
+            "mo-bonding": "The bonding MO comes from ADDING orbital wave functions. It's lower in energy, and its electrons spend time between the nuclei.",
+            "mo-anti": "The antibonding MO comes from SUBTRACTING wave functions. It's higher in energy and has a node between the nuclei.",
+            "bond-ionic": "Ionic bonds are attractions between charged ions. No orbital overlap is involved, so it doesn't match any of these descriptions."
+          }
+        },
+        {
+          "id": "a2-h2-mo",
+          "kind": "single",
+          "section": "1.11",
+          "prompt": "In the molecular orbital picture of H₂, where do the two electrons go?",
+          "slots": [
+            {
+              "label": "The electrons go...",
+              "answer": "mo-both-bonding"
+            }
+          ],
+          "hand": [
+            "mo-both-bonding",
+            "mo-split",
+            "mo-both-anti",
+            "mo-atomic"
+          ],
+          "hint": "Electrons fill the lowest-energy orbital first, two per orbital.",
+          "explain": {
+            "mo-both-bonding": "Right! The bonding MO is lowest in energy, and it can hold 2 electrons with opposite spins. It's filled; the antibonding MO stays empty.",
+            "mo-split": "Electrons fill from the bottom up, and the bonding MO holds two. Putting one in the antibonding MO would cancel out the bond.",
+            "mo-both-anti": "The antibonding MO is HIGHER in energy, so electrons don't go there first. Both go into the bonding MO.",
+            "mo-atomic": "That's closer to the valence bond picture. In MO theory, the orbitals belong to the whole molecule, and both electrons sit in the bonding MO."
+          }
+        },
+        {
+          "id": "a2-selenium",
+          "kind": "single",
+          "section": "1.3",
+          "prompt": "How many electrons does selenium (Z = 34) have in its outermost shell? (Problem 1-2c)",
+          "slots": [
+            {
+              "label": "Outer shell:",
+              "answer": "ve-6"
+            }
+          ],
+          "hand": [
+            "ve-6",
+            "ve-16",
+            "ve-34",
+            "ve-2"
+          ],
+          "hint": "Selenium is in group 6A, right under oxygen and sulfur.",
+          "explain": {
+            "ve-6": "Right! Selenium's outermost shell is shell 4: 4s² 4p⁴ = 6 electrons. Same as O and S, its group-mates.",
+            "ve-16": "Tempting if you count 4s² 3d¹⁰ 4p⁴. But 3d belongs to shell 3, not the outermost shell. Only 4s² 4p⁴ count: 6.",
+            "ve-34": "34 is selenium's TOTAL electron count (its atomic number). Only the outermost shell, 4s² 4p⁴, counts here: 6.",
+            "ve-2": "2 would be just the 4s electrons. Don't forget the 4p⁴: 2 + 4 = 6."
+          }
+        },
+        {
+          "id": "a2-node",
+          "kind": "single",
+          "section": "1.2",
+          "prompt": "The two lobes of a p orbital are separated by a 'node.' What is a node?",
+          "slots": [
+            {
+              "label": "A node is...",
+              "answer": "node-zero"
+            }
+          ],
+          "hand": [
+            "node-zero",
+            "node-nucleus",
+            "node-max",
+            "node-overlap"
+          ],
+          "hint": "Electrons are never found there.",
+          "explain": {
+            "node-zero": "Right! A node is a region of zero electron density. The lobes on either side of it have opposite algebraic signs (+ and −).",
+            "node-nucleus": "The p orbital's node does pass through the nucleus, but the node itself is a region of ZERO electron density, not the nucleus.",
+            "node-max": "Opposite! A node is where electron density is ZERO.",
+            "node-overlap": "Overlap zones are where bonds form, and electron density there is high. A node has zero density."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b1",
+      "path": "B",
+      "title": "Carbon's Hybrids",
+      "requires": [
+        "intro"
+      ],
+      "pick": 3,
+      "lesson": [
+        {
+          "text": "Path of Shapes! A puzzle: carbon is 2s² 2p², with two kinds of orbitals. Yet all four C–H bonds in methane are identical. Linus Pauling's answer: the 2s and three 2p orbitals mix into four equal sp³ HYBRID orbitals."
+        },
+        {
+          "text": "The sp³ hybrids point to the corners of a tetrahedron, 109.5° apart. The '3' means three p orbitals were mixed in. It does NOT count electrons. Hybrids are lopsided, with one big lobe, so they overlap well and form strong bonds.",
+          "art": "sp³ = s + p + p + p"
+        },
+        {
+          "text": "Mix the 2s with only TWO p's and you get three sp² hybrids in a flat plane, 120° apart, plus one leftover p orbital. In ethylene, the leftover p's overlap SIDEWAYS to make a π bond. Double bond = 1 σ + 1 π.",
+          "smiles": "C=C"
+        },
+        {
+          "text": "Mix 2s with just ONE p and you get two sp hybrids, 180° apart, plus two leftover p's. In acetylene those make TWO π bonds. Triple bond = 1 σ + 2 π, and the molecule is linear.",
+          "smiles": "C#C"
+        },
+        {
+          "text": "The book's data (Table 1.2): C–C is 153 pm and 377 kJ/mol. C=C is 134 pm and 728 kJ/mol. C≡C is 120 pm and 965 kJ/mol. More bonds means shorter and stronger. But a double bond is less than twice as strong, because sideways π overlap is weaker than head-on σ overlap.",
+          "art": "153 › 134 › 120 pm"
+        },
+        {
+          "text": "Shortcut: count the groups around the carbon. 4 single bonds → sp³. A double bond → sp². A triple bond (or two double bonds) → sp."
+        }
+      ],
+      "problems": [
+        {
+          "id": "b1-match-hyb",
+          "kind": "match",
+          "section": "1.9",
+          "prompt": "Match each molecule to the hybridization of its carbons.",
+          "slots": [
+            {
+              "label": "Ethane",
+              "smiles": "CC",
+              "answer": "hyb-sp3"
+            },
+            {
+              "label": "Ethylene",
+              "smiles": "C=C",
+              "answer": "hyb-sp2"
+            },
+            {
+              "label": "Acetylene",
+              "smiles": "C#C",
+              "answer": "hyb-sp"
+            }
+          ],
+          "hand": [
+            "hyb-sp3",
+            "hyb-sp2",
+            "hyb-sp",
+            "hyb-p"
+          ],
+          "hint": "Single bonds only → sp³. Double → sp². Triple → sp.",
+          "explain": {
+            "hyb-sp3": "sp³ goes with ethane: each carbon has four single (σ) bonds pointing to the corners of a tetrahedron.",
+            "hyb-sp2": "sp² goes with ethylene: each carbon has three σ bonds in a plane plus a leftover p orbital for the π bond.",
+            "hyb-sp": "sp goes with acetylene: each carbon has two σ bonds at 180° plus two leftover p orbitals for two π bonds.",
+            "hyb-p": "Carbon's bonds aren't made from plain p orbitals, which would put them 90° apart. Real carbon bonds use hybrids (sp³, sp², sp)."
+          }
+        },
+        {
+          "id": "b1-methane-angle",
+          "kind": "single",
+          "section": "1.6",
+          "prompt": "What is the H–C–H bond angle in methane, CH₄?",
+          "smiles": "C",
+          "slots": [
+            {
+              "label": "H–C–H angle:",
+              "answer": "ang-109"
+            }
+          ],
+          "hand": [
+            "ang-109",
+            "ang-90",
+            "ang-120",
+            "ang-180"
+          ],
+          "hint": "Four sp³ orbitals point to the corners of a tetrahedron.",
+          "explain": {
+            "ang-109": "Right! Methane's four sp³ orbitals point to the corners of a regular tetrahedron: 109.5°, the tetrahedral angle.",
+            "ang-90": "90° is the angle between plain, unhybridized p orbitals. Carbon uses sp³ hybrids in methane, so the angle is 109.5°.",
+            "ang-120": "120° is for sp² carbons (flat, like ethylene). Methane's carbon is sp³: 109.5°.",
+            "ang-180": "180° is for linear sp carbons (like acetylene). Methane is tetrahedral: 109.5°."
+          }
+        },
+        {
+          "id": "b1-ethylene-geo",
+          "kind": "single",
+          "section": "1.8",
+          "prompt": "What is the geometry around each carbon in ethylene, H₂C=CH₂?",
+          "smiles": "C=C",
+          "slots": [
+            {
+              "label": "Geometry:",
+              "answer": "geo-planar120"
+            }
+          ],
+          "hand": [
+            "geo-planar120",
+            "geo-tetra",
+            "geo-linear",
+            "geo-square"
+          ],
+          "hint": "How many sp² hybrids, and how are they arranged?",
+          "explain": {
+            "geo-planar120": "Right! Each sp² carbon has three hybrid orbitals in a plane, ~120° apart. The whole ethylene molecule is flat. (Actual angles: 117.4° H–C–H, 121.3° H–C–C.)",
+            "geo-tetra": "Tetrahedral (109.5°) is for sp³ carbons with four single bonds. Ethylene's carbons are sp², so they're flat with ~120° angles.",
+            "geo-linear": "Linear (180°) is for sp carbons, like in acetylene's triple bond. Ethylene's double-bond carbons are sp²: flat, ~120°.",
+            "geo-square": "Carbon never arranges bonds in a 90° square. Ethylene's sp² carbons are trigonal planar, ~120°."
+          }
+        },
+        {
+          "id": "b1-rank-length",
+          "kind": "rank",
+          "section": "1.9",
+          "prompt": "Rank these carbon–carbon bonds from SHORTEST to LONGEST.",
+          "slots": [
+            {
+              "label": "Shortest",
+              "answer": "bl-triple"
+            },
+            {
+              "label": "Middle",
+              "answer": "bl-double"
+            },
+            {
+              "label": "Longest",
+              "answer": "bl-single"
+            }
+          ],
+          "hand": [
+            "bl-single",
+            "bl-triple",
+            "bl-double"
+          ],
+          "hint": "More electrons between the nuclei pull them closer together.",
+          "why": "More shared electrons pull the nuclei closer: C≡C 120 pm < C=C 134 pm < C–C 153 pm (Table 1.2).",
+          "explain": {
+            "bl-triple": "C≡C is 120 pm: the SHORTEST carbon–carbon bond. Six shared electrons hold the nuclei tight.",
+            "bl-double": "C=C is 134 pm: in the MIDDLE. Four shared electrons.",
+            "bl-single": "C–C is 153 pm: the LONGEST. Only two shared electrons."
+          }
+        },
+        {
+          "id": "b1-rank-strength",
+          "kind": "rank",
+          "section": "1.9",
+          "prompt": "Rank these carbon–carbon bonds from STRONGEST to WEAKEST.",
+          "slots": [
+            {
+              "label": "Strongest",
+              "answer": "bl-triple"
+            },
+            {
+              "label": "Middle",
+              "answer": "bl-double"
+            },
+            {
+              "label": "Weakest",
+              "answer": "bl-single"
+            }
+          ],
+          "hand": [
+            "bl-double",
+            "bl-single",
+            "bl-triple"
+          ],
+          "hint": "Shorter bonds are stronger bonds.",
+          "why": "C≡C 965 kJ/mol > C=C 728 kJ/mol > C–C 377 kJ/mol (Table 1.2).",
+          "explain": {
+            "bl-triple": "C≡C is 965 kJ/mol: the STRONGEST carbon–carbon bond (1 σ + 2 π).",
+            "bl-double": "C=C is 728 kJ/mol: in the MIDDLE (1 σ + 1 π).",
+            "bl-single": "C–C is 377 kJ/mol: the WEAKEST (just 1 σ)."
+          }
+        },
+        {
+          "id": "b1-triple-makeup",
+          "kind": "single",
+          "section": "1.9",
+          "prompt": "A carbon–carbon triple bond is made of...",
+          "smiles": "C#C",
+          "slots": [
+            {
+              "label": "A triple bond is...",
+              "answer": "tb-1s2p"
+            }
+          ],
+          "hand": [
+            "tb-1s2p",
+            "tb-3s",
+            "tb-2s1p",
+            "tb-3p"
+          ],
+          "hint": "Only one bond can point straight between the two nuclei.",
+          "explain": {
+            "tb-1s2p": "Right! sp–sp head-on overlap gives 1 σ bond. The two leftover p orbitals on each carbon (py and pz) overlap sideways for 2 π bonds.",
+            "tb-3s": "Only ONE bond can overlap head-on along the line between two nuclei. The other two are sideways π bonds: 1 σ + 2 π.",
+            "tb-2s1p": "Two atoms can only share one σ bond. A triple bond is 1 σ + 2 π.",
+            "tb-3p": "Every multiple bond starts with a σ bond. A triple bond is 1 σ + 2 π."
+          }
+        },
+        {
+          "id": "b1-double-weaker",
+          "kind": "single",
+          "section": "1.8",
+          "prompt": "A C=C bond (728 kJ/mol) is LESS than twice as strong as a C–C bond (377 kJ/mol). Why?",
+          "slots": [
+            {
+              "label": "Because...",
+              "answer": "db-pi-weaker"
+            }
+          ],
+          "hand": [
+            "db-pi-weaker",
+            "db-longer",
+            "db-two-sigma",
+            "db-sigma-weak"
+          ],
+          "hint": "Compare sideways overlap with head-on overlap.",
+          "explain": {
+            "db-pi-weaker": "Right! The π part of the double bond comes from sideways p–p overlap, which isn't as effective as σ head-on overlap. So the π bond adds less than a full σ bond's worth.",
+            "db-longer": "Double bonds are actually SHORTER (134 pm vs 153 pm). The real reason is that the π part's sideways overlap is weaker than σ head-on overlap.",
+            "db-two-sigma": "A double bond is 1 σ + 1 π, not two σ bonds. The weaker π bond is why it isn't twice as strong.",
+            "db-sigma-weak": "The σ part is still strong head-on overlap. It's the π part (sideways overlap) that's weaker."
+          }
+        },
+        {
+          "id": "b1-sp3-meaning",
+          "kind": "single",
+          "section": "1.6",
+          "prompt": "What does the superscript '3' in sp³ tell you?",
+          "slots": [
+            {
+              "label": "The '3' means...",
+              "answer": "sp3-meaning"
+            }
+          ],
+          "hand": [
+            "sp3-meaning",
+            "sp3-3e",
+            "sp3-3bonds",
+            "sp3-shell3"
+          ],
+          "hint": "It's a recipe: how many of each orbital went in.",
+          "explain": {
+            "sp3-meaning": "Right! sp³ means one s orbital and three p orbitals combined. The superscript counts orbitals mixed in, not electrons.",
+            "sp3-3e": "The book warns about exactly this: the superscript is NOT an electron count. No orbital holds more than 2 electrons. It means three p orbitals mixed in.",
+            "sp3-3bonds": "An sp³ carbon makes FOUR bonds, one per hybrid. The '3' means three p orbitals were mixed with one s.",
+            "sp3-shell3": "Carbon's hybrids come from the second shell (2s, 2p). The '3' counts the p orbitals mixed in."
+          }
+        }
+      ]
+    },
+    {
+      "id": "b2",
+      "path": "B",
+      "title": "Beyond Carbon",
+      "requires": [
+        "b1"
+      ],
+      "pick": 4,
+      "lesson": [
+        {
+          "text": "Hybridization isn't just for carbon! Look at the nitrogen in methylamine, CH₃NH₂. Its bond angles are 107–110°, close to tetrahedral. So nitrogen is sp³ too: three hybrids form bonds, and the fourth holds a LONE PAIR.",
+          "smiles": "CN"
+        },
+        {
+          "text": "The big lesson: lone pairs count as groups! They take up a hybrid orbital just like a bond does. Oxygen in methanol: 2 bonds + 2 lone pairs = 4 groups → sp³. The C–O–H angle is 108.5°.",
+          "smiles": "CO"
+        },
+        {
+          "text": "Phosphorus and sulfur are third-row cousins of N and O. They can expand their octets: P often makes 5 bonds, S often makes 4. In methyl phosphate, the O–P–O angles are 110–112°, so P is sp³."
+        },
+        {
+          "text": "Bigger molecules? Go atom by atom. In propene, CH₃–CH=CH₂, the CH₃ carbon is sp³ and both double-bond carbons are sp². In propyne, CH₃–C≡CH, the CH₃ is sp³ and both triple-bond carbons are sp.",
+          "smiles": "C=CC"
+        },
+        {
+          "text": "Count groups (bonds + lone pairs, with a double or triple bond counting as ONE group): 4 groups → sp³ (109.5°), 3 groups → sp² (120°), 2 groups → sp (180°). It even works on odd species like a carbocation, CH₃⁺: 3 groups → sp², flat.",
+          "art": "4→sp³ 3→sp² 2→sp"
+        }
+      ],
+      "problems": [
+        {
+          "id": "b2-methylamine",
+          "kind": "single",
+          "section": "1.10",
+          "prompt": "What is the hybridization of the nitrogen in methylamine, CH₃NH₂?",
+          "smiles": "CN",
+          "slots": [
+            {
+              "label": "Nitrogen is...",
+              "answer": "hyb-sp3"
+            }
+          ],
+          "hand": [
+            "hyb-sp3",
+            "hyb-sp2",
+            "hyb-sp",
+            "hyb-none"
+          ],
+          "hint": "Don't forget nitrogen's lone pair. Count it as a group.",
+          "explain": {
+            "hyb-sp3": "Right! N has 3 bonds + 1 lone pair = 4 groups → sp³. Its bond angles (107.1°, 110.3°) are close to tetrahedral.",
+            "hyb-sp2": "That's what you get if you count only the 3 bonds. The lone pair takes a hybrid orbital too: 4 groups → sp³.",
+            "hyb-sp": "sp is for 2 groups (like a triple-bond carbon). Nitrogen here has 3 bonds + 1 lone pair = 4 groups → sp³.",
+            "hyb-none": "Nitrogen does hybridize! Its tetrahedral-ish bond angles tell us it's sp³."
+          }
+        },
+        {
+          "id": "b2-methanol-o",
+          "kind": "single",
+          "section": "1.10",
+          "prompt": "Describe the oxygen atom in methanol, CH₃OH.",
+          "smiles": "CO",
+          "slots": [
+            {
+              "label": "Oxygen is...",
+              "answer": "lp-sp3-2"
+            }
+          ],
+          "hand": [
+            "lp-sp3-2",
+            "lp-sp3-1",
+            "lp-sp2-2",
+            "lp-sp-2"
+          ],
+          "hint": "O has 6 valence electrons and makes 2 bonds.",
+          "explain": {
+            "lp-sp3-2": "Right! O makes 2 bonds (to C and H) and keeps 4 electrons as 2 lone pairs. 4 groups → sp³, with a C–O–H angle of 108.5°.",
+            "lp-sp3-1": "Oxygen has 6 valence electrons. 2 go into bonds and 4 are left = 2 lone pairs. (1 lone pair is nitrogen's pattern.)",
+            "lp-sp2-2": "sp² would mean 3 groups. Oxygen here has 2 bonds + 2 lone pairs = 4 groups → sp³.",
+            "lp-sp-2": "sp gives only 2 hybrid orbitals, which isn't enough room for 2 bonds and 2 lone pairs. It's 4 groups → sp³."
+          }
+        },
+        {
+          "id": "b2-propene",
+          "kind": "match",
+          "section": "1.8",
+          "prompt": "Propene, CH₃–CH=CH₂ (Problem 1-10). Give each carbon's hybridization.",
+          "smiles": "C=CC",
+          "slots": [
+            {
+              "label": "CH₃ carbon",
+              "answer": "hyb-sp3"
+            },
+            {
+              "label": "Middle =CH– carbon",
+              "answer": "hyb-sp2"
+            },
+            {
+              "label": "End =CH₂ carbon",
+              "answer": "hyb-sp2"
+            }
+          ],
+          "hand": [
+            "hyb-sp3",
+            "hyb-sp2",
+            "hyb-sp2",
+            "hyb-sp"
+          ],
+          "hint": "Both carbons of a double bond have the same hybridization.",
+          "explain": {
+            "hyb-sp3": "sp³ fits the CH₃ carbon: four single bonds, ~109° angles. The double-bond carbons are sp².",
+            "hyb-sp2": "sp² fits BOTH double-bond carbons: three σ bonds in a plane (~120°) plus a p orbital for the π bond.",
+            "hyb-sp": "There's no triple bond (or two double bonds on one carbon) in propene, so no sp carbons. CH₃ is sp³, and the C=C carbons are sp²."
+          }
+        },
+        {
+          "id": "b2-propyne",
+          "kind": "match",
+          "section": "1.9",
+          "prompt": "Propyne, CH₃–C≡CH (Problem 1-13). Give each carbon's hybridization.",
+          "smiles": "C#CC",
+          "slots": [
+            {
+              "label": "CH₃ carbon",
+              "answer": "hyb-sp3"
+            },
+            {
+              "label": "Middle –C≡ carbon",
+              "answer": "hyb-sp"
+            },
+            {
+              "label": "End ≡CH carbon",
+              "answer": "hyb-sp"
+            }
+          ],
+          "hand": [
+            "hyb-sp3",
+            "hyb-sp",
+            "hyb-sp",
+            "hyb-sp2"
+          ],
+          "hint": "Triple-bond carbons have two groups each.",
+          "explain": {
+            "hyb-sp3": "sp³ fits the CH₃ carbon: four single bonds. The triple-bond carbons are sp.",
+            "hyb-sp": "sp fits BOTH triple-bond carbons: two σ bonds at 180° (C≡C–C and H–C≡C are linear) plus two p orbitals for the two π bonds.",
+            "hyb-sp2": "sp² is for double-bond carbons. Propyne has a triple bond, so those carbons are sp. The CH₃ is sp³."
+          }
+        },
+        {
+          "id": "b2-phosphate",
+          "kind": "single",
+          "section": "1.10",
+          "prompt": "In methyl phosphate, CH₃OPO₃²⁻, the O–P–O bond angles are about 110–112°. What hybridization does that suggest for phosphorus?",
+          "slots": [
+            {
+              "label": "Phosphorus is...",
+              "answer": "hyb-sp3"
+            }
+          ],
+          "hand": [
+            "hyb-sp3",
+            "hyb-sp2",
+            "hyb-sp",
+            "hyb-none"
+          ],
+          "hint": "Which hybridization has angles near 109.5°?",
+          "explain": {
+            "hyb-sp3": "Right! Angles of 110–112° are close to the 109.5° tetrahedral angle, which implies sp³ phosphorus with four groups (the four oxygens).",
+            "hyb-sp2": "sp² would give 120° angles in a flat arrangement. The measured 110–112° points to sp³.",
+            "hyb-sp": "sp would give a 180° linear shape. 110–112° is nearly tetrahedral → sp³.",
+            "hyb-none": "Phosphorus hybridizes just like nitrogen does. The near-tetrahedral angles say sp³."
+          }
+        },
+        {
+          "id": "b2-ether-o",
+          "kind": "single",
+          "section": "1.10",
+          "prompt": "What shape is the C–O–C part of dimethyl ether, CH₃–O–CH₃? (Problem 1-14a)",
+          "smiles": "COC",
+          "slots": [
+            {
+              "label": "Around oxygen:",
+              "answer": "geo-bent"
+            }
+          ],
+          "hand": [
+            "geo-bent",
+            "geo-linear",
+            "geo-planar120",
+            "geo-square"
+          ],
+          "hint": "Oxygen has 2 bonds and 2 lone pairs.",
+          "explain": {
+            "geo-bent": "Right! O has 2 bonds + 2 lone pairs = 4 groups → sp³. The lone pairs fill two corners of the tetrahedron, so the C–O–C bonds are bent at a near-tetrahedral angle.",
+            "geo-linear": "Linear would ignore oxygen's 2 lone pairs. They count as groups: 4 groups → sp³, so the C–O–C is bent.",
+            "geo-planar120": "Flat 120° means 3 groups (sp²). Oxygen here has 4 groups (2 bonds + 2 lone pairs) → sp³, bent.",
+            "geo-square": "No 90° squares here. 4 groups around O → sp³ tetrahedral arrangement → bent C–O–C."
+          }
+        },
+        {
+          "id": "b2-benzene",
+          "kind": "single",
+          "section": "1.8",
+          "prompt": "What is the shape of benzene, and how are its carbons hybridized? (Problem 1-36)",
+          "smiles": "C1=CC=CC=C1",
+          "slots": [
+            {
+              "label": "Benzene is...",
+              "answer": "benz-planar-sp2"
+            }
+          ],
+          "hand": [
+            "benz-planar-sp2",
+            "benz-pucker-sp3",
+            "benz-planar-sp",
+            "benz-alt"
+          ],
+          "hint": "Every carbon is part of a C=C double bond.",
+          "explain": {
+            "benz-planar-sp2": "Right! Every carbon is in a double bond with 3 groups → sp². Their 120° angles fit perfectly into a flat hexagon.",
+            "benz-pucker-sp3": "sp³ carbons have only single bonds. Every benzene carbon is in a C=C double bond, so they're all sp² and the ring is flat.",
+            "benz-planar-sp": "sp carbons are linear (180°), and you can't bend those into a ring. Benzene's carbons are sp² (120°).",
+            "benz-alt": "The drawing alternates single and double bonds, but EVERY carbon is part of one double bond, so every carbon is sp²."
+          }
+        },
+        {
+          "id": "b2-carbocation",
+          "kind": "single",
+          "section": "1.8",
+          "prompt": "A carbocation like CH₃⁺ has a positive carbon with only 3 bonds and no lone pairs. What hybridization and shape do you expect? (Problem 1-49)",
+          "slots": [
+            {
+              "label": "The C⁺ is...",
+              "answer": "cat-sp2"
+            }
+          ],
+          "hand": [
+            "cat-sp2",
+            "cat-sp3",
+            "cat-sp"
+          ],
+          "hint": "Count the groups on the carbon. An empty orbital isn't a group.",
+          "explain": {
+            "cat-sp2": "Right! 3 groups → three sp² hybrids in a flat plane (120°), with one EMPTY p orbital left over. The positive carbon has 6 valence electrons.",
+            "cat-sp3": "sp³ needs 4 groups. CH₃⁺ has only 3 bonds and no lone pair, so it's sp² and flat. The empty orbital is a leftover p.",
+            "cat-sp": "sp is for 2 groups. CH₃⁺ has 3 bonds → sp², trigonal planar."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c1",
+      "path": "C",
+      "title": "Reading Skeletons",
+      "requires": [
+        "intro"
+      ],
+      "pick": 3,
+      "lesson": [
+        {
+          "text": "Path of Drawing! Drawing every C and H gets tiring, so chemists use shortcuts. A CONDENSED structure skips the bond lines: CH₃CH₂CH₃. A SKELETAL structure goes further and hides the C's and H's completely."
+        },
+        {
+          "text": "Skeletal Rule 1: a carbon sits at every line END and every place lines MEET. Rule 2: H's on carbon aren't drawn. Each carbon has 4 bonds, so you fill in the missing H's yourself. Rule 3: any atom other than C or H IS drawn, along with H's attached to it (like –OH).",
+          "smiles": "CC(C)CC"
+        },
+        {
+          "text": "Counting H's: a line END has 1 bond drawn → CH₃. A two-way corner → CH₂. A three-way junction → CH. A four-way junction → C with no H. Every double bond line counts as 2 bonds!"
+        },
+        {
+          "text": "Worked example: 2-methylbutane, above. It has 5 carbons. Two ends on the left (2 × CH₃), one three-way junction (CH), one corner (CH₂), and one more end (CH₃). H's: 3+3+1+2+3 = 12. Formula: C₅H₁₂.",
+          "art": "C₅H₁₂"
+        },
+        {
+          "text": "Handy check: an open chain with only single bonds has 2n+2 H's (n = number of carbons). Each ring or double bond takes away 2 H's. Methylcyclohexane: 7 carbons, 1 ring → 16 − 2 = 14 → C₇H₁₄.",
+          "smiles": "CC1CCCCC1"
+        }
+      ],
+      "problems": [
+        {
+          "id": "c1-where-carbons",
+          "kind": "single",
+          "section": "1.12",
+          "prompt": "In a skeletal structure, where are the carbon atoms?",
+          "slots": [
+            {
+              "label": "Carbons are...",
+              "answer": "skel-ends"
+            }
+          ],
+          "hand": [
+            "skel-ends",
+            "skel-written",
+            "skel-endsonly",
+            "skel-cornersonly"
+          ],
+          "hint": "Rule 1 has two parts.",
+          "explain": {
+            "skel-ends": "Right! Rule 1: a carbon is at every intersection of lines AND at the end of every line.",
+            "skel-written": "In skeletal structures, carbons usually AREN'T written. They're understood to be at every line end and intersection.",
+            "skel-endsonly": "That misses the carbons where lines meet. Carbons are at line ends AND intersections.",
+            "skel-cornersonly": "That misses the carbons at line ends (usually CH₃ groups). Carbons are at ends AND intersections."
+          }
+        },
+        {
+          "id": "c1-2mebutane",
+          "kind": "single",
+          "section": "1.12",
+          "prompt": "What is the molecular formula of this compound (2-methylbutane)?",
+          "smiles": "CC(C)CC",
+          "slots": [
+            {
+              "label": "Formula:",
+              "answer": "mf-c5h12"
+            }
+          ],
+          "hand": [
+            "mf-c5h12",
+            "mf-c5h10",
+            "mf-c4h10",
+            "mf-c5h11"
+          ],
+          "hint": "Count carbons (line ends + junctions), then H's using 4 bonds per carbon.",
+          "explain": {
+            "mf-c5h12": "Right! 5 carbons: 3 line ends (CH₃ ×3 = 9 H), 1 three-way junction (CH = 1 H), 1 corner (CH₂ = 2 H). 9 + 1 + 2 = 12. Check: 2(5)+2 = 12 ✓.",
+            "mf-c5h10": "C₅H₁₀ would need a ring or a double bond. This structure is an open chain with only single bonds: C₅H₁₂ (2n+2).",
+            "mf-c4h10": "Don't forget the branch! The methyl sticking off the chain is a carbon too. 4 in the main chain + 1 branch = 5 carbons: C₅H₁₂.",
+            "mf-c5h11": "An odd H count on a neutral hydrocarbon leaves some carbon without 4 bonds. Recount: 3 CH₃ + 1 CH + 1 CH₂ = 12 H."
+          }
+        },
+        {
+          "id": "c1-isoprene",
+          "kind": "single",
+          "section": "1.12",
+          "prompt": "What is the molecular formula of isoprene? (Table 1.3)",
+          "smiles": "C=C(C)C=C",
+          "slots": [
+            {
+              "label": "Formula:",
+              "answer": "mf-c5h8"
+            }
+          ],
+          "hand": [
+            "mf-c5h8",
+            "mf-c5h12",
+            "mf-c5h10",
+            "mf-c4h6"
+          ],
+          "hint": "Each double bond line counts as 2 bonds for that carbon.",
+          "explain": {
+            "mf-c5h8": "Right! 5 carbons and two C=C double bonds. Each double bond removes 2 H's from the 2n+2 max: 12 − 4 = 8. C₅H₈.",
+            "mf-c5h12": "That's the count for an all-single-bond chain. Isoprene has TWO double bonds, each costing 2 H's: 12 − 4 = 8.",
+            "mf-c5h10": "That accounts for only one double bond. Isoprene has two: 12 − 2 − 2 = 8 → C₅H₈.",
+            "mf-c4h6": "Don't skip the methyl branch. That's a fifth carbon. 5 carbons, two double bonds → C₅H₈."
+          }
+        },
+        {
+          "id": "c1-methylcyclohexane",
+          "kind": "single",
+          "section": "1.12",
+          "prompt": "What is the molecular formula of methylcyclohexane? (Table 1.3)",
+          "smiles": "CC1CCCCC1",
+          "slots": [
+            {
+              "label": "Formula:",
+              "answer": "mf-c7h14"
+            }
+          ],
+          "hand": [
+            "mf-c7h14",
+            "mf-c7h16",
+            "mf-c6h12",
+            "mf-c7h12"
+          ],
+          "hint": "6 ring carbons + 1 methyl. A ring costs 2 H's.",
+          "explain": {
+            "mf-c7h14": "Right! 7 carbons. Ring: 5 CH₂ + 1 CH. Methyl: 1 CH₃. H's: 10 + 1 + 3 = 14. Check: 2(7)+2 − 2 (ring) = 14 ✓.",
+            "mf-c7h16": "That's an open chain (heptane). Closing the ring uses up one more bond, which removes 2 H's: C₇H₁₄.",
+            "mf-c6h12": "That's cyclohexane alone. Don't forget the methyl branch: 7 carbons total → C₇H₁₄.",
+            "mf-c7h12": "That would need a ring AND a double bond (or two rings). Methylcyclohexane has one ring and no double bonds: C₇H₁₄."
+          }
+        },
+        {
+          "id": "c1-h-per-carbon",
+          "kind": "match",
+          "section": "1.12",
+          "prompt": "How many H's does a carbon carry at each spot in a skeletal structure? (Single bonds only.)",
+          "slots": [
+            {
+              "label": "End of a line",
+              "answer": "hc-ch3"
+            },
+            {
+              "label": "Two-way corner",
+              "answer": "hc-ch2"
+            },
+            {
+              "label": "Three-way junction",
+              "answer": "hc-ch"
+            },
+            {
+              "label": "Four-way junction",
+              "answer": "hc-c"
+            }
+          ],
+          "hand": [
+            "hc-ch3",
+            "hc-ch2",
+            "hc-ch",
+            "hc-c",
+            "hc-ch4"
+          ],
+          "hint": "4 bonds total minus the bonds you can see = number of H's.",
+          "explain": {
+            "hc-ch3": "CH₃ is a line END: 1 bond drawn, so 4 − 1 = 3 H's.",
+            "hc-ch2": "CH₂ is a two-way corner: 2 bonds drawn, so 2 H's.",
+            "hc-ch": "CH is a three-way junction: 3 bonds drawn, so 1 H.",
+            "hc-c": "A plain C is a four-way junction: all 4 bonds drawn, no room for H.",
+            "hc-ch4": "CH₄ (methane) has no C–C bonds at all, so it isn't any of these spots. A carbon in a skeleton always has at least 1 line drawn."
+          }
+        },
+        {
+          "id": "c1-phenol",
+          "kind": "single",
+          "section": "1.12",
+          "prompt": "What is the molecular formula of phenol? (Table 1.3)",
+          "smiles": "OC1=CC=CC=C1",
+          "slots": [
+            {
+              "label": "Formula:",
+              "answer": "mf-c6h6o"
+            }
+          ],
+          "hand": [
+            "mf-c6h6o",
+            "mf-c6h5o",
+            "mf-c6h12o",
+            "mf-c6h6"
+          ],
+          "hint": "Skeletal structures DO show H's on oxygen.",
+          "explain": {
+            "mf-c6h6o": "Right! 6 ring carbons: 5 of them are CH (each has a double bond + 2 ring bonds), and 1 carries the OH. 5 + 1 (the O–H) = 6 H. C₆H₆O.",
+            "mf-c6h5o": "Don't forget the H on the oxygen. It's part of the –OH group. 5 ring H's + 1 = 6: C₆H₆O.",
+            "mf-c6h12o": "That ignores the three double bonds. Each double bond line counts as 2 bonds, so the ring carbons have only one H each: C₆H₆O.",
+            "mf-c6h6": "Rule 3: atoms other than C and H are shown, so that O counts! C₆H₆O."
+          }
+        },
+        {
+          "id": "c1-what-written",
+          "kind": "single",
+          "section": "1.12",
+          "prompt": "In a skeletal structure, which atoms are actually written out?",
+          "slots": [
+            {
+              "label": "Written atoms:",
+              "answer": "skel-hetero"
+            }
+          ],
+          "hand": [
+            "skel-hetero",
+            "skel-onlyc",
+            "skel-every",
+            "skel-charged"
+          ],
+          "hint": "Rules 2 and 3.",
+          "explain": {
+            "skel-hetero": "Right! Rule 3: atoms other than C and H are written. H's bonded to those atoms are written too (–OH, –NH₂). Only C's and their H's are hidden.",
+            "skel-onlyc": "Backwards! Carbons are the atoms that AREN'T written in skeletal structures (Rule 1).",
+            "skel-every": "Writing every atom is a line-bond (Kekulé) structure. Skeletal structures hide C's and the H's on C.",
+            "skel-charged": "Every heteroatom (O, N, Cl, etc.) is written whether or not it's charged."
+          }
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "path": "C",
+      "title": "Building Molecules",
+      "requires": [
+        "c1"
+      ],
+      "pick": 4,
+      "lesson": [
+        {
+          "text": "Now let's go the other way: from a formula to a drawing. The rules don't change. C makes 4 bonds, N makes 3, O makes 2, and H and halogens make 1. Snap atoms together until every atom is happy."
+        },
+        {
+          "text": "Some formulas have more than one answer! C₄H₁₀ can be a straight chain (butane) or branched (isobutane). C₂H₆O can be ethanol (CH₃CH₂OH) or dimethyl ether (CH₃OCH₃). Same atoms, different connections, different compounds.",
+          "smiles": "CC(C)C"
+        },
+        {
+          "text": "Use the H count as a clue. For n carbons, a chain with only single bonds has 2n+2 H's. Two fewer H's means ONE ring or ONE double bond. C₃H₆ can be propene (double bond) or cyclopropane (ring).",
+          "smiles": "C1CC1"
+        },
+        {
+          "text": "Reading condensed structures: (CH₃)₂CH– means a CH with two CH₃ groups hanging off it. So (CH₃)₂CHCH₂CH₃ is a 4-carbon chain with a branch on carbon 2: 2-methylbutane, C₅H₁₂.",
+          "smiles": "CC(C)CC"
+        },
+        {
+          "text": "And if a formula breaks the rules, like CH₅ (carbon would need 5 bonds), it can't exist. Valence rules are your best friend."
+        }
+      ],
+      "problems": [
+        {
+          "id": "c2-butane",
+          "kind": "single",
+          "section": "1.12",
+          "prompt": "Which skeletal structure is butane, CH₃CH₂CH₂CH₃?",
+          "slots": [
+            {
+              "label": "Butane",
+              "answer": "s-butane"
+            }
+          ],
+          "hand": [
+            "s-butane",
+            "s-isobutane",
+            "s-propane",
+            "s-pentane",
+            "s-1butene"
+          ],
+          "hint": "Four carbons in a row, all single bonds.",
+          "explain": {
+            "s-butane": "Right! A zigzag with 4 carbons (2 ends + 2 corners), all single bonds. C₄H₁₀.",
+            "s-isobutane": "Same formula (C₄H₁₀), but branched: three carbons hang off one central CH. Butane is an unbranched chain of 4.",
+            "s-propane": "Count the carbons: only 3 (2 ends + 1 corner). Butane has 4.",
+            "s-pentane": "Count the carbons: 5. Butane has 4.",
+            "s-1butene": "4 carbons, but there's a double bond (C₄H₈). Butane has only single bonds."
+          }
+        },
+        {
+          "id": "c2-ether",
+          "kind": "single",
+          "section": "1.12",
+          "prompt": "C₂H₆O has two possible structures (Problem 1-54). Pick the one where oxygen is bonded to TWO carbons.",
+          "slots": [
+            {
+              "label": "C–O–C isomer",
+              "answer": "s-dme"
+            }
+          ],
+          "hand": [
+            "s-dme",
+            "s-ethanol",
+            "s-acetaldehyde",
+            "s-methanol"
+          ],
+          "hint": "The O should sit in the middle of the chain, not at the end.",
+          "explain": {
+            "s-dme": "Right! Dimethyl ether, CH₃–O–CH₃: oxygen in the middle with 2 bonds to carbons. C₂H₆O.",
+            "s-ethanol": "Ethanol IS C₂H₆O, the other isomer! But its O is bonded to one C and one H (an –OH). The C–O–C one is dimethyl ether.",
+            "s-acetaldehyde": "The C=O double bond costs 2 H's: this is C₂H₄O, not C₂H₆O.",
+            "s-methanol": "Only one carbon here: CH₄O. We need two carbons."
+          }
+        },
+        {
+          "id": "c2-c3h6",
+          "kind": "match",
+          "section": "1.12",
+          "prompt": "Match each description to its structure. (Based on Problem 1-53.)",
+          "slots": [
+            {
+              "label": "C₃H₆ with a double bond",
+              "answer": "s-propene"
+            },
+            {
+              "label": "C₃H₆ with a ring",
+              "answer": "s-cyclopropane"
+            },
+            {
+              "label": "C₃H₈",
+              "answer": "s-propane"
+            }
+          ],
+          "hand": [
+            "s-propene",
+            "s-cyclopropane",
+            "s-propane",
+            "s-propyne"
+          ],
+          "hint": "Max H for 3 carbons is 8. Each ring or double bond removes 2.",
+          "explain": {
+            "s-propene": "Propene, CH₂=CHCH₃: 3 carbons, one double bond → 8 − 2 = 6 H. It's the 'C₃H₆ with a double bond.'",
+            "s-cyclopropane": "Cyclopropane: 3 CH₂ in a ring → 6 H. It's the 'C₃H₆ with a ring.'",
+            "s-propane": "Propane, CH₃CH₂CH₃: all single bonds, no ring → 2(3)+2 = 8 H. It's C₃H₈.",
+            "s-propyne": "Propyne has a triple bond, which costs 4 H's: C₃H₄. It doesn't match any of these."
+          }
+        },
+        {
+          "id": "c2-ch5n",
+          "kind": "single",
+          "section": "1.12",
+          "prompt": "Which structure has the formula CH₅N? (Problem 1-30b)",
+          "slots": [
+            {
+              "label": "CH₅N",
+              "answer": "s-methylamine"
+            }
+          ],
+          "hand": [
+            "s-methylamine",
+            "s-methanimine",
+            "s-methanediamine",
+            "s-methanol"
+          ],
+          "hint": "C makes 4 bonds and N makes 3. Fill the rest with H's.",
+          "explain": {
+            "s-methylamine": "Right! Methylamine, CH₃–NH₂: C has 3 H's + 1 bond to N, and N has 2 H's + 1 bond to C. 3 + 2 = 5 H.",
+            "s-methanimine": "The C=N double bond uses up extra bonds: CH₂=NH is CH₃N, two H's short.",
+            "s-methanediamine": "Two nitrogens: CH₆N₂. We need just one N.",
+            "s-methanol": "That's an O, not an N: CH₃OH is CH₄O."
+          }
+        },
+        {
+          "id": "c2-condensed",
+          "kind": "single",
+          "section": "1.12",
+          "prompt": "Which skeletal structure matches the condensed structure (CH₃)₂CHCH₂CH₃?",
+          "slots": [
+            {
+              "label": "(CH₃)₂CHCH₂CH₃",
+              "answer": "s-2mebutane"
+            }
+          ],
+          "hand": [
+            "s-2mebutane",
+            "s-pentane",
+            "s-neopentane",
+            "s-isobutane"
+          ],
+          "hint": "(CH₃)₂CH– is a CH carrying two CH₃ groups.",
+          "explain": {
+            "s-2mebutane": "Right! (CH₃)₂CH is a carbon with two methyls, then CH₂, then CH₃. That's a 4-carbon chain with a methyl on C2: 2-methylbutane.",
+            "s-pentane": "Pentane is unbranched: CH₃CH₂CH₂CH₂CH₃. The (CH₃)₂CH part means a branch point.",
+            "s-neopentane": "This has a central C with FOUR CH₃ groups, C(CH₃)₄. Ours has a CH with only two methyls, then a CH₂CH₃.",
+            "s-isobutane": "Isobutane, (CH₃)₂CHCH₃, has only 4 carbons. Ours has an extra CH₂: 5 carbons."
+          }
+        },
+        {
+          "id": "c2-vinylcl",
+          "kind": "single",
+          "section": "1.12",
+          "prompt": "Which structure is vinyl chloride, C₂H₃Cl, the starting material for PVC? (Problem 1-27)",
+          "slots": [
+            {
+              "label": "C₂H₃Cl",
+              "answer": "s-vinylcl"
+            }
+          ],
+          "hand": [
+            "s-vinylcl",
+            "s-chloroethane",
+            "s-dichloroethene",
+            "s-chloroacetylene"
+          ],
+          "hint": "Two carbons with only 3 H's + 1 Cl means there's a double bond.",
+          "explain": {
+            "s-vinylcl": "Right! CH₂=CHCl. Two carbons with a double bond leave 4 spots: 3 H + 1 Cl.",
+            "s-chloroethane": "No double bond, so there's room for 5 H's + Cl: C₂H₅Cl.",
+            "s-dichloroethene": "Two chlorines: C₂H₂Cl₂. We need one Cl and three H's.",
+            "s-chloroacetylene": "A triple bond leaves only 2 spots: C₂HCl. We need a double bond for C₂H₃Cl."
+          }
+        },
+        {
+          "id": "c2-ch5",
+          "kind": "single",
+          "section": "1.4",
+          "prompt": "Why can't a molecule with the formula CH₅ exist? (Problem 1-25a)",
+          "slots": [
+            {
+              "label": "Because...",
+              "answer": "ch5-5bonds"
+            }
+          ],
+          "hand": [
+            "ch5-5bonds",
+            "ch5-hneeds2",
+            "ch5-toolight",
+            "ch5-noh"
+          ],
+          "hint": "Each H makes one bond to carbon.",
+          "explain": {
+            "ch5-5bonds": "Right! Each H forms one bond, so 5 H's would need 5 bonds to carbon. Carbon forms only 4, so CH₄ is the max.",
+            "ch5-hneeds2": "Hydrogen forms just one bond. The problem is carbon: 5 H's would need 5 bonds, and carbon only makes 4.",
+            "ch5-toolight": "Small molecules are fine (CH₄ is smaller!). The problem is that carbon would need 5 bonds.",
+            "ch5-noh": "C–H bonds are strong (about 439 kJ/mol in methane). The problem is that carbon would need 5 bonds."
+          }
+        }
+      ]
+    }
+  ],
+  "boss": {
+    "id": "boss",
+    "name": "Magister Mordant",
+    "title": "The Fallen Alchemist",
+    "requires": [
+      "a2",
+      "b2",
+      "c2"
+    ],
+    "pick": 7,
+    "drawFromLevels": true,
+    "damagePerCard": 10,
+    "coinReward": 100,
+    "palette": {
+      "p": "#4b2a6b",
+      "k": "#0d0614",
+      "e": "#7dff6a",
+      "m": "#b34cff",
+      "g": "#3cff9e"
+    },
+    "portrait": [
+      "......pppp......",
+      ".....pppppp.....",
+      "....pppppppp....",
+      "...pppkkkkppp...",
+      "...ppkkkkkkpp...",
+      "..ppkkekkekkpp..",
+      "..ppkkkkkkkkpp..",
+      "..ppkkkmmkkkpp..",
+      "..pppkkkkkkppp..",
+      ".ppppppkkpppppp.",
+      ".pppppppppppppp.",
+      "pppppppggppppppp",
+      "ppppppggggpppppp",
+      "pppppggggggppppp",
+      "ppppppggggpppppp",
+      "pppppppppppppppp"
+    ],
+    "intro": [
+      {
+        "speaker": "boss",
+        "text": "So. Another little student climbing MY tower. Dott still drawing his precious dots, is he?"
+      },
+      {
+        "speaker": "npc",
+        "text": "Mordant! This student actually understands WHY carbon forms four bonds. You can't scare that out of them."
+      },
+      {
+        "speaker": "boss",
+        "text": "Understanding is slow. Memorize, child! 'Carbon: four. Double bond: sp².' Why bother asking why? Let's see how you do when I scramble everything you've learned!"
+      }
+    ],
+    "taunts": {
+      "wrong": [
+        "Ha! See? You should have just memorized it.",
+        "Why, why, why... and still wrong!",
+        "My flashcards never lie. You, however..."
+      ],
+      "right": [
+        "Lucky guess.",
+        "Hmph. Dott's dots won't save you forever.",
+        "Fine. But can you do it again?"
+      ]
+    },
+    "defeat": [
+      {
+        "speaker": "boss",
+        "text": "Impossible... you reasoned it out? Every single one?"
+      },
+      {
+        "speaker": "npc",
+        "text": "That's the difference, Mordant. Memorized answers crumble when the question changes. Understanding doesn't."
+      },
+      {
+        "speaker": "boss",
+        "text": "Enjoy your little victory. The next floor's teacher has a temper, and I have a few acid tricks waiting for you..."
+      }
+    ],
+    "story": [
+      {
+        "speaker": "narrator",
+        "text": "Mordant's ghost dissolves into green smoke. For a moment, the cracked flask he always carries glows. It's labeled 'H⁺'."
+      },
+      {
+        "speaker": "npc",
+        "text": "Take this lantern, my student. It holds the light of understanding. When you're truly stuck, it can show you an answer AND explain why it's right."
+      },
+      {
+        "speaker": "narrator",
+        "text": "A spiral staircase unfolds above you. From somewhere upstairs, a voice bellows: 'DROP AND GIVE ME A PROTON!' Floor 2 awaits... once its doors are built."
+      }
+    ],
+    "legendary": {
+      "id": "dott-lantern",
+      "name": "Dott's Lantern",
+      "effect": "autofill",
+      "rarity": "legendary",
+      "desc": "Fills one empty slot with the correct card and explains why it's right. Won from Floor 1's boss."
+    },
+    "cosmetic": {
+      "id": "back-dotted",
+      "kind": "back",
+      "name": "Dotted Parchment"
+    },
+    "problems": [
+      {
+        "id": "boss-acetonitrile",
+        "kind": "match",
+        "section": "1.9",
+        "prompt": "Acetonitrile, CH₃–C≡N (Problems 1-26 and 1-34). Fill in each blank.",
+        "smiles": "CC#N",
+        "slots": [
+          {
+            "label": "CH₃ carbon",
+            "answer": "hyb-sp3"
+          },
+          {
+            "label": "C≡N carbon",
+            "answer": "hyb-sp"
+          },
+          {
+            "label": "Lone pairs on N",
+            "answer": "lp-1"
+          }
+        ],
+        "hand": [
+          "hyb-sp3",
+          "hyb-sp",
+          "hyb-sp2",
+          "lp-1",
+          "lp-2"
+        ],
+        "hint": "N in a triple bond uses 3 of its 5 electrons for bonding.",
+        "explain": {
+          "hyb-sp3": "sp³ is the CH₃ carbon: four single bonds.",
+          "hyb-sp": "sp is the nitrile carbon: it's in a triple bond, with 2 groups (the CH₃ and the N) at 180°.",
+          "hyb-sp2": "No double bonds here. CH₃ is sp³ and the C≡N carbon is sp.",
+          "lp-1": "N has 5 valence electrons. 3 go into the triple bond (6 shared electrons), leaving 2 = one lone pair. N's outer shell: 6 bonding + 2 nonbonding = 8.",
+          "lp-2": "Two lone pairs is oxygen's pattern. Nitrogen in C≡N uses 3 electrons for bonding and keeps 2: one lone pair."
+        }
+      },
+      {
+        "id": "boss-allene",
+        "kind": "single",
+        "section": "1.9",
+        "prompt": "Allene, H₂C=C=CH₂, has two double bonds on its central carbon (Problem 1-46). What is the central carbon's hybridization?",
+        "smiles": "C=C=C",
+        "slots": [
+          {
+            "label": "Central carbon:",
+            "answer": "hyb-sp"
+          }
+        ],
+        "hand": [
+          "hyb-sp",
+          "hyb-sp2",
+          "hyb-sp3"
+        ],
+        "hint": "Count the groups on the central carbon. Each double bond counts as one.",
+        "explain": {
+          "hyb-sp": "Right! The central carbon has 2 groups (two double bonds) → sp, linear (180°). Its two leftover p orbitals each make one of the π bonds. (The end carbons are sp².)",
+          "hyb-sp2": "Tempting, since it's in double bonds! But it's in TWO of them, so it has only 2 groups → sp. Only the end CH₂ carbons are sp².",
+          "hyb-sp3": "sp³ is for four single bonds. The central carbon has two double bonds → 2 groups → sp."
+        }
+      },
+      {
+        "id": "boss-co2",
+        "kind": "single",
+        "section": "1.9",
+        "prompt": "What is the hybridization of carbon in carbon dioxide, O=C=O? (Problem 1-47)",
+        "slots": [
+          {
+            "label": "Carbon in CO₂:",
+            "answer": "hyb-sp"
+          }
+        ],
+        "hand": [
+          "hyb-sp",
+          "hyb-sp2",
+          "hyb-sp3",
+          "hyb-p"
+        ],
+        "hint": "Same idea as allene's middle carbon.",
+        "explain": {
+          "hyb-sp": "Right! Carbon has two double bonds = 2 groups → sp, and CO₂ is linear (180°). Two leftover p orbitals form the two C=O π bonds.",
+          "hyb-sp2": "Two double bonds means only 2 groups on carbon → sp, linear. sp² would mean 3 groups.",
+          "hyb-sp3": "sp³ needs 4 groups. Carbon in CO₂ has 2 (two double bonds) → sp.",
+          "hyb-p": "Carbon uses hybrids here: sp for the σ bonds, plus two unhybridized p orbitals for the π bonds."
+        }
+      },
+      {
+        "id": "boss-aufbau-order",
+        "kind": "order",
+        "section": "1.3",
+        "prompt": "Put these orbitals in the order they FILL, first to last.",
+        "slots": [
+          {
+            "label": "1st",
+            "answer": "orb-3p"
+          },
+          {
+            "label": "2nd",
+            "answer": "orb-4s"
+          },
+          {
+            "label": "3rd",
+            "answer": "orb-3d"
+          }
+        ],
+        "hand": [
+          "orb-3d",
+          "orb-4s",
+          "orb-3p",
+          "orb-4p"
+        ],
+        "hint": "The book says the 4s orbital lies between 3p and 3d in energy.",
+        "why": "Aufbau order: ...3s, 3p, 4s, 3d, 4p. The 4s is lower in energy than 3d, so it fills first.",
+        "explain": {
+          "orb-3p": "3p fills right after 3s and comes FIRST of these.",
+          "orb-4s": "4s is sneaky. It's lower in energy than 3d, so it fills SECOND, between 3p and 3d.",
+          "orb-3d": "3d fills THIRD, after 4s, even though it's in shell 3.",
+          "orb-4p": "4p fills after 3d, so it comes after all three of these. It doesn't belong in this sequence."
+        }
+      },
+      {
+        "id": "boss-carvone",
+        "kind": "single",
+        "section": "1.12",
+        "prompt": "Carvone gives spearmint its smell (Worked Example 1.4). What is its molecular formula?",
+        "smiles": "CC1=CCC(CC1=O)C(=C)C",
+        "slots": [
+          {
+            "label": "Carvone:",
+            "answer": "mf-c10h14o"
+          }
+        ],
+        "hand": [
+          "mf-c10h14o",
+          "mf-c10h16o",
+          "mf-c10h14",
+          "mf-c9h14o"
+        ],
+        "hint": "10 carbons. Count: 1 ring + 3 double bonds (two C=C, one C=O).",
+        "explain": {
+          "mf-c10h14o": "Right! 10 carbons. Max H for 10 C is 22. The ring and the three double bonds (two C=C, one C=O) each remove 2: 22 − 8 = 14. Plus 1 O. C₁₀H₁₄O.",
+          "mf-c10h16o": "One double bond short. Carvone has a ring + two C=C + one C=O = 4 'H-removers' → 22 − 8 = 14 H.",
+          "mf-c10h14": "Rule 3: heteroatoms are drawn, so that O counts. C₁₀H₁₄O.",
+          "mf-c9h14o": "Recount carbons. Don't miss the CH₂ at the end of the isopropenyl group's double bond. 10 carbons: C₁₀H₁₄O."
+        }
+      }
+    ]
+  }
+}

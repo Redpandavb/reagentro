@@ -1,0 +1,33 @@
+{
+  "chapters": ["ch01.json"],
+  "musicFiles": [],
+  "plannedFloors": [
+    "Acids & Bases", "Alkanes", "Cycloalkanes", "Stereochemistry", "Overview of Reactions",
+    "Alkenes: Structure", "Alkenes: Reactions", "Alkynes", "Organohalides", "Substitution & Elimination"
+  ],
+  "coins": { "perCorrect": 10, "streakEvery": 3, "streakBonus": 5 },
+  "powerDropChance": 0.35,
+  "baseHearts": { "study": 3, "normal": 3, "exam": 2 },
+  "basePowerSlots": 3,
+  "parSecondsPerProblem": 60,
+  "powers": {
+    "hint":      { "name": "Hint",      "rarity": "common",   "effect": "hint",      "price": 20, "desc": "Calls the floor's teacher back for a one-line nudge. (Using it costs the speed star.)" },
+    "eliminate": { "name": "Eliminate", "rarity": "uncommon", "effect": "eliminate", "price": 30, "desc": "Removes one wrong card from your hand and explains why it's wrong." },
+    "heal":      { "name": "Heal",      "rarity": "rare",     "effect": "heal",      "price": 40, "desc": "Restores one heart." },
+    "shield":    { "name": "Shield",    "rarity": "epic",     "effect": "shield",    "price": 50, "desc": "Blocks the damage from your next mistake." }
+  },
+  "upgrades": {
+    "maxHeart":  { "name": "+1 Max Heart",  "price": 200, "max": 2, "desc": "Start every level with one more heart (Normal and Exam)." },
+    "powerSlot": { "name": "+1 Power Slot", "price": 150, "max": 2, "desc": "Carry one more power card." }
+  },
+  "cosmetics": {
+    "back-classic":  { "kind": "back",  "name": "Classic Red",      "price": 0,   "css": "linear-gradient(135deg,#c0392b,#8e1c12)" },
+    "back-midnight": { "kind": "back",  "name": "Midnight Flask",   "price": 60,  "css": "repeating-linear-gradient(45deg,#1d2b64 0 8px,#2c3e91 8px 16px)" },
+    "back-gold":     { "kind": "back",  "name": "Gilded Benzene",   "price": 120, "css": "radial-gradient(circle,#ffe082 0 20%,#c79100 21% 40%,#8d6e00 41%)" },
+    "back-dotted":   { "kind": "back",  "name": "Dotted Parchment", "price": null, "css": "radial-gradient(#5a3e1b 2px,transparent 3px) 0 0/12px 12px,#e8d3a3" },
+    "table-felt":    { "kind": "table", "name": "Lab Green Felt",   "price": 0,   "css": "radial-gradient(ellipse at center,#1f5f4a 0%,#0e2c24 75%)" },
+    "table-violet":  { "kind": "table", "name": "Tower Violet",     "price": 80,  "css": "radial-gradient(ellipse at center,#4a2a6b 0%,#160a24 75%)" },
+    "table-ember":   { "kind": "table", "name": "Forge Ember",      "price": 100, "css": "radial-gradient(ellipse at center,#6b2a1a 0%,#1f0a06 75%)" }
+  },
+  "mysteryPack": { "price": 75, "desc": "A small surprise: a random common or uncommon power card, or a few coins back." }
+}
